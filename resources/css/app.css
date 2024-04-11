@@ -1,0 +1,57 @@
+@import url('/resources/css/bootstrap.min.css');
+@import url('/resources/css/all.min.css');
+
+
+:root{
+    --sand: #EEEAE0;
+    --green : #5B5942;
+    --blue: #AEB6BF;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Forum', serif !important;
+    letter-spacing: 5px;
+}
+
+body{
+    background-color: var(--sand);
+    color: var(--green);
+    font-family: 'IBM Plex Sans', serif;
+}
+
+.mt-6{
+    margin-top: 6rem !important;
+}
+
+.mb-6{
+    margin-bottom: 6rem !important;
+}
+
+.my-6{
+    margin-top: 6rem !important;
+    margin-bottom: 6rem !important;
+}
+
+.fondo-oscuro{
+    background-color: rgba(91, 89, 66, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.fs-0{
+    font-size: 70px;
+}
+
+.fs-7{
+    font-size: 14px;
+}
+
+.row{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
