@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Tag;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Number;
@@ -42,6 +43,42 @@ class User extends Resource
     ];
 
     /**
+     * Get the text for the create resource button.
+     *
+     * @return string|null
+     */
+    public static function createButtonLabel()
+    {
+        return __('Crear Nuevo');
+    }
+
+    /**
+     * Get the text for the update resource button.
+     *
+     * @return string|null
+     */
+    public static function updateButtonLabel()
+    {
+        return __('Guardar Cambios');
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Usuario');
+    }
+
+    public static function label()
+    {
+        return __('Usuarios');
+    }
+
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
@@ -66,14 +103,14 @@ class User extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}')
                 ->showWhenPeeking(),
 
-            Number::make('Teléfono', 'phone')->nullable()->min(0),
+            Number::make('Teléfono', 'phone')->hideFromIndex()->nullable()->min(0),
 
             Select::make('Lenguaje', 'lang')->options([
                 'es' => 'Español',
                 'en' => 'Inglés',
             ])->displayUsingLabels()->hideFromIndex()->default('es')->rules('required'),
 
-            Country::make('País', 'country_code')->searchable()->nullable(),
+            Country::make('País', 'country_code')->hideFromIndex()->searchable()->nullable(),
 
             Password::make('Contraseña', 'password')
                 ->onlyOnForms()
@@ -85,7 +122,7 @@ class User extends Resource
                 'agent' => 'Asesor Inmobiliario',
                 'admin' => 'Administrador del sistema',
                 'superadmin' => 'Super Admin',
-            ])->displayUsingLabels()->hideFromIndex(),
+            ])->displayUsingLabels()->filterable(),
 
             //Asesor
             BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms(),
@@ -112,6 +149,12 @@ class User extends Resource
                     }
                 }
             ),
+
+            Tag::make('Unidades Guardadas', 'savedUnits', Unit::class)->withPreview()->hideFromIndex()
+            ->showOnDetail(function (NovaRequest $request, $resource) {
+                return $this->role === 'client';
+            })->exceptOnForms(),
+
         ];
     }
 
