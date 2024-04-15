@@ -57,7 +57,7 @@ class LowestUnitPrice extends Value
      */
     public function name()
     {
-        return 'Precio mas bajo Disponible';
+        return 'Precio mas bajo Disponible(Sin descuento)';
     }
 
     

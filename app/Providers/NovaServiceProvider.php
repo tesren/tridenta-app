@@ -32,6 +32,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
+        Nova::withBreadcrumbs();
+
         Nova::mainMenu(function (Request $request) {
             return [
                 MenuSection::dashboard(Main::class)->icon('template'),
@@ -42,6 +44,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::resource(Message::class)->icon('inbox-in'),
                 MenuSection::resource(ConstructionUpdate::class)->icon('camera'),
                 MenuSection::resource(Shape::class)->icon('cube'),
+
+                MenuSection::make('Marketing', [
+                    MenuItem::externalLink('Inicio', '/dashboard')->openInNewTab(),
+                    MenuItem::externalLink('Inventario', '/inventory')->openInNewTab(),
+                ])->icon('star')->collapsable(),
 
                 MenuSection::make('Usuarios', [
                     //MenuItem::filter('Clientes', User::class, UserType::make(), 'client'),

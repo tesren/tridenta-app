@@ -36,9 +36,13 @@ class UserPolicy
     public function view(User $user, User $model)
     {
         
-        if($user->role == 'superadmin' or $user->role == 'admin' or $user->role == 'agent'){
+        if($user->role == 'superadmin' or $user->role == 'admin'){
             return true;
-        }elseif( $user->id == $model->id ){
+
+        }elseif($user->role == 'agent' and $user->id == $model->agent_id){
+            return true;
+        }
+        elseif( $user->id == $model->id ){
             return true;
         }
         else{

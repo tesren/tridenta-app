@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Unit::class, 'unit_user');
     }
+
+    /**
+     * Get all of the messages for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany(PrivateMessage::class);
+    }
 }

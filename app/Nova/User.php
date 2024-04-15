@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Country;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
@@ -75,6 +76,27 @@ class User extends Resource
     public static function label()
     {
         return __('Usuarios');
+    }
+
+
+    /**
+     * Build an "index" query for the given resource.
+     * 
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        $user = $request->user();
+
+        //Al admin se le muestran todos los registros, a los demás solo los suyos
+        if( $user->role == 'admin' or $user->role == 'superadmin' ){
+            return $query;
+        }
+        else{
+            return $query->where('agent_id', $request->user()->id)->orWhere('role', 'agent');
+        }
     }
 
 
@@ -154,6 +176,8 @@ class User extends Resource
             ->showOnDetail(function (NovaRequest $request, $resource) {
                 return $this->role === 'client';
             })->exceptOnForms(),
+
+            HasMany::make('Mensajes', 'messages', PrivateMessage::class)->hideFromDetail(fn () => $this->messages->isEmpty()),
 
         ];
     }
