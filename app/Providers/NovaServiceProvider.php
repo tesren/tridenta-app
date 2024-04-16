@@ -46,8 +46,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::resource(Shape::class)->icon('cube'),
 
                 MenuSection::make('Marketing', [
-                    MenuItem::externalLink('Inicio', '/dashboard')->openInNewTab(),
-                    MenuItem::externalLink('Inventario', '/inventory')->openInNewTab(),
+                    MenuItem::externalLink('Inicio', '/dashboard/home')->openInNewTab(),
+                    MenuItem::externalLink('Inventario', '/dashboard/inventory')->openInNewTab(),
                 ])->icon('star')->collapsable(),
 
                 MenuSection::make('Usuarios', [
