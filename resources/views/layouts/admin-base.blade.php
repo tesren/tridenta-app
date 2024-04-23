@@ -15,6 +15,7 @@
 
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/fancybox.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
 
         @include('components.favicon')
@@ -31,8 +32,10 @@
                 @include('components.sidebar')
             </div>
 
-            <div class="col-12 col-lg-10 p-0 p-lg-3">
+            <div class="col-12 col-lg-10 p-0">
                 @yield('content')
+
+                @include('components.admin-footer')
             </div>
 
         </div>

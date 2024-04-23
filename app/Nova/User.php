@@ -16,6 +16,7 @@ use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
@@ -130,12 +131,42 @@ class User extends Resource
             Select::make('Lenguaje', 'lang')->options([
                 'es' => 'Español',
                 'en' => 'Inglés',
-            ])->displayUsingLabels()->hideFromIndex()->default('es')->rules('required'),
+            ])->displayUsingLabels()->hideFromIndex()/* ->default('es') */->rules('required'),
 
-            Country::make('País', 'country_code')->hideFromIndex()->searchable()->nullable(),
+            Country::make('País', 'country_code')->hideFromIndex()->searchable()->nullable()->default('MX'),
+
+            Text::make('Contraseña', 'password')
+                ->onlyOnForms()->hideWhenUpdating()->help('La contraseña se genera automaticament, NO CAMBIAR')
+                ->creationRules('required', Rules\Password::defaults())
+                ->updateRules('nullable', Rules\Password::defaults())
+                ->dependsOn(
+                    ['name', 'email', 'lang'],
+                    function (Text $field, NovaRequest $request, FormData $formData) {
+                        if ($formData->name != '' and $formData->email != '' and $formData->lang != '') {
+                            $field->show();
+
+                            //primeras 3 letras del nombre
+                            $generatedPass = substr($formData->name, 0, 3);
+
+                            //gion bajo y primeras 2 letras del correo
+                            $generatedPass .= '_'.substr($formData->email, 0, 2);
+
+                            //lenguage en mayusculas y año actual
+                            $generatedPass .= strtoupper($formData->lang).date('Y');
+
+                            //simbolo en caso de que no haya pais
+                            $generatedPass .= '&';
+                            
+                            $field->default($generatedPass);
+                        }
+                        else{
+                            $field->hide();
+                        }
+                    }
+                ),
 
             Password::make('Contraseña', 'password')
-                ->onlyOnForms()
+                ->onlyOnForms()->hideWhenCreating()
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
 
@@ -159,12 +190,13 @@ class User extends Resource
 
                 return $agentsArray;
 
-            })->displayUsingLabels()->onlyOnForms()->nullable()
+            })->displayUsingLabels()->onlyOnForms()->nullable()->searchable()
             ->dependsOn(
                 ['role'],
                 function (Select $field, NovaRequest $request, FormData $formData) {
                     if ($formData->role == 'client') {
                         $field->show();
+                        $field->rules('required');
                     }
                     else{
                         $field->hide();
@@ -172,12 +204,13 @@ class User extends Resource
                 }
             ),
 
-            Tag::make('Unidades Guardadas', 'savedUnits', Unit::class)->withPreview()->hideFromIndex()
-            ->showOnDetail(function (NovaRequest $request, $resource) {
-                return $this->role === 'client';
-            })->exceptOnForms(),
+            BelongsToMany::make('Unidades Guardadas', 'savedUnits', Unit::class)->hideFromDetail(fn () => $this->savedUnits->isEmpty()),
 
             HasMany::make('Mensajes', 'messages', PrivateMessage::class)->hideFromDetail(fn () => $this->messages->isEmpty()),
+
+            HasMany::make('Actividad', 'sessions', Session::class)->hideFromDetail(fn () => $this->sessions->isEmpty()),
+
+            HasMany::make('Datos de acceso enviados', 'emails', 'App\Nova\Email')->hideFromDetail(fn () => $this->emails->isEmpty()),
 
         ];
     }
@@ -223,6 +256,8 @@ class User extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            new Actions\SendLoginData,
+        ];
     }
 }

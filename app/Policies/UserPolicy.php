@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -58,7 +59,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if($user->role == 'superadmin' or $user->role == 'admin' or $user->role == 'agent'){
+        if($user->role == 'superadmin' or $user->role == 'admin'){
             return true;
         }else{
             return false;
@@ -74,7 +75,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        if($user->role == 'superadmin' or $user->role == 'admin' or $user->role == 'agent'){
+        if($user->role == 'superadmin' or $user->role == 'admin'){
             return true;
         }else{
             return false;

@@ -6,6 +6,7 @@ use App\Nova\Unit;
 use App\Nova\User;
 use App\Nova\Shape;
 use App\Nova\Message;
+use App\Nova\Section;
 use App\Nova\UnitType;
 use Laravel\Nova\Nova;
 use App\Nova\PaymentPlan;
@@ -38,7 +39,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             return [
                 MenuSection::dashboard(Main::class)->icon('template'),
                
-                MenuSection::resource(Unit::class)->icon('home'),        
+                MenuSection::resource(Unit::class)->icon('home'), 
+                MenuSection::resource(Section::class)->icon('template'), 
                 MenuSection::resource(UnitType::class)->icon('collection'),     
                 MenuSection::resource(PaymentPlan::class)->icon('currency-dollar'),
                 MenuSection::resource(Message::class)->icon('inbox-in'),

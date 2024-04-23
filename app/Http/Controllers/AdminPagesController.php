@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UnitType;
+use App\Models\PaymentPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -15,12 +17,20 @@ class AdminPagesController extends Controller
         $lang = auth()->user()->lang;
         App::setLocale($lang);
 
-        return view('admin.home');
+        $unit_types = UnitType::all();
+        $payment_plans = PaymentPlan::all();
+
+        return view('admin.home', compact('unit_types', 'payment_plans'));
     }
 
     public function inventory(){
 
         return view('admin.inventory');
+    }
+
+    public function search(){
+
+        return view('admin.search');
     }
 
 

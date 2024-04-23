@@ -12,6 +12,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;
 
+import { Fancybox } from "@fancyapps/ui";
+window.Fancybox = Fancybox;
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

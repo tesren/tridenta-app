@@ -9,6 +9,7 @@ use App\Nova\PaymentPlan;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Tag;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Badge;
 use Laravel\Nova\Fields\Image;
@@ -24,6 +25,7 @@ use App\Nova\Actions\ChangeUnitView;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Nova\Actions\AssignPaymentPlan;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
 class Unit extends Resource
 {
@@ -107,7 +109,26 @@ class Unit extends Resource
                 'Apartada' => 'warning',
             ])->sortable()->showOnPreview(),
 
+            URL::make('Link de Youtube', 'youtube_link')->rules('nullable')->hideFromIndex()->help('Pega el link de Youtube de la vista de la unidad'),
+
             Tag::make('Planes de pago', 'paymentPlans', PaymentPlan::class)->hideFromIndex(),
+
+            Images::make('Galería', 'unitgallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia()->showStatistics()
+            ->singleImageRules('dimensions:max_width=2000, max:2048')
+            ->setFileName(function($originalFilename, $extension, $model){
+
+                // Eliminar caracteres especiales y acentos
+                $limpio = preg_replace('/[^A-Za-z0-9\-]/', '', strtr(utf8_decode($originalFilename), utf8_decode('áéíóúüñÁÉÍÓÚÜÑ'), 'aeiouunAEIOUUN'));
+
+                // Reemplazar espacios por guiones
+                $limpio = str_replace(' ', '-', $limpio);
+
+                // Convertir a minúsculas
+                $limpio = strtolower($limpio);
+                
+                return $limpio . '.' . $extension;
+
+            }),
 
             HasMany::make('Clientes que Guardaron esta Unidad', 'users', User::class),
 

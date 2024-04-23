@@ -18,7 +18,7 @@ class PublicPagesController extends Controller
         $validator = Validator::make( $request->all(), [
             'full_name'       => 'required|string|min:1|max:255',
             'email'      => 'required|email|string|max:255',
-            'phone'      => 'required|numeric',
+            'phone'      => 'nullable|numeric',
             'messsage'    => 'nullable|string|max:500',
         ]);
 

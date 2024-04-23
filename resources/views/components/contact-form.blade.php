@@ -1,9 +1,13 @@
-<section class="row justify-content-center" title="Formulario de contacto" id="contact">
+<section class="row" title="Formulario de contacto" id="contact">
 
-    <div class="col-12 col-lg-5 align-self-center mt-4 mt-lg-0">
+    <div class="col-12 col-lg-5 ps-0 d-none d-lg-block">
+        <img class="w-100 h-100" src="{{asset('/img/contact-form.webp')}}" alt="Tridenta Towers formulario de contacto" style="object-fit: cover;">
+    </div>
 
-        <h6 class="fs-2 text-brown px-2 mb-0 text-center">{{__('¿Te gustaría saber más?')}}</h6>
-        <p class="fs-6 text-lightbrown px-2 mb-4 text-center">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
+    <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5">
+
+        <h6 class="fs-2 text-brown px-2 mb-0 text-center text-lg-start mt-5">{{__('¿Te gustaría contactar a tu asesor?')}}</h6>
+        <p class="fs-6 text-lightbrown px-2 mb-4 text-center text-lg-start">{{__('Completa el formulario para enviarle un mensaje.')}}</p>
 
         {{-- Formulario --}}
         <form action="{{route('send.email')}}#contact" method="post" onsubmit="disableBtn()">
@@ -13,19 +17,19 @@
 
                 <div class="col-12">
                     <label for="full_name">{{__('Nombre')}}</label>
-                    <input type="text" name="full_name" id="full_name" class="contact-input mb-3" required value="{{old('full_name')}}">
+                    <input type="text" name="full_name" id="full_name" class="contact-input mb-3" required value="{{ auth()->user()->name }}">
                 </div>
 
                 <x-honeypot/>
 
                 <div class="col-12">
                     <label for="email">{{__('Correo')}}</label>
-                    <input type="email" name="email" id="email" class="contact-input mb-3" required value="{{old('email')}}">
+                    <input type="email" name="email" id="email" class="contact-input mb-3" required value="{{ auth()->user()->email }}">
                 </div>
 
                 <div class="col-12">
                     <label for="phone">{{__('Teléfono')}}</label>
-                    <input type="tel" name="phone" id="phone" class="contact-input mb-3" required value="{{old('phone')}}">
+                    <input type="tel" name="phone" id="phone" class="contact-input mb-3" required value="{{ auth()->user()->phone }}">
                 </div>
 
                 <div class="col-12">

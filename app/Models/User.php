@@ -74,4 +74,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(PrivateMessage::class);
     }
+
+    /**
+     * Get all of the sessions for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
+
+    /**
+     * Get all of the emails for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emails()
+    {
+        return $this->hasMany(Email::class);
+    }
 }
