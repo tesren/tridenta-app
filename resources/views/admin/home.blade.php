@@ -104,10 +104,19 @@
                 $blueprints = $type->getMedia('blueprints');
             @endphp
 
-            <div class="col-12 col-lg-4 mb-3 mb-lg-4 p-2 position-relative">
-                <img src="{{ $blueprints[0]->getUrl('medium') }}" alt="Tipo de Unidad Tridenta" class="w-100">
+            <div class="col-12 col-lg-4 mb-3 mb-lg-4 p-2 position-relative text-center">
+                <img src="{{ $blueprints[0]->getUrl('medium') }}" alt="Tipo de Unidad Tridenta" class="w-100" style="height: 400px; object-fit: contain;">
                 <div class="unit-type-hover d-flex justify-content-center">
-                    <div class="text-center align-self-center fs-1">{{ $type->name }}</div>
+                    <div class="text-center align-self-center fs-1">
+                        {{__('Tipo')}} {{ $type->name }}
+                        @if ($type->bedrooms < 1)
+                            <div class="fs-5 fw-light">{{__('Estudio')}}</div>
+                        @elseif($type->bedrooms == 1)
+                            <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámara')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
+                        @else
+                            <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámaras')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
+                        @endif
+                    </div>
                 </div>
             </div>
 

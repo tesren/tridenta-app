@@ -5,8 +5,10 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Section extends Resource
@@ -18,12 +20,14 @@ class Section extends Resource
      */
     public static $model = \App\Models\Section::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'name';
+    public function title(){
+        if(isset($this->subtitle)){
+            return 'Torre '.$this->name.' Nivel '.$this->subtitle;
+        }
+        else{
+            return 'Torre '.$this->name;
+        }
+    }
 
     /**
      * The columns that should be searched.
@@ -60,9 +64,12 @@ class Section extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Nombre', 'name')->sortable()->rules('required'),
-            Text::make('Puntos', 'points')->rules('required')->help('Puntos del polígono'),
+            Text::make('Niveles', 'subtitle')->nullable(),
+            Textarea::make('Puntos', 'points')->rules('required')->help('Puntos del polígono')->alwaysShow(),
             Number::make('Texto X', 'text_x')->rules('required')->help('Posición del texto en X')->min(0)->step(0.1),
             Number::make('Texto Y', 'text_y')->rules('required')->help('Posición del texto en Y')->min(0)->step(0.1),
+            Image::make('Imagen', 'img_path')->disk('media'),
+            Text::make('View Box', 'viewbox')->rules('required')->help('NO MODIFICAR, solo el administrador debería modificarlo.'),
             HasMany::make('Unidades', 'units', Unit::class),
 
         ];

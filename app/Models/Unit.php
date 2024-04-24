@@ -50,10 +50,10 @@ class Unit extends Model implements HasMedia
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tower()
+    /*  public function tower()
     {
         return $this->belongsTo(Tower::class);
-    }
+    } */
 
     /**
      * Get the section that owns the Unit

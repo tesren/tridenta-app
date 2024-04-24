@@ -28,6 +28,7 @@
             <a href="{{route('dashboard.search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
         </div>
 
+        @include('components.search-form')
 
         <table class="table">
 
@@ -41,6 +42,12 @@
                 <th>{{__('m²')}}</th>
                 <th>{{__('Precio')}}</th>
             </thead>
+
+            <tbody>
+
+
+
+            </tbody>
 
         </table>
 

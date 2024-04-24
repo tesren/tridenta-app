@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use App\Models\Section;
 use App\Models\UnitType;
 use App\Models\PaymentPlan;
 use Illuminate\Http\Request;
@@ -25,10 +27,20 @@ class AdminPagesController extends Controller
 
     public function inventory(){
 
-        return view('admin.inventory');
+        $sections = Section::all();
+
+        return view('admin.inventory', compact('sections'));
+    }
+
+    public function unit($id){
+        $unit = Unit::find($id);
+
+        return view('admin.unit', compact('unit'));
     }
 
     public function search(){
+
+
 
         return view('admin.search');
     }

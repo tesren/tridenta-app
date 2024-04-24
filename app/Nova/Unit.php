@@ -79,9 +79,9 @@ class Unit extends Resource
 
             BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable()->showOnPreview(),
 
-            BelongsTo::make('Torre', 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable(),
+            //BelongsTo::make('Torre', 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable()->showCreateRelationButton(),
 
-            BelongsTo::make('Sección', 'section', Section::class)->withoutTrashed()->nullable()->filterable(),
+            BelongsTo::make('Torre y Sección', 'section', Section::class)->withoutTrashed()->rules('required')->filterable(),
 
             Number::make('Piso', 'floor')->rules('required')->min(0)->max(35)->sortable(),
 
@@ -95,7 +95,7 @@ class Unit extends Resource
             Select::make('Moneda', 'currency')->options([
                 'USD' => 'USD',
                 'MXN' => 'MXN',
-            ])->rules('required')->default('MXN')->onlyOnForms(),
+            ])->rules('required')->default('USD')->onlyOnForms(),
 
             Select::make('Estatus', 'status')->options([
                 'Disponible' => 'Disponible',
@@ -109,7 +109,12 @@ class Unit extends Resource
                 'Apartada' => 'warning',
             ])->sortable()->showOnPreview(),
 
-            URL::make('Link de Youtube', 'youtube_link')->rules('nullable')->hideFromIndex()->help('Pega el link de Youtube de la vista de la unidad'),
+            URL::make('Link de Youtube', 'youtube_link')->rules('nullable')->hideFromIndex()->help('Pega el link de Youtube de la vista de la unidad')
+            ->displayUsing(
+                function($value){
+                    return $this->value;
+                }
+            ),
 
             Tag::make('Planes de pago', 'paymentPlans', PaymentPlan::class)->hideFromIndex(),
 
@@ -129,6 +134,8 @@ class Unit extends Resource
                 return $limpio . '.' . $extension;
 
             }),
+
+            Image::make('Vista de la unidad', 'view_path')->disk('media')->help('Suba la imagen de la vista de la unidad'),
 
             HasMany::make('Clientes que Guardaron esta Unidad', 'users', User::class),
 

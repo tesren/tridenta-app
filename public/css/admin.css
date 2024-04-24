@@ -140,3 +140,44 @@ body{
     --bs-btn-active-border-color: var(--darkblue);
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
+
+.section-class{
+    fill: rgba(42, 52, 90, 0.70);
+    stroke: white;
+    stroke-width: 3px;
+    transition: 0.2s;
+}
+
+a:hover .section-class{
+    fill: rgba(42, 52, 90, 0.95);
+    transition: 0.3s;
+}
+
+.bg-blue{
+    background-color: var(--blue);
+    color: #fff;
+}
+
+.fs-7{
+    font-size: 14px;
+}
+
+@media (max-width: 992px) {
+    .mt-6{
+        margin-top: 3.5rem !important;
+    }
+    
+    .mb-6{
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .my-6{
+        margin-top: 3.5rem !important;
+        margin-bottom: 3.5rem !important;
+    }
+
+    .fs-0{
+        font-size: 2.7rem;
+    }
+
+}

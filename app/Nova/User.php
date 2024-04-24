@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -197,6 +198,19 @@ class User extends Resource
                     if ($formData->role == 'client') {
                         $field->show();
                         $field->rules('required');
+                    }
+                    else{
+                        $field->hide();
+                    }
+                }
+            ),
+
+            Textarea::make('Notas', 'notes')->maxlength(5000)->enforceMaxlength()->nullable()
+            ->dependsOn(
+                ['role'],
+                function (Textarea $field, NovaRequest $request, FormData $formData) {
+                    if ($formData->role == 'client') {
+                        $field->show();
                     }
                     else{
                         $field->hide();
