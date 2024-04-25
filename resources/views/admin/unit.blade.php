@@ -15,7 +15,8 @@
     <div class="row mb-5">
 
         <div class="col-12 col-lg-8 p-1">
-            <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100" style="height: 66vh; object-fit: cover;" data-fancybox="gallery">
+            <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 d-none d-lg-block" style="height: 66vh; object-fit: cover;" data-fancybox="gallery">
+            <img src="{{$unit_type_gallery[0]->getUrl('medium')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 d-block d-lg-none" style="height: 33vh; object-fit: cover;" data-fancybox="gallery">
         </div>
 
         
@@ -24,8 +25,19 @@
                 <img src="{{$unit_type_gallery[1]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 mb-2" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
             @endisset
 
+            {{-- Vista y video de vista --}}
             @if ( isset($unit->view_path ) )
-                <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 h-50" style="object-fit: cover;"  data-fancybox="gallery">
+                <div class="position-relative">
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100" style="height: 33vh; object-fit: cover;"  data-fancybox="gallery">
+
+                    @isset($unit->youtube_link)
+                        <div class="row justify-content-center position-absolute top-0 start-0 h-100">
+                            <div class="col-12 text-center align-self-center">
+                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="link-light text-decoration-none"><i class="fa-solid fa-3x fa-play"></i></a>
+                            </div>
+                        </div>
+                    @endisset
+                </div>
             @else
                 @isset($unit_type_gallery[2])
                     <img src="{{$unit_type_gallery[2]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
@@ -39,7 +51,30 @@
     <div class="row justify-content-evenly mb-6">
 
         <div class="col-12 col-lg-7">
-            <h1 class="mb-1">{{__('Unidad')}} {{$unit->name}}</h1>
+            <h1 class="mb-1">
+                {{__('Unidad')}} {{$unit->name}}
+
+                <span class="d-inline d-lg-none">
+                    {{-- Revisar si esta unidad ya está guardada --}}
+                    @if ( !null == $unit->users()->wherePivot('unit_id', $unit->id)->wherePivot('user_id', auth()->user()->id)->first() )
+                        
+                        <form class="d-inline" action="{{ route('user.delete.unit', ['id' => $unit->id ]) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            
+                            <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                            <button class="btn fs-3" type="submit" title="{{__('Quitar de favoritos')}}" onclick="this.disabled=true;this.form.submit();"><i class="fa-solid text-danger fa-heart"></i></button>
+                        </form>
+                    @else
+                        <form class="d-inline" action="{{ route('user.store.unit') }}" method="post">
+                            @csrf
+                            <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                            <button class="btn fs-3" type="submit" title="{{__('Agregar a favoritos')}}" onclick="this.disabled=true;this.form.submit();" ><i class="fa-regular text-danger fa-heart"></i></button>
+                        </form>
+                    @endif
+                </span>
+            </h1>
+
             <div class="fs-4 fw-light text-secondary mb-4">{{__('Tipo')}} {{$unit->unitType->name}}</div>
 
             <h2 class="fs-3">{{__('Características')}}</h2>
@@ -89,22 +124,36 @@
                 }
             @endphp
 
-            <div class="badge {{$badgeBg}} rounded-pill mb-2 fs-5 fw-light">
-                {{$unit->status}}
+            <div class="badge {{$badgeBg}} rounded-pill mb-2 fs-5 fw-light mt-5 mt-lg-3">
+                {{__($unit->status)}}
             </div>
 
-            <div class="position-absolute top-0 end-0">
-                <form action="" method="post">
-                    <input type="hidden" name="unit_id" value="{{$unit->id}}">
-                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                    <button type="submit" class="btn pe-0 pt-0">
-                        <i class="fa-regular fa-heart fa-2x text-danger"></i>
-                    </button>
-                </form>
+
+            <div class="position-absolute top-0 end-0 d-none d-lg-block">
+                {{-- Revisar si esta unidad ya está guardada --}}
+                @if ( !null == $unit->users()->wherePivot('unit_id', $unit->id)->wherePivot('user_id', auth()->user()->id)->first() )
+                    
+                    <form action="{{ route('user.delete.unit', ['id' => $unit->id ]) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        
+                        <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                        <button class="btn fs-3" type="submit" title="{{__('Quitar de favoritos')}}" onclick="this.disabled=true;this.form.submit();"><i class="fa-solid text-danger fa-heart"></i></button>
+                    </form>
+                @else
+                    <form action="{{ route('user.store.unit') }}" method="post">
+                        @csrf
+                        <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                        <button class="btn fs-3" type="submit" title="{{__('Agregar a favoritos')}}" onclick="this.disabled=true;this.form.submit();" ><i class="fa-regular text-danger fa-heart"></i></button>
+                    </form>
+                @endif
             </div>
 
-            <h3 class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</h3>
-            <a href="#contact" class="btn btn-blue">
+            @if ($unit->price != 0)
+                <h3 class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</h3> 
+            @endif
+
+            <a href="#contact" class="btn btn-blue d-block">
                 {{ __('Contactar a un asesor') }}
             </a>
         </div>
@@ -115,7 +164,7 @@
     <div class="row justify-content-evenly mb-6">
         <div class="col-12 col-lg-11">
 
-            <h3 class="fs-2">{{__('Planos de la unidad')}}</h3>
+            <h3 class="fs-2 text-center">{{__('Planos de la unidad')}}</h3>
             @php
                 $blueprints = $unit->unitType->getMedia('blueprints')
             @endphp
@@ -147,7 +196,7 @@
                     @foreach ($unit->paymentPlans as $plan)
     
                         <li class="nav-item me-1" role="presentation">
-                            <button class="nav-link rounded-pill @if($i==0) active @endif" id="pills-{{$plan->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-plan-{{$plan->id}}" type="button" role="tab">
+                            <button class="nav-link plan-nav rounded-pill @if($i==0) active @endif" id="pills-{{$plan->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-plan-{{$plan->id}}" type="button" role="tab">
                                 @if (app()->getLocale() == 'en')
                                     {{$plan->name_en}}
                                 @else

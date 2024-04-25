@@ -29,8 +29,7 @@ class NewLead extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('info@domusvallarta.com', 'Domus Vallarta'),
-            subject: 'Nuevo Lead desde Harbor Luxury',
+            subject: 'Nuevo mensaje desde Tridenta Towers',
         );
     }
 

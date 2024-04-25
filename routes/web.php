@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPagesController;
+use App\Http\Controllers\PublicPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ Route::get('/dashboard/inventory', [AdminPagesController::class, 'inventory'])->
 Route::get('/dashboard/search', [AdminPagesController::class, 'search'])->middleware(['auth'])->name('dashboard.search');
 Route::get('/dashboard/inventory/unit/{id}', [AdminPagesController::class, 'unit'])->middleware(['auth'])->name('dashboard.unit');
 Route::get('/dashboard/saved-units/{id}', [AdminPagesController::class, 'saved'])->middleware(['auth'])->name('dashboard.saved.units');
+Route::get('/dashboard/profile', [AdminPagesController::class, 'profile'])->middleware(['auth'])->name('dashboard.profile');
+
+Route::post('/dashboard/save-unit', [AdminPagesController::class, 'addSavedUnit'])->name('user.store.unit');
+Route::delete('/dashboard/remove-unit/{id}', [AdminPagesController::class, 'removeSavedUnit'])->name('user.delete.unit');
+
 
 Route::post('/logout', [AdminPagesController::class, 'destroy'])->middleware('auth')->name('logout');
 

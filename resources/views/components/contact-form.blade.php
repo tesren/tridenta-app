@@ -17,14 +17,14 @@
 
                 <div class="col-12">
                     <label for="full_name">{{__('Nombre')}}</label>
-                    <input type="text" name="full_name" id="full_name" class="contact-input mb-3" required value="{{ auth()->user()->name }}">
+                    <input type="text" name="full_name" id="full_name" class="contact-input mb-3 bg-light" required value="{{ auth()->user()->name }}" readonly>
                 </div>
 
                 <x-honeypot/>
 
                 <div class="col-12">
                     <label for="email">{{__('Correo')}}</label>
-                    <input type="email" name="email" id="email" class="contact-input mb-3" required value="{{ auth()->user()->email }}">
+                    <input type="email" name="email" id="email" class="contact-input mb-3 bg-light" required value="{{ auth()->user()->email }}" readonly>
                 </div>
 
                 <div class="col-12">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-12">
-                    <textarea name="message" id="message" cols="30" class="contact-input mb-4" rows="3" placeholder="{{__('Mensaje')}}">{{old('message')}}</textarea>
+                    <textarea name="message" id="message" cols="30" required class="contact-input mb-4" rows="3" placeholder="{{__('Mensaje')}}">{{old('message')}}</textarea>
                 </div>
 
                 <input type="hidden" name="url" id="url" value="{{ request()->fullUrl() }}">

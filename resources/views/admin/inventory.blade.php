@@ -15,11 +15,11 @@
             </div>
 
             <div class="me-3">
-                <span class="px-2 py-1 bg-warning text-warning rounded-2">A</span> {{__('Apartado')}}
+                <span class="px-2 py-1 bg-warning text-warning rounded-2">A</span> {{__('Apartada')}}
             </div>
 
             <div>
-                <span class="px-2 py-1 bg-danger text-danger rounded-2">V</span> {{__('Vendido')}}
+                <span class="px-2 py-1 bg-danger text-danger rounded-2">V</span> {{__('Vendida')}}
             </div>
         </div>
 
@@ -73,15 +73,24 @@
                             <div class="position-relative">
                                 <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100">
 
+                                @php
+                                    if($section->id == 6){
+                                        $font_size = 24;
+                                    }
+                                    else{
+                                        $font_size = 32;
+                                    }
+                                @endphp
+
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-2 px-lg-0" viewBox="{{$section->viewbox}}">
 
                                     @foreach ($section->units as $unit)
                         
                                         <a href="{{route('dashboard.unit', ['id' => $unit->id]) }}" class="text-decoration-none link-light">
-                                            <polygon class="section-class" points="{{$unit->shape->points}}"></polygon>
+                                            <polygon class="{{ strtolower($unit->status) }}-class" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
                                             
                                             <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
-                                                font-size="32" font-weight="bold" fill="#fff" class="fw-light">
+                                                font-size="{{$font_size}}" font-weight="bold" fill="#fff" class="fw-light">
                         
                                                 <tspan class="fw-bold">{{$unit->name}}</tspan>
                                                 

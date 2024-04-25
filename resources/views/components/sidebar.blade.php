@@ -33,7 +33,7 @@
       </li>
 
       <li>
-        <a href="#" class="nav-link">
+        <a href="{{route('dashboard.profile')}}" class="nav-link">
             <i class="fa-solid fa-user me-2"></i>
             {{__('Mi perfil')}}
         </a>

@@ -27,6 +27,9 @@ class AdminPagesController extends Controller
     }
 
     public function inventory(){
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
 
         $sections = Section::all();
 
@@ -34,6 +37,11 @@ class AdminPagesController extends Controller
     }
 
     public function unit($id){
+
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
+
         $unit = Unit::find($id);
 
         return view('admin.unit', compact('unit'));
@@ -41,6 +49,10 @@ class AdminPagesController extends Controller
 
     public function saved($user_id){
 
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
+        
         $user = User::find($user_id);
 
         $units = $user->savedUnits;
@@ -48,11 +60,58 @@ class AdminPagesController extends Controller
         return view('admin.saved-units', compact('units'));
     }
 
+    public function profile(){
+
+        $user = User::find(auth()->user()->id);
+
+        return view('admin.profile', compact('user'));
+    }
+
+    public function addSavedUnit(Request $request)
+    {
+
+        //Store units in my favorite list
+
+        $request->validate([
+            'unit_id' => 'integer|required'
+        ]);
+
+        $unit = Unit::findOrFail( $request->input('unit_id') );
+
+        $unit->users()->attach( auth()->user()->id );
+
+        $unit->save();
+
+        return back()->with('msg', 'Se ha guardado la unidad correctamente');
+
+    }
+
+    public function removeSavedUnit( $id )
+    {
+
+        $unit = Unit::findOrFail( $id );
+
+        $unit->users()->detach( auth()->user()->id );
+
+         $unit->save();
+
+        return back()->with('msg', 'Se ha eliminado la unidad correctamente');
+
+    }
+
     public function search(){
 
-
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
 
         return view('admin.search');
+    }
+
+    public function updateProfile(Request $request){
+
+
+        return redirect()->back()->with('message', 'Cambios guardados');
     }
 
 

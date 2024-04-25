@@ -14,7 +14,7 @@
 
         <div class="row position-absolute bottom-0 start-0">
 
-            <div class="col-12 col-lg-6 ms-5 mb-5 text-white">
+            <div class="col-12 col-lg-6 ms-0 ms-lg-5 mb-5 text-white">
                 <h1 class="fw-bold fs-0">
                     {{__('Nuevas')}} <br>
                     {{__('Torres a pie')}} <br>
@@ -33,18 +33,18 @@
         <div class="col-12 col-lg-5 text-darkblue">
             <h2>{{__('Primera fase')}}</h2>
             <p>
-                {{__('Descubra nuestros 6 tipos de unidades de hasta 170.10 m².')}} <br><br>
+                {{__('Descubra nuestros 6 tipos de unidades de hasta 175.88 m².')}} <br><br>
                 {{__('Con una excelente ubicación en Puerto Vallarta, uno de los mejores destinos turísticos de México, con vista al océano e increíbles amenidades.')}}
             </p>
         </div>
 
         <div class="col-12 col-lg-4 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
+            <a href="{{route('dashboard.inventory')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
         </div>
 
         <div class="text-center">
-            <a href="#gallery" class="link-blue text-decoration-none">
+            <a href="#gallery-section" class="link-blue text-decoration-none">
                 <i class="fa-solid fa-2x fa-bounce fa-chevron-down"></i>
             </a>
         </div>
@@ -52,9 +52,9 @@
     </section>
 
     {{-- Galería --}}
-    <section class="row mb-6" title="{{__('Galería')}}">
+    <section class="row mb-6" title="{{__('Galería')}}" id="gallery-section">
 
-        <div class="col-6 col-lg-8 p-1 position-relative">
+        <div class="col-12 col-lg-8 p-1 position-relative">
             <img src="{{asset('img/gallery-1.webp')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 start-0 text-white ms-5 mb-4 fw-bold" style="text-shadow: 1px 1px 2px black;">
                 {{__('Galería')}}
@@ -71,13 +71,17 @@
             <img src="{{asset('img/gallery-3.webp')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
-        <div class="col-6 col-lg-8 p-1 position-relative">
+        <div class="col-12 col-lg-8 p-1 position-relative">
             <img src="{{asset('img/gallery-4.webp')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
-            <div class="fs-1 position-absolute bottom-0 end-0 text-white me-5 mb-4 fw-bold">
+            <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
                 <a href="#gallery-1" class="btn btn-light rounded-0 shadow-5"><i class="fa-regular fa-images"></i> {{__('Galería Completa')}}</a>
             </div>
         </div>
 
+        @for ($i=5; $i<10; $i++)
+            <img src="{{asset('img/gallery-'.$i.'.jpeg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        @endfor
+        
     </section>
 
     {{-- Amenidades --}}
@@ -85,10 +89,30 @@
         <h3>{{__('Amenidades')}}</h3>
         <p>{{__('Pasa los mejores momentos frente a la playa con tu familia en las amenidades que tenemos para ti.')}}</p>
 
-        <div class="d-flex">
-            <div>
-                <img src="" alt="">
-                <div class="fs-6 fw-light"></div>
+        <div class="d-flex text-center">
+            <div class="me-4">
+                <i class="fa-solid fa-3x fa-water-ladder"></i>
+                <div class="fs-6 fw-light">{{__('Alberca')}}</div>
+            </div>
+
+            <div class="me-4">
+                <i class="fa-solid fa-3x fa-bell-concierge"></i>
+                <div class="fs-6 fw-light">{{__('Lobby')}}</div>
+            </div>
+
+            <div class="me-4">
+                <i class="fa-solid fa-3x fa-umbrella-beach"></i>
+                <div class="fs-6 fw-light">{{__('Acceso a playa')}}</div>
+            </div>
+
+            <div class="me-4">
+                <i class="fa-solid fa-3x fa-utensils"></i>
+                <div class="fs-6 fw-light">{{__('Restaurantes')}}</div>
+            </div>
+
+            <div class="me-4">
+                <i class="fa-solid fa-3x fa-car"></i>
+                <div class="fs-6 fw-light">{{__('Estacionamiento')}}</div>
             </div>
         </div>
 

@@ -32,9 +32,10 @@ class SendLoginData extends Action
 
             foreach($models as $user){
 
-                if($user->role == 'client'){
+                if($user->role == 'client' or $user->role == 'agent'){
                     try{
-                        $email = Mail::to($user->email)->bcc($user->agent->email);
+                        //$email = Mail::to($user->email)->bcc($user->agent->email);
+                        $email = Mail::to('michelena@punto401.com')->bcc('erick@punto401.com');
                         $email->send(new LoginData($user));
         
                         if ($email) {
@@ -52,12 +53,12 @@ class SendLoginData extends Action
                             //simbolo en caso de que no haya pais
                             $generatedPass .= '&';
                             
-                            $mail = new Email();
+                            /* $mail = new Email();
                             $mail->user_id = $user->id;
                             $mail->agent_id = auth()->user()->id;
                             $mail->email = $user->email;
                             $mail->password = $generatedPass;
-                            $mail->save();
+                            $mail->save(); */
     
                             return Action::message('Datos de acceso enviados correctamente.');
                         } else {
