@@ -22,6 +22,7 @@ Route::get('/dashboard/home', [AdminPagesController::class, 'home'])->middleware
 Route::get('/dashboard/inventory', [AdminPagesController::class, 'inventory'])->middleware(['auth'])->name('dashboard.inventory');
 Route::get('/dashboard/search', [AdminPagesController::class, 'search'])->middleware(['auth'])->name('dashboard.search');
 Route::get('/dashboard/inventory/unit/{id}', [AdminPagesController::class, 'unit'])->middleware(['auth'])->name('dashboard.unit');
+Route::get('/dashboard/saved-units/{id}', [AdminPagesController::class, 'saved'])->middleware(['auth'])->name('dashboard.saved.units');
 
 Route::post('/logout', [AdminPagesController::class, 'destroy'])->middleware('auth')->name('logout');
 

@@ -26,7 +26,7 @@
       </li>
 
       <li>
-        <a href="#" class="nav-link">
+        <a href="{{ route('dashboard.saved.units', ['id'=>auth()->user()->id]) }}" class="nav-link">
             <i class="fa-solid fa-heart me-2"></i>
             {{__('Favoritos')}}
         </a>

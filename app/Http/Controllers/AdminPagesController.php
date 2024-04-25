@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use App\Models\User;
 use App\Models\Section;
 use App\Models\UnitType;
 use App\Models\PaymentPlan;
@@ -36,6 +37,15 @@ class AdminPagesController extends Controller
         $unit = Unit::find($id);
 
         return view('admin.unit', compact('unit'));
+    }
+
+    public function saved($user_id){
+
+        $user = User::find($user_id);
+
+        $units = $user->savedUnits;
+
+        return view('admin.saved-units', compact('units'));
     }
 
     public function search(){
