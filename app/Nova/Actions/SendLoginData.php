@@ -26,16 +26,24 @@ class SendLoginData extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        if( count($models) > 20 ){
-            return Action::danger('Por favor no enviar más de 20 correos al mismo tiempo');
+        if( count($models) > 1 ){
+            return Action::danger('Por favor no enviar más de 1 correo al mismo tiempo');
         }else{
 
             foreach($models as $user){
 
-                if($user->role == 'client' or $user->role == 'agent'){
+                /* if($user->role == 'client' or $user->role == 'agent'){ */
                     try{
-                        //$email = Mail::to($user->email)->bcc($user->agent->email);
-                        $email = Mail::to('michelena@punto401.com')->bcc('erick@punto401.com');
+                        
+                        $email = Mail::to($user->email);
+
+                        if( isset($user->agent->email) ){
+                            $email->cc($user->agent->email);
+                        }
+                        $email->bcc( ['javier@domusvallarta.com', 'miriam@domusvallarta.com'] );
+
+                        //$email = Mail::to('erick@punto401.com');
+
                         $email->send(new LoginData($user));
         
                         if ($email) {
@@ -53,12 +61,12 @@ class SendLoginData extends Action
                             //simbolo en caso de que no haya pais
                             $generatedPass .= '&';
                             
-                            /* $mail = new Email();
+                            $mail = new Email();
                             $mail->user_id = $user->id;
                             $mail->agent_id = auth()->user()->id;
                             $mail->email = $user->email;
                             $mail->password = $generatedPass;
-                            $mail->save(); */
+                            $mail->save();
     
                             return Action::message('Datos de acceso enviados correctamente.');
                         } else {
@@ -69,10 +77,10 @@ class SendLoginData extends Action
                     catch(\Exception $e){
                         return Action::danger('Error al enviar email: '.$e->getMessage() );
                     }
-                }
+                /* }
                 else{
-                    return Action::danger('El usuario '.$user->name.' no es un cliente.' );
-                }
+                    return Action::danger('El usuario '.$user->name.' no es cliente ni asesor.' );
+                } */
                 
 
             }

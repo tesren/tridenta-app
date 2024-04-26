@@ -132,7 +132,7 @@ class User extends Resource
             Select::make('Lenguaje', 'lang')->options([
                 'es' => 'Español',
                 'en' => 'Inglés',
-            ])->displayUsingLabels()->hideFromIndex()/* ->default('es') */->rules('required'),
+            ])->displayUsingLabels()->sortable()/* ->default('es') */->rules('required'),
 
             Country::make('País', 'country_code')->hideFromIndex()->searchable()->nullable()->default('MX'),
 
@@ -176,10 +176,11 @@ class User extends Resource
                 'agent' => 'Asesor Inmobiliario',
                 'admin' => 'Administrador del sistema',
                 'superadmin' => 'Super Admin',
-            ])->displayUsingLabels()->filterable(),
+            ])->displayUsingLabels()->filterable()->sortable(),
 
             //Asesor
-            BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms(),
+            BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms()->sortable(),
+
             Select::make('Asesor', 'agent_id')->options(function(){
 
                 $agents = User::where('role', 'agent')->get();
@@ -272,6 +273,7 @@ class User extends Resource
     {
         return [
             new Actions\SendLoginData,
+            new Actions\ChangeUserLang,
         ];
     }
 }

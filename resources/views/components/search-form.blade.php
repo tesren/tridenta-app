@@ -5,6 +5,8 @@
             @csrf
             <div class="rounded-2" id="search_input_group">
                 
+                <input type="hidden" name="search_status" value="1">
+
                 <div class="form-floating mb-3 mb-lg-0">
 
                     <select class="form-select" id="floor" name="floor" aria-label="{{__('Piso')}}">
@@ -22,7 +24,7 @@
                 <div class="form-floating mb-3 mb-lg-0">
                     <select class="form-select" id="bedrooms" name="bedrooms" aria-label="{{__('Recámaras')}}">
                       <option value="">{{__('Cualquier cantidad')}}</option>
-                      <option @if(old('bedrooms')==10) selected @endif value="10">0</option>
+                      <option @if(old('bedrooms')==10) selected @endif value="10">{{__('Estudio')}}</option>
                       <option @if(old('bedrooms')==1) selected @endif value="1">1</option>
                       <option @if(old('bedrooms')==2) selected @endif value="2">2</option>
                       <option @if(old('bedrooms')==3) selected @endif value="3">3</option>

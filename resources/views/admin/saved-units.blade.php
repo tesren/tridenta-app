@@ -54,7 +54,13 @@
                                 </div>
 
                                 <h2 class="card-title">{{__('Unidad')}} {{$unit->name}}</h2>
-                                <div class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</div>
+
+                                <div class="fs-1">
+                                    @if ($unit->price != 0 and $unit->status == 'Disponible')
+                                        ${{ number_format($unit->price) }} {{$unit->currency}}       
+                                    @endif
+                                </div>
+
                                 <div class="fs-4 fw-light text-secondary mb-4">{{__('Tipo')}} {{$unit->unitType->name}}</div>
                                 <div class="d-flex justify-content-center justify-content-lg-start mb-4 fs-5">
 

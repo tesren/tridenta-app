@@ -8,7 +8,7 @@
 
     <div class="container my-6">
         <h1>{{__('Condominios en Preventa')}}</h1>
-        <p>{{__('Da clic en un condominio para ver más información')}}</p>
+        <p>{{__('Da clic en una sección y selecciona un condominio para ver más información')}}</p>
         <div class="d-flex mb-1">
             <div class="me-3">
                 <span class="px-2 py-1 bg-success text-success rounded-2">D</span> {{__('Disponible')}}
@@ -74,8 +74,8 @@
                                 <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100">
 
                                 @php
-                                    if($section->id == 6){
-                                        $font_size = 24;
+                                    if($section->id == 5 or $section->id == 6 or $section->id == 7){
+                                        $font_size = 22;
                                     }
                                     else{
                                         $font_size = 32;
@@ -112,6 +112,6 @@
 
     </div>
 
-    @include('components.contact-form')
+    {{-- @include('components.contact-form') --}}
 
 @endsection

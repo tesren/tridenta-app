@@ -81,6 +81,8 @@
         @for ($i=5; $i<10; $i++)
             <img src="{{asset('img/gallery-'.$i.'.jpeg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
         @endfor
+
+        <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         
     </section>
 
@@ -89,31 +91,52 @@
         <h3>{{__('Amenidades')}}</h3>
         <p>{{__('Pasa los mejores momentos frente a la playa con tu familia en las amenidades que tenemos para ti.')}}</p>
 
-        <div class="d-flex text-center">
-            <div class="me-4">
+        <div class="row text-center">
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-person-swimming"></i>
+                <div class="fs-6 fw-light">{{__('Alberca Infinita')}}</div>
+            </div>
+
+            <div class="col me-4 mb-3">
                 <i class="fa-solid fa-3x fa-water-ladder"></i>
-                <div class="fs-6 fw-light">{{__('Alberca')}}</div>
+                <div class="fs-6 fw-light">{{__('Albercas para niños')}}</div>
             </div>
 
-            <div class="me-4">
-                <i class="fa-solid fa-3x fa-bell-concierge"></i>
-                <div class="fs-6 fw-light">{{__('Lobby')}}</div>
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-hot-tub-person"></i>
+                <div class="fs-6 fw-light">{{__('Jacuzzi')}}</div>
+            </div>
+            
+            <div class="col me-4 mb-3">
+                <i class="fa-regular fa-3x fa-sun"></i>
+                <div class="fs-6 fw-light">{{__('Asoleadero')}}</div>
             </div>
 
-            <div class="me-4">
-                <i class="fa-solid fa-3x fa-umbrella-beach"></i>
-                <div class="fs-6 fw-light">{{__('Acceso a playa')}}</div>
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-water"></i>
+                <div class="fs-6 fw-light">{{__('Río lento')}}</div>
             </div>
 
-            <div class="me-4">
+            <div class="col me-4 mb-3">
                 <i class="fa-solid fa-3x fa-utensils"></i>
-                <div class="fs-6 fw-light">{{__('Restaurantes')}}</div>
+                <div class="fs-6 fw-light">{{__('Restaurante')}}</div>
             </div>
 
-            <div class="me-4">
-                <i class="fa-solid fa-3x fa-car"></i>
-                <div class="fs-6 fw-light">{{__('Estacionamiento')}}</div>
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-children"></i>
+                <div class="fs-6 fw-light">{{__('Área para niños')}}</div>
             </div>
+
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-dumbbell"></i>
+                <div class="fs-6 fw-light">{{__('Área Wellness')}}</div>
+            </div>
+
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-dog"></i>
+                <div class="fs-6 fw-light">{{__('Parque para Mascotas')}}</div>
+            </div>
+            
         </div>
 
     </section>
@@ -157,7 +180,7 @@
     <section class="container mb-6">
         <h3 class="fs-1">{{__('Master Plan')}}</h3>
 
-        <img src="{{asset('img/master-plan-tridenta.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan">
+        <img src="{{asset('img/master-plan.webp')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan">
 
         {{-- <div class="text-center">
             <a href="#" download="" class="btn btn-blue px-5">{{__('Descargar')}}</a>
@@ -242,6 +265,6 @@
 
     </section>
 
-    @include('components.contact-form')
+    {{-- @include('components.contact-form') --}}
 
 @endsection

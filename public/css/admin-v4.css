@@ -205,7 +205,18 @@ a:hover .section-class{
     font-size: 14px;
 }
 
+.unit-imgs{
+    height: 66vh;
+    object-fit: cover;
+}
+
 @media (max-width: 992px) {
+
+    .unit-imgs{
+        height: 33vh;
+        object-fit: cover;
+    }
+
     .mt-6{
         margin-top: 3.5rem !important;
     }

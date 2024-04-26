@@ -62,7 +62,7 @@ class Shape extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Unidad', 'unit', Unit::class)->withoutTrashed()->rules('required')->sortable(),
+            BelongsTo::make('Unidad', 'unit', Unit::class)->withoutTrashed()->rules('required')->sortable()->searchable(),
 
             Text::make('Puntos', 'points')->rules('required')->help('Puntos del polígono'),
 

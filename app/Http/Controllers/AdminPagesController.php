@@ -62,6 +62,10 @@ class AdminPagesController extends Controller
 
     public function profile(){
 
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
+
         $user = User::find(auth()->user()->id);
 
         return view('admin.profile', compact('user'));
@@ -99,13 +103,66 @@ class AdminPagesController extends Controller
 
     }
 
-    public function search(){
+    public function search(Request $request){
 
         //actualizamos el lenguaje
         $lang = auth()->user()->lang;
         App::setLocale($lang);
 
-        return view('admin.search');
+        $search = $request->input('search_status');
+
+        if( isset($search) ){
+
+            $min_price = $request->input('min_price');
+            $max_price = $request->input('max_price');
+            $floor = $request->input('floor');
+            $bedrooms = $request->input('bedrooms');
+
+            if( !isset($min_price) ){
+                $min_price = 1;
+            }
+
+            if( !isset($max_price) ){
+                $max_price = 9999999999;
+            }
+
+            $units = Unit::where('price', '>' ,$min_price)->where('price','<', $max_price);
+
+            if( isset($floor) ){
+                $units = $units->where('floor', $floor);
+            }
+
+            if( isset($bedrooms) ){
+
+                switch($bedrooms){
+
+                    case 1:
+                        $units = $units->where('unit_type_id', 6);
+                    break;
+
+                    case 2:
+                        $units = $units->whereIn('unit_type_id', [3,4] );
+                    break;
+
+                    case 3:
+                        $units = $units->whereIn('unit_type_id', [1,2] );
+                    break;
+
+                    case 10:
+                        $units = $units->where('unit_type_id', 5);
+                    break;
+
+                }
+                
+            }
+
+            $units = $units->get();
+
+        }else{
+            $units = Unit::all();
+        }
+
+        return view('admin.search', compact('units'));
     }
 
     public function updateProfile(Request $request){

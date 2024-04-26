@@ -25,9 +25,9 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div class="flex">
+<div class="grid grid-cols-1 lg:grid-cols-2">
 
-    <img class="w-1/2" src="{{asset('img/tridenta-login.webp')}}" alt="Tridenta Towers">
+    <img class="w-full inline-block" src="{{asset('img/tridenta-login.webp')}}" alt="Tridenta Towers">
 
     <div class="w-full px-8 py-4 self-center">
         <!-- Session Status -->

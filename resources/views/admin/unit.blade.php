@@ -7,7 +7,7 @@
 @section('content')
 
     @php
-        $unit_gallery = $unit->getMedia('gallery');
+        $unit_gallery = $unit->getMedia('unitgallery');
         $unit_type_gallery = $unit->unitType->getMedia('gallery');
     @endphp
 
@@ -15,20 +15,20 @@
     <div class="row mb-5">
 
         <div class="col-12 col-lg-8 p-1">
-            <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 d-none d-lg-block" style="height: 66vh; object-fit: cover;" data-fancybox="gallery">
-            <img src="{{$unit_type_gallery[0]->getUrl('medium')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 d-block d-lg-none" style="height: 33vh; object-fit: cover;" data-fancybox="gallery">
+            <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 unit-imgs" data-fancybox="gallery">
         </div>
 
         
         <div class="col-12 col-lg-4 p-1">
-            @isset($unit_type_gallery[1])
+
+            {{-- @if( isset($unit_type_gallery[1]) )
                 <img src="{{$unit_type_gallery[1]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 mb-2" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
-            @endisset
+            @endif --}}
 
             {{-- Vista y video de vista --}}
             @if ( isset($unit->view_path ) )
                 <div class="position-relative">
-                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100" style="height: 33vh; object-fit: cover;"  data-fancybox="gallery">
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 unit-imgs" data-fancybox="gallery">
 
                     @isset($unit->youtube_link)
                         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
@@ -38,14 +38,30 @@
                         </div>
                     @endisset
                 </div>
-            @else
-                @isset($unit_type_gallery[2])
-                    <img src="{{$unit_type_gallery[2]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
-                @endisset
             @endif
+
         </div>
         
     </div>
+
+    {{-- Galería de tipos de unidad --}}
+    @if( count($unit_type_gallery) > 1 )
+
+        @for ($i=1; $i<count($unit_type_gallery); $i++ )
+            <img src="{{$unit_type_gallery[$i]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="d-none" data-fancybox="gallery">
+        @endfor
+
+    @endif
+
+
+    {{-- Galeria de la unidad --}}
+    @if( count($unit_gallery) > 0 )
+        
+        @foreach ($unit_gallery as $img)
+            <img src="{{ $img->getUrl('large') }}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="d-none" data-fancybox="gallery">
+        @endforeach
+
+    @endisset
 
     {{-- Información --}}
     <div class="row justify-content-evenly mb-6">
@@ -90,7 +106,16 @@
                 </div>
 
                 <div>
-                    <i class="fa-solid fa-arrow-turn-up"></i> <span class="d-none d-lg-inline fw-light">{{__('Nivel')}}</span> {{$unit->floor}}
+                    <i class="fa-solid fa-arrow-turn-up"></i> 
+                    @if ($unit->section_id == 1)
+                        @if ($unit->floor == 1)
+                            {{__('Planta Baja')}}
+                        @else
+                            {{__('Planta Alta')}}
+                        @endif
+                    @else
+                        <span class="d-none d-lg-inline fw-light">{{__('Nivel')}}</span> {{$unit->floor}}
+                    @endif
                 </div>
 
             </div>
@@ -170,7 +195,7 @@
             @endphp
 
             <img src="{{ $blueprints[1]->getUrl('large') }}" alt="Planos de la unidad {{$unit->name}} de Tridenta Towers" class="w-100" data-fancybox="blueprints">
-
+            <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         </div>
     </div>
 
@@ -220,16 +245,24 @@
                         @php
                             if($plan->discount > 0){
                                 $final_price = $unit->price * ( (100 - $plan->discount)/100 );
+                                
+                                //descuento especial de preventa
+                                $special_price = $final_price * 0.95;
                             }else{
                                 $final_price = $unit->price;
+                                //descuento especial de preventa
+                                $special_price = $final_price * 0.95;
                             }
                         @endphp 
     
                         <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
                             
                             <div class="py-4 bg-blue text-center">
-                                <div>{{__('Precio Final')}}</div>
-                                <div class="fs-2">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                <div>{{__('Precio con Descuento')}}</div>
+                                <div class="fs-3 text-decoration-line-through mb-3">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+
+                                <div>{{__('Precio especial de Preventa Privada')}}</div>
+                                <div class="fs-2">${{ number_format($special_price) }} {{ $unit->currency }}</div>
                             </div>
     
                             @isset($plan->discount)
@@ -254,7 +287,7 @@
                                         {{__('Enganche')}} ({{$plan->down_payment}}%)
                                         <div class="fs-7 fw-light d-none d-lg-block">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
                                     </div>
-                                    <div class="fs-4">${{ number_format( $final_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
+                                    <div class="fs-4">${{ number_format( $special_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
                             @endisset
     
@@ -264,7 +297,7 @@
                                         {{__('Segundo pago')}} ({{$plan->second_payment}}%)
                                         <div class="fs-7 fw-light d-none d-lg-block">{{__('Sesenta días después del enganche')}}.</div>
                                     </div>
-                                    <div class="fs-4">${{ number_format( $final_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                    <div class="fs-4">${{ number_format( $special_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
                             @endisset
                             
@@ -276,7 +309,7 @@
                                             <div class="fs-7 fw-light d-none d-lg-block">{{$plan->months_amount}} {{__('Pagos mensuales durante la construcción')}}.</div>
                                         @endif
                                     </div>
-                                    <div class="fs-4">${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
+                                    <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
                                 </div>
                             @endisset
     
@@ -286,7 +319,7 @@
                                         {{__('Pago Final')}} ({{$plan->closing_payment}}%)
                                         <div class="fs-7 fw-light d-none d-lg-block">{{__('A la entrega física de la propiedad')}}.</div>
                                     </div>
-                                    <div class="fs-4">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
+                                    <div class="fs-4">${{ number_format( $special_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
                                 </div>
                             @endisset
     
@@ -315,6 +348,6 @@
     </div>
 @endif
 
-    @include('components.contact-form')
+    {{-- @include('components.contact-form') --}}
 
 @endsection
