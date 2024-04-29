@@ -71,6 +71,18 @@ class PaymentPlan extends Resource
                     }
                 }
             ),
+
+            //Solo en preventa privada 
+            Number::make('Descuento adicional', 'additional_discount')->nullable()->min(0)->max(100)->hideFromIndex()->placeholder('Se descuenta al precio que ya tiene descuento')->displayUsing(
+                function($value){
+                    if($value != null){
+                        return $value.'%';
+                    }else{
+                        return $value;
+                    }
+                }
+            ),
+
             Number::make('Enganche', 'down_payment')->min(0)->max(100)->rules('required')->placeholder('Porcentaje de enganche')->sortable()->displayUsing(
                 function($value){
                     return $value.'%';

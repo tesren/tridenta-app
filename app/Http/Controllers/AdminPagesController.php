@@ -156,10 +156,10 @@ class AdminPagesController extends Controller
                 
             }
 
-            $units = $units->get();
+            $units = $units->paginate(10)->appends(request()->query());
 
         }else{
-            $units = Unit::all();
+            $units = Unit::paginate(10)->appends(request()->query());
         }
 
         return view('admin.search', compact('units'));

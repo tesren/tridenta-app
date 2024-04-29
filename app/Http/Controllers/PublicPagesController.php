@@ -37,15 +37,12 @@ class PublicPagesController extends Controller
             $msg->save();
 
 
-            //$email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
+            $email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
         
-            $email = Mail::to('erick@punto401.com');
+            //$email = Mail::to('erick@punto401.com');
             
             $email->send(new NewLead($msg));
 
-            if( isset($pdf) ){
-                return $pdf->stream();
-            }
             
             return redirect()->back()->with('message', 'Gracias, su mensaje ha sido enviado');
         }    

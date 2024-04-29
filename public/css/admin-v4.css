@@ -210,6 +210,16 @@ a:hover .section-class{
     object-fit: cover;
 }
 
+.pagination .active>.page-link, .page-link.active {
+    background-color: var(--blue);
+    color: white !important;
+    border-color: var(--blue);
+}
+
+.pagination .page-link {
+    color: var(--blue);
+}
+
 @media (max-width: 992px) {
 
     .unit-imgs{

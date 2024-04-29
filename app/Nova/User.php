@@ -97,7 +97,7 @@ class User extends Resource
             return $query;
         }
         else{
-            return $query->where('agent_id', $request->user()->id)->orWhere('role', 'agent');
+            return $query->where('agent_id', $request->user()->id)->orWhere('id', $request->user()->id);
         }
     }
 

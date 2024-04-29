@@ -33,7 +33,10 @@
                     @isset($unit->youtube_link)
                         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
                             <div class="col-12 text-center align-self-center">
-                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="link-light text-decoration-none"><i class="fa-solid fa-3x fa-play"></i></a>
+                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="link-light text-decoration-none">
+                                    <i class="fa-solid fa-3x fa-play"></i>
+                                    <div class="mt-2 fw-bold">{{__('Vista de la Unidad')}}</div>
+                                </a>
                             </div>
                         </div>
                     @endisset
@@ -98,7 +101,12 @@
             <div class="d-flex mb-4 fs-5">
 
                 <div>
-                    <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}} <span class="d-none d-lg-inline fw-light">{{__('Recámaras')}}</span>
+                    <i class="fa-solid fa-bed"></i> 
+                    @if ($unit->unitType->bedrooms == 0)
+                        <span class="fw-light">{{__('Estudio')}}</span>
+                    @else
+                        {{$unit->unitType->bedrooms}} <span class="d-none d-lg-inline fw-light">{{__('Recámaras')}}</span> 
+                    @endif
                 </div>
 
                 <div class="mx-3">
@@ -178,9 +186,9 @@
                 <h3 class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</h3> 
             @endif
 
-            <a href="#contact" class="btn btn-blue d-block">
+            {{-- <a href="#contact" class="btn btn-blue d-block">
                 {{ __('Contactar a un asesor') }}
-            </a>
+            </a> --}}
         </div>
 
     </div>
@@ -243,43 +251,80 @@
                     @foreach ($unit->paymentPlans as $plan)
     
                         @php
-                            if($plan->discount > 0){
+                            if($plan->discount > 0 and $plan->additional_discount > 0){
                                 $final_price = $unit->price * ( (100 - $plan->discount)/100 );
                                 
                                 //descuento especial de preventa
-                                $special_price = $final_price * 0.95;
-                            }else{
+                                $special_price = $final_price * ( (100 - $plan->additional_discount)/100 );
+
+                            }elseif($plan->discount > 0){
+                                $final_price = $unit->price * ( (100 - $plan->discount)/100 );
+                                $special_price = $final_price;
+                            }
+                            else{
                                 $final_price = $unit->price;
-                                //descuento especial de preventa
-                                $special_price = $final_price * 0.95;
+                                $special_price = $unit->price;
                             }
                         @endphp 
     
-                        <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
-                            
-                            <div class="py-4 bg-blue text-center">
-                                <div>{{__('Precio con Descuento')}}</div>
-                                <div class="fs-3 text-decoration-line-through mb-3">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                        <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">      
 
-                                <div>{{__('Precio especial de Preventa Privada')}}</div>
-                                <div class="fs-2">${{ number_format($special_price) }} {{ $unit->currency }}</div>
-                            </div>
+                            @if ($plan->discount > 0 and $plan->additional_discount > 0)
+                                <div class="py-4 bg-blue text-center">
+                                    <div>{{__('Precio especial de Preventa Privada con 5% de descuento adicional')}}</div>
+                                    <div class="fs-2">${{ number_format($special_price) }} {{ $unit->currency }}</div>
+                                </div>
+                            @else
+                                <div class="py-4 bg-blue text-center">
+                                    <div>{{__('Precio Final')}}</div>
+                                    <div class="fs-2">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                </div>
+                            @endif
+                            
     
-                            @isset($plan->discount)
+                            @if($plan->discount > 0 and $plan->additional_discount > 0)
+
                                 <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
                                     <div class="fs-4">{{__('Precio de lista')}}</div>
                                     <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
                                 </div>
-                            @endisset
-    
-                            @isset($plan->discount)
+                            
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                     <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
-                                    <div class="fs-4">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
+                                    <div class="fs-4 text-decoration-line-through">${{ number_format( $final_price ) }} {{ $unit->currency }}</div>
                                 </div>
-    
-                                <hr class="green-hr">
-                            @endisset
+
+                                <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                    <div class="fs-4">
+                                        {{__('Precio Final')}}
+                                        <div class="fs-7 fw-light d-none d-lg-block">{{__('Precio final con 5% de descuento adicional')}}.</div>
+                                    </div>
+                                    <div class="fs-4">${{ number_format( $special_price ) }} {{ $unit->currency }}</div>
+                                </div>
+
+                            @elseif($plan->discount > 0)
+
+                                <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
+                                    <div class="fs-4">{{__('Precio de lista')}}</div>
+                                    <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                </div>
+                            
+                                <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                    <div class="fs-4">
+                                        {{__('Descuento')}} ({{$plan->discount}}%)
+                                        <div class="fs-7 fw-light d-none d-lg-block">{{__('Precio final con descuento')}}.</div>
+                                    </div>
+                                    <div class="fs-4">${{ number_format( $final_price ) }} {{ $unit->currency }}</div>
+                                </div>
+
+                            @else
+                                <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
+                                    <div class="fs-4">{{__('Precio de lista')}}</div>
+                                    <div class="fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                </div>
+                            @endif
+
+                            <hr>
     
                             @isset($plan->down_payment)
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">

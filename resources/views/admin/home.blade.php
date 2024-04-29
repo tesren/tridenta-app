@@ -180,22 +180,62 @@
     <section class="container mb-6">
         <h3 class="fs-1">{{__('Master Plan')}}</h3>
 
-        <img src="{{asset('img/master-plan.webp')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan">
+        <div id="carouselExample" class="carousel slide carousel-dark">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{asset('img/master-plan.webp')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="Master Plan">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="{{asset('img/areas-comunes.webp')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Áreas comunes')}}">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="{{asset('img/rooftops.webp')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Terrazas')}}">
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
         {{-- <div class="text-center">
             <a href="#" download="" class="btn btn-blue px-5">{{__('Descargar')}}</a>
         </div> --}}
     </section>
 
-    {{-- Ubicación --}}
-    <section class="container row mb-6">
+    {{-- Lista de acabados --}}
+    <section class="row justify-content-evenly container mb-6">
 
-        <div class="col-12 col-lg-4">
-            <h4 class="fs-3">{{__('Ubicación')}}</h4>
-            <address>Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
+        <div class="col-12 col-lg-5 p-2 shadow-5">
+            <img src="{{asset('img/specs-'.app()->getLocale().'.jpg')}}" alt="{{'Lista de acabados y especificaciones de Tridenta Towers'}}" class="w-100" data-fancybox="const-specs">
         </div>
 
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-4 align-self-center">
+            <h3 class="mb-3">{{__('Especificaciones de construcción y acabados')}}</h3>
+            <p class="mb-4">{{__('Da clic en la imagen o en el botón para ver la lista completa de especificaciones de construcción y acabados de Tridenta Towers.')}}</p>
+            <a href="#const-specs" class="btn btn-blue">{{__('Ver especificaciones')}}</a>
+        </div>
+
+    </section>
+
+    {{-- Ubicación --}}
+    <section class="container row justify-content-evenly mb-6">
+
+        <div class="col-12 col-lg-4 align-self-center">
+            <h4 class="fs-3">{{__('Ubicación')}}</h4>
+            <address>Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
+            <p>{{__('Tridenta Towers ofrece una ubicación excepcional frente al mar. Con vistas impresionantes y acceso directo a las cálidas aguas del Pacífico, es el lugar ideal para aquellos que buscan vivir la experiencia única de la vida frente al mar en uno de los destinos más codiciados de México.')}}</p>
+        </div>
+
+        <div class="col-12 col-lg-7">
             <img src="{{asset('img/mapa-tridenta.webp')}}" alt="Ubicación de Tridenta Towers Vallarta" class="w-100">
         </div>
 

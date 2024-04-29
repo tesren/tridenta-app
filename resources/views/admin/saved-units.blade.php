@@ -77,6 +77,11 @@
                                     </div>
                     
                                 </div>
+
+                                <a href="{{ route('dashboard.unit', ['id' => $unit->id ]) }}" class="btn btn-blue">
+                                    {{__('Ver más')}}
+                                </a>
+
                             </div>
                         </div>
                     </div>
