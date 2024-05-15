@@ -25,7 +25,12 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div class="grid grid-cols-1 lg:grid-cols-2">
+
+@section('titles')
+    <title>{{__('Inicia sesión')}} - Tridenta Towers </title>
+@endsection
+
+<div class="grid grid-cols-1 lg:grid-cols-2 bg-white shadow-md">
 
     <img class="w-full inline-block" src="{{asset('img/tridenta-login.webp')}}" alt="Tridenta Towers">
 

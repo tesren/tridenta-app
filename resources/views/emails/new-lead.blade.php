@@ -11,20 +11,16 @@
 
     <body>
         <p>
-            Mensaje recibido del sitio web de Tridenta
+            Mensaje recibido del sitio web de Tridenta Towers
         </p>
         
         <p>Referido por: Punto401</p> <br>
-
-        @php
-            $user = App\Models\User::find($msg->user_id);
-        @endphp
     
-        <p>Mensaje de: <strong>{{$user->name}}</strong></p>
-        <p>Correo: <strong>{{$user->email}}</strong></p>
-        <p>Telêfono: <strong>{{$user->phone ?? 'Sin especificar'}}</strong></p>
+        <p>Mensaje de: <strong>{{$msg->name}}</strong></p>
+        <p>Correo: <strong>{{$msg->email}}</strong></p>
+        <p>Telêfono: <strong>{{$msg->phone ?? 'Sin especificar'}}</strong></p>
     
-        <p>Contenido: <strong>{{$msg->message ?? 'Sin Contenido'}}</strong></p> <br>
+        <p>Contenido: <strong>{{$msg->content ?? 'Sin Contenido'}}</strong></p> <br>
     
         <p>Enviado el: {{$msg->created_at}}</p>
         <p>Desde: {{$msg->url}}</p>

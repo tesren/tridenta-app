@@ -1,11 +1,10 @@
-@extends('layouts.admin-base')
+<div>
+    @section('titles')
+        <title>Tridenta Towers - {{__('Condominios en preventa frente al mar en Puerto Vallarta')}}</title>
+        <meta name="description" content="{{__('Descubre Tridenta Towers, de los creadores de Harbor171, condominios frente al mar en la zona hotelera de Puerto Vallarta. Estos exclusivos condominios en preventa ofrecen un estilo de vida único con vistas panorámicas, amenidades de lujo y acceso directo a la playa. ¡Aprovecha los precios de preventa y asegura tu lugar en esta icónica torre de condominios en el paraíso!')}}">
+    @endsection
 
-@section('titles')
-    <title>{{__('Inicio - Tridenta Towers')}}</title>
-@endsection
-
-@section('content')
-
+    {{-- Do your work, then step back. --}}
     <section class="position-relative mb-6">
 
         <img src="{{asset('img/tridenta-home.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 66vh; object-fit:cover; object-position:bottom;">
@@ -305,6 +304,6 @@
 
     </section>
 
-    {{-- @include('components.contact-form') --}}
+    @livewire('contact-form')
 
-@endsection
+</div>
