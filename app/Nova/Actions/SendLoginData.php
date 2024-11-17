@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Support\Facades\Hash;
 
 class SendLoginData extends Action
 {
@@ -67,7 +68,11 @@ class SendLoginData extends Action
                             $mail->email = $user->email;
                             $mail->password = $generatedPass;
                             $mail->save();
-    
+
+                            //actualizamos la contraseña a la generada
+                            $user->password = Hash::make($generatedPass);
+                            $user->save();
+                            
                             return Action::message('Datos de acceso enviados correctamente.');
                         } else {
                             // Ocurrió un error al enviar el correo electrónico

@@ -42,18 +42,18 @@
 
             <p>En Domus nos enorgullece informarle que finalmente ha llegado el momento de salir a la preventa privada especial de TRIDENTA TOWERS, que es exclusiva para las personas que como usted, solicitaron ser incluidos en este evento exclusivo.</p>
 
-            <p>A partir de este momento, usted podrá ingresar al sitio especial TRIDENTA TOWERS <a href="{{ route('login') }}">{{ route('login') }}</a>, en donde podrá encontrar información detallada, a manera que usted pueda seleccionar y comprar el condominio de su preferencia, usando la siguiente información:</p>
+            <p>A partir de este momento, usted podrá ingresar al sitio especial TRIDENTA TOWERS <a href="{{ route('login') }}">{{ route('login') }}</a>, en donde podrá encontrar información detallada</p>
             
             <p>
                 {{__('Correo')}}: {{ $user->email }}<br>
                 {{__('Contraseña')}}: {{ $generatedPass }}<br>
             </p>
 
-            <p>El proceso de selección y compra se realizará en dos fases:</p>
+           {{--  <p>El proceso de selección y compra se realizará en dos fases:</p>
 
             <h3>FASE 1: Proceso de revisión y selección</h3>
 
-            <p>A partir de hoy viernes, 26 abril, usted tendrá 5 (cinco) días naturales para revisar el inventario disponible, analizar y seleccionar las posibles opciones de su preferencia, y tener el contacto necesario con su agente representante de Domus para aclarar cualquier duda que pueda tener.</p>
+            <p>A partir de hoy usted tendrá 3 días naturales para revisar el inventario disponible, analizar y seleccionar las posibles opciones de su preferencia, y tener el contacto necesario con su agente representante de Domus para aclarar cualquier duda que pueda tener.</p>
 
             <p>Le recomendamos ampliamente que tenga en mente de dos a tres unidades que sean de su preferencia, ya que el proceso de compra será en la modalidad de “el primero que elija, será el primero que comprará”. Por lo que, mientras más rápido haga su selección y proceda con el formato de Solicitud de Compra, es más probable que adquiera la unidad de su preferencia.</p>
 
@@ -73,7 +73,7 @@
 
             <h3>¿¡CUÁL ES EL BENEFICIO DE LA PREVENTA PRIVADA?!</h3>
 
-            <p>Estaremos ofreciendo dos atractivos planes de pago, con un 5% y un 10% respectivamente.</p>
+            <p>Estaremos ofreciendo dos atractivos planes de pago.</p>
 
             <p>A los clientes que firmen y paguen su enganche dentro del periodo de preventa privada, adicionalmente se les dará un 5% de descuento sobre el descuento ya otorgado.</p>
 
@@ -92,7 +92,7 @@
             <p>Para apoyarlo y guiarlo durante el proceso de revisión, selección y compra, su agente Profesional de Ventas en DOMUS estará presente en todo momento para asegurarse de que tenga una grata experiencia de compra.</p>
 
             <p>Esperamos que esta información le sea de utilidad. Agradecemos su amable atención a este comunicado y quedamos a sus órdenes para cualquier duda o comentario que tenga al respecto.</p>
-
+ --}}
             <p>
                 Atentamente, <br>
                 DOMUS Fine Real Estate
@@ -112,13 +112,13 @@
             <p>We at Domus are proud to inform you that the time has finally come to go on the special private presale of TRIDENTA TOWERS, which is exclusive for people like you, who requested to be included in this exclusive event.</p>
             
             
-            <p>From this moment on, you will be able to enter the special TRIDENTA TOWERS site <a href="{{ route('login') }}">{{ route('login') }}</a>, where you will be able to find detailed information, so that you can select and purchase the condo of your preference, using the following information:</p>
+            <p>From this moment on, you will be able to enter the special TRIDENTA TOWERS site <a href="{{ route('login') }}">{{ route('login') }}</a>, where you will be able to find detailed information</p>
             <p>
                 Email: {{ $user->email }}<br>
                 Password: {{ $generatedPass }}<br>
             </p>
             
-            <h2>The selection and purchase process will be carried out in two phases:</h2>
+          {{--   <h2>The selection and purchase process will be carried out in two phases:</h2>
             
             
             <h3>PHASE 1: Review and selection process</h3>
@@ -148,7 +148,7 @@
             <p>To support and guide you through the review, selection, and purchase process, your DOMUS Professional Sales Agent will be present at all times to make sure you have a pleasant buying experience.</p>
             
             <p>We hope you find this information useful. We thank you for your kind attention to this communication and remain at your disposal for any questions or comments you may have.</p>
-            
+             --}}
             
             <p>
                 Sincerely yours, <br>
@@ -156,7 +156,7 @@
             </p>
             
             <div>
-                <img width="35px" height="auto" src="{{asset('img/icono-tridenta.jpg')}}" alt="Icono Tridenta">
+                <img width="100px" height="auto" src="{{asset('img/icono-tridenta.jpg')}}" alt="Icono Tridenta">
             </div>
             <hr style="opacity: 1; color:2A345A;">
 
