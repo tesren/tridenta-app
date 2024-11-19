@@ -11,7 +11,7 @@
         $unit_type_gallery = $unit->unitType->getMedia('gallery');
     @endphp
 
-    {{-- Imagenes --}}
+    {{-- Imagenes 
     <div class="row mb-5">
 
         <div class="col-12 col-lg-8 p-1">
@@ -21,11 +21,11 @@
         
         <div class="col-12 col-lg-4 p-1">
 
-            {{-- @if( isset($unit_type_gallery[1]) )
+            @if( isset($unit_type_gallery[1]) )
                 <img src="{{$unit_type_gallery[1]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 mb-2" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
-            @endif --}}
+            @endif 
 
-            {{-- Vista y video de vista --}}
+            
             @if ( isset($unit->view_path ) )
                 <div class="position-relative">
                     <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 unit-imgs" data-fancybox="gallery">
@@ -45,7 +45,7 @@
 
         </div>
         
-    </div>
+    </div>--}}
 
     {{-- Galería de tipos de unidad --}}
     @if( count($unit_type_gallery) > 1 )
@@ -65,9 +65,10 @@
         @endforeach
 
     @endisset
+    
 
     {{-- Información --}}
-    <div class="row justify-content-evenly mb-6">
+    <div class="row justify-content-evenly mb-6 mt-5">
 
         <div class="col-12 col-lg-7">
             <h1 class="mb-1">
@@ -195,14 +196,14 @@
 
     {{-- Planos --}}
     <div class="row justify-content-evenly mb-6">
-        <div class="col-12 col-lg-11">
+        <div class="col-12 col-lg-10 col-xxl-6">
 
             <h3 class="fs-2 text-center">{{__('Planos de la unidad')}}</h3>
             @php
                 $blueprints = $unit->unitType->getMedia('blueprints')
             @endphp
 
-            <img src="{{ $blueprints[1]->getUrl('large') }}" alt="Planos de la unidad {{$unit->name}} de Tridenta Towers" class="w-100" data-fancybox="blueprints">
+            <img src="{{ $blueprints[0]->getUrl('large') }}" alt="Planos de la unidad {{$unit->name}} de Tridenta Towers" class="w-100" data-fancybox="blueprints">
             <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         </div>
     </div>

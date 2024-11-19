@@ -30,7 +30,7 @@
     {{-- Descripción --}}
     <section class="row justify-content-evenly position-relative mb-6">
 
-        <div class="col-12 col-lg-11 text-darkblue">
+        <div class="col-12 col-lg-5 text-darkblue">
             <h2>{{__('Condominios frente al mar')}}</h2>
             <p>
                 {{__('Descubra nuestros 11 tipos de unidades de hasta')}} 144.54m².<br><br>
@@ -38,12 +38,12 @@
             </p>
         </div>
 
-        {{-- <div class="col-12 col-lg-4 text-center align-self-center">
+        <div class="col-12 col-lg-4 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
-        </div> --}}
+            <a href="{{route('dashboard.search')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
+        </div>
 
-        <div class="text-center">
+        <div class="text-center mt-4 mt-lg-5">
             <a href="#gallery-section" class="link-blue text-decoration-none">
                 <i class="fa-solid fa-2x fa-bounce fa-chevron-down"></i>
             </a>
@@ -182,10 +182,10 @@
 
         @endforeach
 
-        {{-- <div class="col-12 text-center align-self-center">
+        <div class="col-12 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
-        </div> --}}
+            <a href="{{route('dashboard.search')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
+        </div>
 
     </section>
 
@@ -255,14 +255,13 @@
     </section>
 
     {{-- Plan de pago --}}
-    {{-- <section class="position-relative">
+    <section class="position-relative">
 
-        <img src="{{asset('img/tridenta-towers-bg.webp')}}" alt="Tridenta Towers" class="w-100">
+        <img src="{{asset('/img/street.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="max-height: 85vh; object-position:bottom">
 
-        <div class="row justify-content-evenly position-absolute top-0 start-0 h-100">
-            <div class="col-12 col-lg-4"></div>
-    
-            <div class="col-12 col-lg-4 align-self-center bg-white p-0 text-center shadow-5">
+        <div class="row justify-content-center position-absolute top-0 start-0 h-100">
+            
+            <div class="col-12 col-lg-5 align-self-center bg-white p-0 text-center shadow-5">
 
                 <div id="carouselPayplans" class="carousel slide carousel-dark p-4 p-lg-5">
 
@@ -294,7 +293,7 @@
                                     <div class="mb-4">{{$plan->closing_payment}}% {{__('a la entrega física de la propiedad.')}}</div>
                                 @endisset
 
-                                <a href="{{route('dashboard.inventory')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
+                                <a href="{{route('dashboard.search')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
                 
                             </div>
 
@@ -303,11 +302,12 @@
                         
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPayplans" data-bs-slide="prev">
+                    <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselPayplans" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselPayplans" data-bs-slide="next">
+
+                    <button class="carousel-control-next d-none" type="button" data-bs-target="#carouselPayplans" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
@@ -316,7 +316,7 @@
             </div>
         </div>
 
-    </section> --}}
+    </section>
 
     {{-- @include('components.contact-form') --}}
 

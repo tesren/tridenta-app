@@ -37,7 +37,7 @@
                         <div class="col-lg-8">
                             <div class="card-body text-darkblue">
 
-                                <div class="d-flex justify-content-start justify-content-lg-end">
+                                <div class="d-flex position-absolute top-0 end-0 m-3">
                                     <div class="badge {{$badgeBg}} rounded-pill mb-2 fs-5 fw-light align-self-center">
                                         {{$unit->status}}
                                     </div>
@@ -78,7 +78,7 @@
                     
                                 </div>
 
-                                <a href="{{ route('dashboard.unit', ['id' => $unit->id ]) }}" class="btn btn-blue">
+                                <a href="{{ route('dashboard.unit', ['id' => $unit->id ]) }}" class="btn btn-blue col-12 col-lg-3">
                                     {{__('Ver más')}}
                                 </a>
 
@@ -90,7 +90,7 @@
             @endforeach
 
             <div class="text-center my-5">
-                <a href="{{route('dashboard.inventory')}}" class="btn btn-blue">
+                <a href="{{route('dashboard.search')}}" class="btn btn-blue">
                     {{__('Ver todo el inventario')}}
                 </a>    
             </div>
@@ -99,7 +99,7 @@
 
             <h1>{{__('Aún no tienes unidades guardadas')}}</h1>
             <p>{{__('Visita nuestro inventario para ver todas las unidades')}}</p>
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-blue">
+            <a href="{{route('dashboard.search')}}" class="btn btn-blue">
                 {{__('Ver Inventario')}}
             </a>
 

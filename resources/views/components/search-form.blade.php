@@ -12,7 +12,7 @@
                     <select class="form-select" id="floor" name="floor" aria-label="{{__('Piso')}}">
                       <option value="">{{__('Cualquier piso')}}</option>
 
-                      @for ($i=1; $i<26; $i++)
+                      @for ($i=1; $i<=28; $i++)
                         <option @if(old('floor')== $i) selected @endif value="{{$i}}">{{$i}}</option>
                       @endfor
 
@@ -36,12 +36,16 @@
                     <select class="form-select" id="min_price" name="min_price" aria-label="{{__('Precio min.')}}">
                         <option value="">{{__('Sin mínimo')}}</option>
                         @php
-                            $minPriceStart = 300000;
+                            $minPriceStart = 200000;
                             $maxPrice = 900000;
                         @endphp
+
                         @for($price = $minPriceStart; $price <= $maxPrice; $price += 100000)
                             <option @if(old('min_price')==$price) selected @endif value="{{ $price }}">${{ number_format($price / 1000) }}k</option>
                         @endfor
+
+                        <option @if(old('max_price')==1000000) selected @endif value="1000000">$1m</option>
+
                     </select>
                     <label for="min_price">{{__('Precio min.')}}</label>
                 </div>
@@ -50,13 +54,18 @@
                     <select class="form-select" id="max_price" name="max_price" aria-label="{{__('Precio max.')}}">
                         <option value="">{{__('Sin máximo')}}</option>
                         @php
-                            $maxPriceStart = 400000;
+                            $maxPriceStart = 300000;
                             $maxPrice = 900000;
                         @endphp
+
                         @for($price = $maxPriceStart; $price <= $maxPrice; $price += 100000)
                             <option @if(old('max_price')==$price) selected @endif value="{{ $price }}">${{ number_format($price / 1000) }}k</option>
                         @endfor
-                            <option @if(old('max_price')==1000000) selected @endif value="1000000">$1m</option>
+
+                        <option @if(old('max_price')==1000000) selected @endif value="1000000">$1m</option>
+
+                        <option @if(old('max_price')==1100000) selected @endif value="1100000">$1.1m</option>
+
                     </select>
                     <label for="max_price">{{__('Precio max.')}}</label>
                 </div>

@@ -23,15 +23,15 @@
             </div>
         </div>
 
-        <div class="container input-group justify-content-end mb-4 text-end ">
+        {{-- <div class="container input-group justify-content-end mb-4 text-end ">
             <a href="{{route('dashboard.inventory')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
             <a href="{{route('dashboard.search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
-        </div>
+        </div> --}}
 
         @include('components.search-form')
     </div>
 
-    <div class="px-3 mb-6" style="min-height: 50vh;">
+    <div class="px-3 px-lg-5 mb-6" style="min-height: 50vh;">
         <div class="table-responsive shadow-5 mb-3">
             <table class="table table-sm  table-light mb-0">
     

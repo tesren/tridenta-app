@@ -179,7 +179,7 @@ class User extends Resource
             ])->displayUsingLabels()->filterable()->sortable(),
 
             //Asesor
-            BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms()->sortable(),
+            BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms()->sortable()->filterable()->searchable(),
 
             Select::make('Asesor', 'agent_id')->options(function(){
 

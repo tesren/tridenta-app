@@ -83,7 +83,22 @@ class Unit extends Resource
 
             BelongsTo::make('Torre y Sección', 'section', Section::class)->withoutTrashed()->rules('required')->filterable(),
 
-            Number::make('Piso', 'floor')->rules('required')->min(0)->max(35)->sortable(),
+            Number::make('Piso', 'floor')->rules('required')->min(0)->max(35)->sortable()->dependsOn(
+                ['name'],
+                function (Text $field, NovaRequest $request, FormData $formData) {
+                    if ($formData->name != '') {
+
+                        if(strlen($formData->name) >= 4){
+                            $floor = substr($formData->name, 0, 2);
+                        }
+                        else{
+                            $floor = substr($formData->name, 0, 1);
+                        }
+        
+                        $field->default($floor);
+                    }
+                }
+            ),
 
             Number::make('Precio', 'price')->rules('required')->min(0)->step(0.01)->sortable()->showOnPreview()
             ->displayUsing(

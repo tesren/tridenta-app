@@ -28,7 +28,7 @@ class UnitType extends Resource
      * @var string
      */
     public function title(){
-        return $this->name.' - '.$this->bedrooms.' REC '.$this->bathrooms.' BA';
+        return $this->name.' - '.$this->const_total.' m2';
     }
     /**
      * The columns that should be searched.

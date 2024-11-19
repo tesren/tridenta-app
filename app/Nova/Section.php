@@ -22,10 +22,10 @@ class Section extends Resource
 
     public function title(){
         if(isset($this->subtitle)){
-            return 'Torre '.$this->name.' Nivel '.$this->subtitle;
+            return ''.$this->name.' Nivel '.$this->subtitle;
         }
         else{
-            return 'Torre '.$this->name;
+            return ''.$this->name;
         }
     }
 
@@ -65,11 +65,11 @@ class Section extends Resource
             ID::make()->sortable(),
             Text::make('Nombre', 'name')->sortable()->rules('required'),
             Text::make('Niveles', 'subtitle')->nullable(),
-            Textarea::make('Puntos', 'points')->rules('required')->help('Puntos del polígono')->alwaysShow(),
-            Number::make('Texto X', 'text_x')->rules('required')->help('Posición del texto en X')->min(0)->step(0.1),
-            Number::make('Texto Y', 'text_y')->rules('required')->help('Posición del texto en Y')->min(0)->step(0.1),
+            Textarea::make('Puntos', 'points')/* ->rules('required') */->help('Puntos del polígono')->alwaysShow(),
+            Number::make('Texto X', 'text_x')/* ->rules('required') */->help('Posición del texto en X')->min(0)->step(0.1),
+            Number::make('Texto Y', 'text_y')/* ->rules('required') */->help('Posición del texto en Y')->min(0)->step(0.1),
             Image::make('Imagen', 'img_path')->disk('media'),
-            Text::make('View Box', 'viewbox')->rules('required')->help('NO MODIFICAR, solo el administrador debería modificarlo.'),
+            Text::make('View Box', 'viewbox')/* ->rules('required') */->help('NO MODIFICAR, solo el administrador debería modificarlo.'),
             HasMany::make('Unidades', 'units', Unit::class),
 
         ];
