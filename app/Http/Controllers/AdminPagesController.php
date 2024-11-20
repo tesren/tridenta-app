@@ -26,14 +26,26 @@ class AdminPagesController extends Controller
         return view('admin.home', compact('unit_types', 'payment_plans'));
     }
 
-    public function inventory(){
+    public function inventoryBay(){
         //actualizamos el lenguaje
         $lang = auth()->user()->lang;
         App::setLocale($lang);
 
-        $sections = Section::all();
+        $sections = Section::where('name', 'Vista Bahía')->get();
+        $img_view_path = '/img/inventory-bahia.webp';
 
-        return view('admin.inventory', compact('sections'));
+        return view('admin.inventory', compact('sections', 'img_view_path'));
+    }
+
+    public function inventorySierra(){
+        //actualizamos el lenguaje
+        $lang = auth()->user()->lang;
+        App::setLocale($lang);
+
+        $sections = Section::where('name', 'Vista Sierra')->get();
+        $img_view_path = '/img/inventory-sierra.webp';
+
+        return view('admin.inventory', compact('sections', 'img_view_path'));
     }
 
     public function unit($id){

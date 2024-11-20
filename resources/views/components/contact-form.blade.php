@@ -1,7 +1,7 @@
 <section class="row" title="Formulario de contacto" id="contact">
 
     <div class="col-12 col-lg-5 ps-0 d-none d-lg-block">
-        <img class="w-100 h-100" src="{{asset('/img/contact-form.webp')}}" alt="Tridenta Towers formulario de contacto" style="object-fit: cover;">
+        <img class="w-100 h-100" src="{{asset('/img/beach-club.jpg')}}" alt="Tridenta Towers formulario de contacto" style="object-fit: cover;">
     </div>
 
     <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5">

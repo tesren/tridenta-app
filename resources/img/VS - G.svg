@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1081 1921">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        stroke-width: 4.76px;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        fill: #009245;
+        mix-blend-mode: multiply;
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: #fff;
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 35px;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Capa_2" data-name="Capa 2">
+      <g id="_1" data-name="1">
+        <g>
+          <g>
+            <g>
+              <polygon class="cls-6" points="414.94 842.42 816.1 830.8 816.1 1161.94 414.94 1217.94 414.94 842.42"/>
+              <polygon class="cls-3" points="414.94 842.42 816.1 830.8 816.1 1161.94 414.94 1217.94 414.94 842.42"/>
+            </g>
+            <g>
+              <polygon class="cls-6" points="816.1 830.8 820.76 540.14 409.37 498.6 414.94 842.42 816.1 830.8"/>
+              <polygon class="cls-3" points="816.1 830.8 820.76 540.14 409.37 498.6 414.94 842.42 816.1 830.8"/>
+            </g>
+            <g>
+              <polygon class="cls-6" points="820.76 540.14 834.01 237.23 409.37 140.31 409.37 498.6 820.76 540.14"/>
+              <polygon class="cls-3" points="820.76 540.14 834.01 237.23 409.37 140.31 409.37 498.6 820.76 540.14"/>
+            </g>
+          </g>
+          <text class="cls-7" transform="translate(572.51 1020.96)"><tspan class="cls-5" x="0" y="0">S</tspan><tspan class="cls-1" x="17.46" y="0">e</tspan><tspan class="cls-8" x="35" y="0">c</tspan><tspan x="50.47" y="0">ción 1</tspan></text>
+          <text class="cls-7" transform="translate(562.51 700.06)"><tspan class="cls-5" x="0" y="0">S</tspan><tspan class="cls-1" x="17.46" y="0">e</tspan><tspan class="cls-8" x="35" y="0">c</tspan><tspan x="50.47" y="0">ción 2</tspan></text>
+          <text class="cls-7" transform="translate(562.51 387.35)"><tspan class="cls-5" x="0" y="0">S</tspan><tspan class="cls-1" x="17.46" y="0">e</tspan><tspan class="cls-8" x="35" y="0">c</tspan><tspan x="50.47" y="0">ción 3</tspan></text>
+          <rect class="cls-2" x=".5" y=".5" width="1080" height="1920"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

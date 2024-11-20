@@ -28,7 +28,8 @@ use App\Http\Controllers\PublicPagesController;
 //Rutas privadas
 Route::redirect('/dashboard', '/dashboard/home', 301);
 Route::get('/dashboard/home', [AdminPagesController::class, 'home'])->middleware(['auth'])->name('dashboard.home');
-Route::get('/dashboard/inventory', [AdminPagesController::class, 'inventory'])->middleware(['auth'])->name('dashboard.inventory');
+Route::get('/dashboard/inventory-sierra', [AdminPagesController::class, 'inventorySierra'])->middleware(['auth'])->name('dashboard.inventory.sierra');
+Route::get('/dashboard/inventory-bahia', [AdminPagesController::class, 'inventoryBay'])->middleware(['auth'])->name('dashboard.inventory.bay');
 Route::get('/dashboard/search', [AdminPagesController::class, 'search'])->middleware(['auth'])->name('dashboard.search');
 Route::get('/dashboard/inventory/unit/{id}', [AdminPagesController::class, 'unit'])->middleware(['auth'])->name('dashboard.unit');
 Route::get('/dashboard/saved-units/{id}', [AdminPagesController::class, 'saved'])->middleware(['auth'])->name('dashboard.saved.units');

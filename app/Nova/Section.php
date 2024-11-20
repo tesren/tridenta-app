@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -63,7 +64,12 @@ class Section extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Nombre', 'name')->sortable()->rules('required'),
+            Select::make('Vista', 'name')->sortable()->rules('required')->options(
+                [
+                    'Vista Sierra' => 'Vista Sierra',
+                    'Vista Bahía'  => 'Vista Bahía',
+                ]
+            ),
             Text::make('Niveles', 'subtitle')->nullable(),
             Textarea::make('Puntos', 'points')/* ->rules('required') */->help('Puntos del polígono')->alwaysShow(),
             Number::make('Texto X', 'text_x')/* ->rules('required') */->help('Posición del texto en X')->min(0)->step(0.1),

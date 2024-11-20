@@ -145,6 +145,19 @@ body{
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
+#inventory-navigation .nav-item .nav-link {
+    color: var(--blue);
+    border: 1px solid var(--blue) !important;
+}
+
+#inventory-navigation .nav-item .nav-link:hover {
+    color: white;
+}
+
+#inventory-navigation .nav-link.active {
+    color: white;
+}
+
 .section-class{
     fill: rgba(42, 52, 90, 0.70);
     stroke: white;
@@ -158,8 +171,8 @@ a:hover .section-class{
 }
 
 .disponible-class polygon{
-    fill: rgba(0, 163, 60, 0.7);
-    mix-blend-mode: multiply;
+    fill: rgba(0, 163, 60, 0.4);
+    mix-blend-mode: normal;
     stroke: white;
     stroke-width: 3px;
     transition: 0.2s;

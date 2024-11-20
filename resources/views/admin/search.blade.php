@@ -23,10 +23,10 @@
             </div>
         </div>
 
-        {{-- <div class="container input-group justify-content-end mb-4 text-end ">
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
+        <div class="container input-group justify-content-end mb-4 text-end ">
+            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
             <a href="{{route('dashboard.search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
-        </div> --}}
+        </div>
 
         @include('components.search-form')
     </div>
@@ -89,6 +89,9 @@
                                         {{__('Estudio')}}
                                     @else
                                         {{ $unit->unitType->bedrooms }}
+                                        @if ($unit->unitType->flexrooms > 0)
+                                            {{__(' + Flex')}}
+                                        @endif
                                     @endif
                                 </td>
 

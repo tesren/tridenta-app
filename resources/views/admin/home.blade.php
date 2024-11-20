@@ -40,7 +40,7 @@
 
         <div class="col-12 col-lg-4 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.search')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
+            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
         </div>
 
         <div class="text-center mt-4 mt-lg-5">
@@ -184,7 +184,7 @@
 
         <div class="col-12 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.search')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
+            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
         </div>
 
     </section>
@@ -293,7 +293,7 @@
                                     <div class="mb-4">{{$plan->closing_payment}}% {{__('a la entrega física de la propiedad.')}}</div>
                                 @endisset
 
-                                <a href="{{route('dashboard.search')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
+                                <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
                 
                             </div>
 

@@ -17,7 +17,7 @@
 
     <body class="font-sans text-gray-900 antialiased">
 
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 px-2 bg-no-repeat bg-cover" style="background-image:url('{{asset('img/auth-bg.webp')}}');">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 px-2 bg-no-repeat bg-cover" style="background-image:url('{{asset('img/auth-bg.jpg')}}');">
             <div class="w-full max-w-screen-lg mt-6 overflow-hidden rounded-none">
                 {{ $slot }}
             </div>

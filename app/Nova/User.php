@@ -176,7 +176,7 @@ class User extends Resource
                 'agent' => 'Asesor Inmobiliario',
                 'admin' => 'Administrador del sistema',
                 'superadmin' => 'Super Admin',
-            ])->displayUsingLabels()->filterable()->sortable(),
+            ])->displayUsingLabels()->filterable()->sortable()->rules('required'),
 
             //Asesor
             BelongsTo::make('Asesor', 'agent', 'App\Nova\User')->exceptOnForms()->sortable()->filterable()->searchable(),

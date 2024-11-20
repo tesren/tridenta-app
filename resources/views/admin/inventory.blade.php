@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="container my-6">
+    <div class="container my-6 px-2 px-lg-0">
         <h1>{{__('Condominios en Preventa')}}</h1>
         <p>{{__('Da clic en una sección y selecciona un condominio para ver más información')}}</p>
         <div class="d-flex mb-1">
@@ -24,36 +24,46 @@
         </div>
 
         <div class="container input-group justify-content-end mb-3 text-end">
-            <a href="{{route('dashboard.inventory')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
+            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle"><i class="fa-solid fa-border-all"></i></a>
             <a href="{{route('dashboard.search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle"><i class="fa-solid fa-list"></i></a>
         </div>
 
-        {{-- Inventario en escritorio --}}
-        <div class="row justify-content-evenly d-none d-lg-flex">
+        {{-- Vistas de la torre --}}
+        <ul class="nav nav-pills my-4" role="tablist" id="inventory-navigation">
 
-            <div class="col-12 col-lg-5 position-relative p-0 nav nav-tabs" id="myTab" role="tablist">
-                <img src="{{asset('img/tridenta-front.jpg')}}" alt="Inventario disponible de Tridenta Towers" class="w-100 rounded-2 shadow-5">
+            <li class="nav-item me-2" role="presentation">
+                <a href="{{route('dashboard.inventory.bay')}}" class="nav-link @if(Route::currentRouteName() == 'dashboard.inventory.bay' ) active @endif" id="home-tab" role="tab" >
+                    {{__('Vista Bahía')}}
+                </a>
+            </li>
 
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="0 0 1446 1920">
+            <li class="nav-item" role="presentation">
+                <a href="{{route('dashboard.inventory.sierra')}}" class="nav-link @if(Route::currentRouteName() == 'dashboard.inventory.sierra' ) active @endif" id="profile-tab" role="tab" >
+                    {{__('Vista Sierra')}}
+                </a>
+            </li>
+
+        </ul>
+
+
+        {{-- Inventario escritorio --}}
+        <div class="row justify-content-between d-none d-lg-flex">
+            <div class="col-12 col-lg-5 position-relative px-0" role="tablist">
+
+                <img src="{{asset($img_view_path)}}" alt="Inventario disponible de Tridenta Towers" class="w-100 rounded-2 shadow-5">
+
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="0 0 1081 1921">
 
                     @foreach ($sections as $section)
         
-                        <a href="#tab-pane-{{$section->id}}" class="text-decoration-none link-light" id="tab-{{$section->id}}" data-bs-toggle="tab" data-bs-target="#tab-pane-{{$section->id}}" role="tab">
+                        <a href="#tab-pane-{{$section->id}}" class="text-decoration-none link-light" id="tab-{{$section->id}}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{$section->id}}" role="tab" >
                             <polygon class="section-class" points="{{$section->points}}"></polygon>
                             
                             <text x="{{$section->text_x ?? 0;}}" y="{{$section->text_y ?? 0; }}"
-                                font-size="46" font-weight="bold" fill="#fff" class="fw-light">
-        
-                                <tspan class="fw-bold">{{__('Torre')}} {{$section->name}}</tspan>
-        
-                                @php
-                                    $type_x = ($section->text_x ?? 0) + 3;
-                                @endphp
+                                font-size="40" fill="#fff" class="fw-light">
         
                                 @isset($section->subtitle)
-                                    <tspan x="{{$type_x}}" dy="1.3em" font-size="36" font-weight="light">
-                                        {{__('Nivel')}} {{$section->subtitle}}
-                                    </tspan>
+                                    <tspan>{{$section->subtitle}}</tspan>
                                 @endisset
                                 
                             </text>
@@ -64,15 +74,88 @@
 
             </div>
 
-            <div class="col-12 col-lg-6">
-                <div class="tab-content" id="myTabContent">
-                   @php $i=0; @endphp 
-                    @foreach ($sections as $section)
+            <div class="col-12 col-lg-6 px-0 position-relative align-self-center tab-content">
+                @php $i=0; @endphp 
 
-                        <div class="tab-pane fade @if($i==0)  @endif" id="tab-pane-{{$section->id}}" role="tabpanel" tabindex="{{$i}}">
+                @foreach ($sections as $section)
+
+                    <div class="tab-pane fade @if($i==0) @endif" id="tab-pane-{{$section->id}}" role="tabpanel" tabindex="0">
+
+                        <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100 shadow rounded-3">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
+
+                            @foreach ($section->units as $unit)
+                
+                                <a href="{{route('dashboard.unit', ['id' => $unit->id]) }}" class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
+                                    <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                    
+                                    <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
+                                        font-size="30" font-weight="bold" fill="#fff" class="fw-light">
+                
+                                        <tspan class="fw-bold">{{$unit->name}}</tspan>
+                                        
+                                    </text>
+                                </a>    
+                                
+                            @endforeach
+                        </svg>
+                    </div>
+
+                    @php $i++; @endphp 
+
+                @endforeach
+                
+            </div>
+        </div>
+
+
+        {{-- Inventario en movil --}}
+        <div class="container-fluid justify-content-center d-block d-lg-none p-0 position-relative" >
+
+            <button data-bs-target="#carouselInventoryMobile" data-bs-slide-to="0" aria-label="Slide 1" id="back-to-building" class="btn btn-blue mb-2 rounded-2 shadow-5">
+              <i class="far fa-building"></i> {{__('Ver Torre Completa')}}
+            </button>
+    
+            <div id="carouselInventoryMobile" class="carousel slide carousel-fade" data-bs-interval="false">
+    
+                <div class="carousel-inner">
+    
+                    <div class="carousel-item active">
+                        <img src="{{asset($img_view_path)}}" alt="Inventario disponible de Tridenta Towers" class="w-100 rounded-2 shadow-5">
+    
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="0 0 1081 1921">
+    
+                            @php $i=1; @endphp
+                            @foreach ($sections as $section)
+                
+                                <a href="#tab-pane-{{$section->id}}" data-bs-target="#carouselInventoryMobile" data-bs-slide-to="{{ $i }}"  class="text-decoration-none link-light">
+                                    <polygon class="section-class" points="{{$section->points}}"></polygon>
+                                    
+                                    <text x="{{$section->text_x ?? 0;}}" y="{{$section->text_y ?? 0; }}"
+                                        font-size="30" font-weight="bold" fill="#fff" class="fw-light">
+                
+                                        @isset($section->subtitle)
+                                            <tspan font-weight="light">
+                                                {{$section->subtitle}}
+                                            </tspan>
+                                        @endisset
+                                        
+                                    </text>
+                                </a>    
+                                @php $i++; @endphp
+                            @endforeach
+                        </svg>
+                    </div>
+                    
+                        
+                    @foreach ( $sections as $section )
+                        
+                        <div class="carousel-item">
+                            
                             <div class="position-relative">
-                                <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100">
-
+                                <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100 rounded-2 shadow-5">
+    
                                 @php
                                     if($section->id == 5 or $section->id == 6 or $section->id == 7){
                                         $font_size = 22;
@@ -81,13 +164,13 @@
                                         $font_size = 32;
                                     }
                                 @endphp
-
+    
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
-
+    
                                     @foreach ($section->units as $unit)
                         
-                                        <a href="{{route('dashboard.unit', ['id' => $unit->id]) }}" class="text-decoration-none link-light">
-                                            <polygon class="{{ strtolower($unit->status) }}-class" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                        <a href="{{route('dashboard.unit', ['id' => $unit->id]) }}" class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
+                                            <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
                                             
                                             <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
                                                 font-size="{{$font_size}}" font-weight="bold" fill="#fff" class="fw-light">
@@ -99,112 +182,21 @@
                                         
                                     @endforeach
                                 </svg>
-
+    
                             </div>
+    
+                            
+                            <div class="fs-2 text-center fw-bold my-2">{{$section->name}}, {{__('Nivel')}} {{$section->subtitle}}</div>
+                            
+    
                         </div>
-
-                        @php $i++; @endphp 
-                    @endforeach
-                </div>
-            </div>
-
-        </div>
-
-        {{-- Inventario en movil --}}
-      <div class="container-fluid justify-content-center d-block d-lg-none p-0 position-relative" >
-
-        <button data-bs-target="#carouselInventoryMobile" data-bs-slide-to="0" aria-label="Slide 1" id="back-to-building" class="btn btn-blue mb-2 rounded-2 shadow-5">
-          <i class="far fa-building"></i> {{__('Ver Torre Completa')}}
-        </button>
-
-        <div id="carouselInventoryMobile" class="carousel slide carousel-fade" data-bs-interval="false">
-
-            <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <img src="{{asset('img/tridenta-front.jpg')}}" alt="Inventario disponible de Tridenta Towers" class="w-100 rounded-2 shadow-5">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="0 0 1446 1920">
-
-                        @php $i=1; @endphp
-                        @foreach ($sections as $section)
-            
-                            <a href="#tab-pane-{{$section->id}}" data-bs-target="#carouselInventoryMobile" data-bs-slide-to="{{ $i }}"  class="text-decoration-none link-light">
-                                <polygon class="section-class" points="{{$section->points}}"></polygon>
-                                
-                                <text x="{{$section->text_x ?? 0;}}" y="{{$section->text_y ?? 0; }}"
-                                    font-size="46" font-weight="bold" fill="#fff" class="fw-light">
-            
-                                    <tspan class="fw-bold">{{__('Torre')}} {{$section->name}}</tspan>
-            
-                                    @php
-                                        $type_x = ($section->text_x ?? 0) + 3;
-                                    @endphp
-            
-                                    @isset($section->subtitle)
-                                        <tspan x="{{$type_x}}" dy="1.3em" font-size="36" font-weight="light">
-                                            {{__('Nivel')}} {{$section->subtitle}}
-                                        </tspan>
-                                    @endisset
-                                    
-                                </text>
-                            </a>    
-                            @php $i++; @endphp
-                        @endforeach
-                    </svg>
-                </div>
-                
-                    
-                @foreach ( $sections as $section )
-                    
-                    <div class="carousel-item">
                         
-                        <div class="position-relative">
-                            <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100 rounded-2 shadow-5">
-
-                            @php
-                                if($section->id == 5 or $section->id == 6 or $section->id == 7){
-                                    $font_size = 22;
-                                }
-                                else{
-                                    $font_size = 32;
-                                }
-                            @endphp
-
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
-
-                                @foreach ($section->units as $unit)
-                    
-                                    <a href="{{route('dashboard.unit', ['id' => $unit->id]) }}" class="text-decoration-none link-light">
-                                        <polygon class="{{ strtolower($unit->status) }}-class" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
-                                        
-                                        <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
-                                            font-size="{{$font_size}}" font-weight="bold" fill="#fff" class="fw-light">
-                    
-                                            <tspan class="fw-bold">{{$unit->name}}</tspan>
-                                            
-                                        </text>
-                                    </a>    
-                                    
-                                @endforeach
-                            </svg>
-
-                        </div>
-
-                        @if ($section->name == 'E')
-                            <div class="fs-2 text-center fw-bold my-2">{{__('Torre') }} {{$section->name}}</div>
-                        @else
-                            <div class="fs-2 text-center fw-bold my-2">{{__('Torre') }} {{$section->name}}, {{__('Nivel')}} {{$section->subtitle}}</div>
-                        @endif
-
-                    </div>
-                    
-                @endforeach
-              
-
+                    @endforeach
+                  
+    
+                </div>
             </div>
         </div>
-      </div>
 
     </div>
 

@@ -106,7 +106,13 @@
                     @if ($unit->unitType->bedrooms == 0)
                         <span class="fw-light">{{__('Estudio')}}</span>
                     @else
-                        {{$unit->unitType->bedrooms}} <span class="d-none d-lg-inline fw-light">{{__('Recámaras')}}</span> 
+                        {{$unit->unitType->bedrooms}} 
+                        <span class="d-none d-lg-inline fw-light">
+                            {{__('Recámaras')}}
+                            @if ($unit->unitType->flexrooms > 0)
+                                {{__(' + Flex')}}
+                            @endif
+                        </span> 
                     @endif
                 </div>
 

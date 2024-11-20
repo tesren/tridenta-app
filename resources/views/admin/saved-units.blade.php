@@ -90,7 +90,7 @@
             @endforeach
 
             <div class="text-center my-5">
-                <a href="{{route('dashboard.search')}}" class="btn btn-blue">
+                <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue">
                     {{__('Ver todo el inventario')}}
                 </a>    
             </div>
@@ -99,7 +99,7 @@
 
             <h1>{{__('Aún no tienes unidades guardadas')}}</h1>
             <p>{{__('Visita nuestro inventario para ver todas las unidades')}}</p>
-            <a href="{{route('dashboard.search')}}" class="btn btn-blue">
+            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue">
                 {{__('Ver Inventario')}}
             </a>
 
