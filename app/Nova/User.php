@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Carbon\Carbon;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Tag;
@@ -10,12 +11,14 @@ use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Textarea;
+use App\Models\Email as EmailData;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -218,6 +221,20 @@ class User extends Resource
                     }
                 }
             ),
+
+            Boolean::make('Login', function () {
+
+                $emails = EmailData::where('user_id', $this->id)
+                    ->whereBetween('created_at', [Carbon::now()->subMonth(), Carbon::now()])
+                    ->get();
+
+                if ($emails->count() > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+                
+            })->hideFromDetail(),
 
             BelongsToMany::make('Unidades Guardadas', 'savedUnits', Unit::class)->hideFromDetail(fn () => $this->savedUnits->isEmpty()),
 

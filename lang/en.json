@@ -499,5 +499,11 @@
     "Preventa a pie" : "Beachfront",
     "Nueva" : "New",
     "Condominios frente al mar" : "Beachfront Condos",
-    "Áreas verdes" : "Gardens"
+    "Áreas verdes" : "Gardens",
+    "Escoge la vista que prefieras" : "Choose the view you prefer",
+    "Vista Bahía" : "Bay View",
+    "Vista Sierra" : "Mountain View",
+    "Cambia el modo de visualización del inventario" : "Change the inventory display mode",
+    "Modo Gráfico" : "Graphic Mode",
+    "Modo Lista" : "List Mode"
 }

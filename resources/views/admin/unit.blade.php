@@ -47,6 +47,12 @@
         
     </div>--}}
 
+    <div class="row justify-content-center py-5 mb-5" style="background-image: url('{{asset('img/auth-bg.jpg')}}');">
+        <div class="col-7 col-lg-4 col-xxl-3">
+            <img src="{{asset('img/tridenta-full-logo.webp')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100">
+        </div>
+    </div>
+
     {{-- Galería de tipos de unidad --}}
     @if( count($unit_type_gallery) > 1 )
 

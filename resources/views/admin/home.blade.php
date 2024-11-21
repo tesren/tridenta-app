@@ -205,6 +205,10 @@
                 </div>
 
                 <div class="carousel-item">
+                    <img src="{{asset('img/master-plan-fase-1.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Fase 1 de Tridenta Towers')}}">
+                </div>
+
+                <div class="carousel-item">
                     <img src="{{asset('img/estacionamiento.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Terrazas')}}">
                 </div>
             </div>
