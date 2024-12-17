@@ -14,6 +14,7 @@ use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
@@ -221,6 +222,8 @@ class User extends Resource
                     }
                 }
             ),
+
+           /*  DateTime::make('Fecha de creación', 'created_at')->hideFromIndex()->exceptOnForms(), */
 
             Boolean::make('Login', function () {
 

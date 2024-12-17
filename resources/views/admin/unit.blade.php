@@ -362,10 +362,7 @@
                             @isset($plan->months_percent)
                                 <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                     <div class="fs-4">
-                                        {{$plan->months_amount}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
-                                        @if ($plan->during_const)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{$plan->months_amount}} {{__('Pagos mensuales durante la construcción')}}.</div>
-                                        @endif
+                                        {{$plan->monthly_payments}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
                                     </div>
                                     <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
                                 </div>

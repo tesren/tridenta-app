@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/fancybox.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/admin-v5.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/admin-v6.css') }}">
 
         @include('components.favicon')
 

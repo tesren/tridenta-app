@@ -99,7 +99,7 @@ class PaymentPlan extends Resource
                 }
             ),
 
-            Number::make('% Total de los Pagos Mensuales', 'months_percent')->min(0)->max(100)->sortable()->displayUsing(
+            Number::make('% Total de los Pagos Mensuales', 'months_percent')->min(0)->max(100)->help('Porcentaje total de los pagos mensuales')->sortable()->displayUsing(
                 function($value){
                     if($value == null){
                         return $value;
@@ -108,6 +108,8 @@ class PaymentPlan extends Resource
                     }
                 }
             ),
+
+            Number::make('# Mensualidades', 'monthly_payments')->min(0)->max(200)->sortable()->nullable()->help('Cantidad de pagos mensuales'),
 
             Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago ginal')->rules('required')->sortable()->displayUsing(
                 function($value){
