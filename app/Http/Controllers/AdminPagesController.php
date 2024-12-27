@@ -43,7 +43,7 @@ class AdminPagesController extends Controller
         App::setLocale($lang);
 
         $sections = Section::where('name', 'Vista Sierra')->get();
-        $img_view_path = '/img/inventory-sierra.webp';
+        $img_view_path = '/img/inventory-sierra-new.webp';
 
         return view('admin.inventory', compact('sections', 'img_view_path'));
     }

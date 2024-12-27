@@ -63,24 +63,25 @@
         </div>
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/beach-club.jpg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/beach-club-pools-tridenta.jpeg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/street.jpg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/tennis-tridenta.jpeg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/beach.jpg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
+            <img src="{{asset('/img/pool-tridenta.jpeg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
                 <a href="#gallery-1" class="btn btn-light rounded-0 shadow-5"><i class="fa-regular fa-images"></i> {{__('Galería Completa')}}</a>
             </div>
         </div>
 
-        {{-- @for ($i=5; $i<10; $i++)
-            <img src="{{asset('img/gallery-'.$i.'.jpeg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
-        @endfor --}}
+        
+        <img src="{{asset('/img/inventory-sierra-new.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        <img src="{{asset('/img/inventory-bahia.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        
 
         <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         
@@ -197,19 +198,23 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('img/master-plan.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="Master Plan">
+                    <img src="{{asset('/img/master-plan-common-areas.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('img/condos.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Áreas comunes')}}">
+                    <img src="{{asset('/img/master-plan-lvl-1.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
 
-                {{-- <div class="carousel-item">
-                    <img src="{{asset('img/master-plan-fase-1.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Fase 1 de Tridenta Towers')}}">
-                </div> --}}
+                <div class="carousel-item">
+                    <img src="{{asset('/img/master-plan-gym.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan">
+                </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('img/estacionamiento.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Terrazas')}}">
+                    <img src="{{asset('/img/master-plan-balcony-units.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                </div>
+
+                <div class="carousel-item">
+                    <img src="{{asset('/img/master-plan-rooftop.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
             </div>
 

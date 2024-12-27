@@ -47,11 +47,20 @@
         
     </div>--}}
 
-    <div class="row justify-content-center py-5 mb-5" style="background-image: url('{{asset('img/auth-bg.jpg')}}');">
-        <div class="col-7 col-lg-4 col-xxl-3">
-            <img src="{{asset('img/tridenta-full-logo.webp')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100">
+    @if ( count($unit_type_gallery) > 0)
+
+        <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100 object-fit-cover" style="height: 40vh;" data-fancybox="unit-gallery">
+            
+    @else
+
+        <div class="row justify-content-center py-5 mb-5" style="background-image: url('{{asset('img/auth-bg.jpg')}}');">
+            <div class="col-7 col-lg-4 col-xxl-3">
+                <img src="{{asset('img/tridenta-full-logo.webp')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100">
+            </div>
         </div>
-    </div>
+
+    @endif
+    
 
     {{-- Galería de tipos de unidad --}}
     @if( count($unit_type_gallery) > 1 )
@@ -208,14 +217,21 @@
 
     {{-- Planos --}}
     <div class="row justify-content-evenly mb-6">
-        <div class="col-12 col-lg-10 col-xxl-6">
+        <div class="col-12 col-lg-11">
 
             <h3 class="fs-2 text-center">{{__('Planos de la unidad')}}</h3>
             @php
                 $blueprints = $unit->unitType->getMedia('blueprints')
             @endphp
 
-            <img src="{{ $blueprints[0]->getUrl('large') }}" alt="Planos de la unidad {{$unit->name}} de Tridenta Towers" class="w-100" data-fancybox="blueprints">
+            <div class="row justify-content-evenly">
+                @foreach ($blueprints as $blueprint)
+                    <div class="col-12 col-lg-5 mb-3">
+                        <img src="{{ $blueprint->getUrl('large') }}" alt="Planos de la unidad {{$unit->name}} de Tridenta Towers" class="w-100" data-fancybox="blueprints">
+                    </div>
+                @endforeach
+            </div>
+
             <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         </div>
     </div>
