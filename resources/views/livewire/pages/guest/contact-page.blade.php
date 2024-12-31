@@ -9,7 +9,7 @@
     {{-- Do your work, then step back. --}}
     <section class="position-relative">
 
-        <img src="{{asset('img/tridenta-home.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 25vh; object-fit:cover; object-position:bottom;">
+        <img src="{{asset('/img/tennis-tridenta.jpeg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 25vh; object-fit:cover;">
 
         <div class="fondo-azul"></div>
 

@@ -32,7 +32,7 @@
                         </li>
     
                         <li class="nav-item me-4">
-                            <a class="nav-link" href="{{ route('inventory') }}" wire:navigate>
+                            <a class="nav-link" href="{{ route('inventory.bay') }}" wire:navigate>
                                 {{__('Inventario')}}
                             </a>
                         </li>

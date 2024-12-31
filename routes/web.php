@@ -5,7 +5,9 @@ use App\Livewire\HomePage;
 use App\Livewire\UnitPage;
 use App\Livewire\SearchPage;
 use App\Livewire\ContactPage;
+use App\Livewire\InventoryBay;
 use App\Livewire\InventoryPage;
+use App\Livewire\InventorySierra;
 use App\Livewire\ConstructionPage;
 use App\Livewire\PrivacyPolicyPage;
 use Illuminate\Support\Facades\Lang;
@@ -40,10 +42,13 @@ Route::post('/logout', [AdminPagesController::class, 'destroy'])->middleware('au
 
 
 //Rutas públicas
-/* Route::localized(function () {
+Route::localized(function () {
 
     Route::get('/', HomePage::class)->name('home');
-    Route::get(Lang::uri('/condominios-en-venta'), InventoryPage::class)->name('inventory');
+
+    Route::get(Lang::uri('/condominios-en-venta-vista-montana'), InventorySierra::class)->name('inventory.sierra');
+    Route::get(Lang::uri('/condominios-en-venta-frente-al-mar'), InventoryBay::class)->name('inventory.bay');
+
     Route::get(Lang::uri('/condominio-en-venta-frente-al-mar').'/{name}', UnitPage::class)->name('unit');
     Route::get(Lang::uri('/buscar-condominios'), SearchPage::class)->name('search');
     Route::get(Lang::uri('/contacta-un-asesor'), ContactPage::class)->name('contact');
@@ -53,7 +58,7 @@ Route::post('/logout', [AdminPagesController::class, 'destroy'])->middleware('au
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);
     });
-}); */
+});
 
 Route::post('/send-email', [PublicPagesController::class, 'sendMail'])->name('send.email');
 

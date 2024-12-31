@@ -38,19 +38,19 @@ class SearchPage extends Component
             switch($bedrooms){
 
                 case 1:
-                    $units = $units->where('unit_type_id', 6);
+                    $units = $units->where('unit_type_id', 1,2);
                 break;
 
                 case 2:
-                    $units = $units->whereIn('unit_type_id', [3,4] );
+                    $units = $units->whereIn('unit_type_id', [3,4,5,6,7,8] );
                 break;
 
                 case 3:
-                    $units = $units->whereIn('unit_type_id', [1,2] );
+                    $units = $units->whereIn('unit_type_id', [9,10] );
                 break;
 
                 case 10:
-                    $units = $units->where('unit_type_id', 5);
+                    $units = $units->where('unit_type_id', 11);
                 break;
 
             }

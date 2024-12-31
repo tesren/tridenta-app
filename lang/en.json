@@ -505,5 +505,7 @@
     "Vista Sierra" : "Mountain View",
     "Cambia el modo de visualización del inventario" : "Change the inventory display mode",
     "Modo Gráfico" : "Graphic Mode",
-    "Modo Lista" : "List Mode"
+    "Modo Lista" : "List Mode",
+    "en :months pagos mensuales." : "in :months monthly payments.",
+    "Cada mensualidad" : "Each monthly payment"
 }

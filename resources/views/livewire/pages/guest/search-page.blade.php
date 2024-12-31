@@ -26,7 +26,7 @@
         </div>
 
         <div class="container input-group justify-content-end mb-4 text-end ">
-            <a href="{{route('inventory')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
+            <a href="{{route('inventory.bay')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
             <a href="{{route('search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle" wire:navigate><i class="fa-solid fa-list"></i></a>
         </div>
 
@@ -156,7 +156,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('dashboard.unit', ['id'=>$unit->id]) }}" class="btn btn-blue" target="_blank" rel="noopener noreferrer">
+                                    <a href="{{ route('unit', ['name'=>$unit->name]) }}" class="btn btn-blue" target="_blank" wire:navigate rel="noopener noreferrer">
                                         {{__('Ver más')}}
                                     </a>
                                 </td>

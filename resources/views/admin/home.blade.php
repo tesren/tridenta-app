@@ -55,7 +55,7 @@
     <section class="row mb-6" title="{{__('Galería')}}" id="gallery-section">
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/lobby.jpg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/lobby-tridenta.jpeg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 start-0 text-white ms-5 mb-4 fw-bold" style="text-shadow: 1px 1px 2px black;">
                 {{__('Galería')}}
             </div>
@@ -270,7 +270,7 @@
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             
-            <div class="col-12 col-lg-5 align-self-center bg-white p-0 text-center shadow-5">
+            <div class="col-12 col-lg-6 col-xxl-5 align-self-center bg-white p-0 text-center shadow-5">
 
                 <div id="carouselPayplans" class="carousel slide carousel-dark p-4 p-lg-5">
 
@@ -295,14 +295,16 @@
                                 @endisset
 
                                 @isset($plan->months_percent)
-                                    <div class="mb-4">{{$plan->months_percent}}% {{__('en pagos mensuales.')}}</div>
+                                    <div class="mb-4">{{$plan->months_percent}}% {{__('en :months pagos mensuales.', ['months'=>$plan->monthly_payments] )}}</div>
                                 @endisset
 
                                 @isset($plan->closing_payment)
                                     <div class="mb-4">{{$plan->closing_payment}}% {{__('a la entrega física de la propiedad.')}}</div>
                                 @endisset
 
-                                <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
+                                <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue mb-3">{{__('Ver Inventario')}}</a>
+
+                                <p class="mb-0 fs-7 fw-light">{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</p>
                 
                             </div>
 

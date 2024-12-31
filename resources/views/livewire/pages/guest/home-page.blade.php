@@ -38,7 +38,7 @@
 
         <div class="col-12 col-lg-4 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
+            <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
         </div>
 
         <div class="text-center mt-4 mt-lg-5">
@@ -53,7 +53,7 @@
     <section class="row mb-6" title="{{__('Galería')}}" id="gallery-section">
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/lobby.jpg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/lobby-tridenta.jpeg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 start-0 text-white ms-5 mb-4 fw-bold" style="text-shadow: 1px 1px 2px black;">
                 {{__('Galería')}}
             </div>
@@ -61,24 +61,26 @@
         </div>
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/beach-club.jpg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/beach-club-pools-tridenta.jpeg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/street.jpg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/tennis-tridenta.jpeg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/beach.jpg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
+            <img src="{{asset('/img/pool-tridenta.jpeg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
                 <a href="#gallery-1" class="btn btn-light rounded-0 shadow-5"><i class="fa-regular fa-images"></i> {{__('Galería Completa')}}</a>
             </div>
         </div>
 
-        {{-- @for ($i=5; $i<10; $i++)
-            <img src="{{asset('img/gallery-'.$i.'.jpeg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
-        @endfor --}}
+        
+        <img src="{{asset('/img/inventory-sierra-new.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        <img src="{{asset('/img/inventory-bahia.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">
+        <img src="{{asset('img/vista-aerea.jpg ')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        
 
         <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         
@@ -182,7 +184,7 @@
 
         <div class="col-12 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
+            <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
         </div>
 
     </section>
@@ -195,19 +197,23 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('img/master-plan.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="Master Plan">
+                    <img src="{{asset('/img/master-plan-common-areas.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('img/condos.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Áreas comunes')}}">
+                    <img src="{{asset('/img/master-plan-lvl-1.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
 
-                {{-- <div class="carousel-item">
-                    <img src="{{asset('img/master-plan-fase-1.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Fase 1 de Tridenta Towers')}}">
-                </div> --}}
+                <div class="carousel-item">
+                    <img src="{{asset('/img/master-plan-gym.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan">
+                </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('img/estacionamiento.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" data-caption="{{__('Terrazas')}}">
+                    <img src="{{asset('/img/master-plan-balcony-units.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                </div>
+
+                <div class="carousel-item">
+                    <img src="{{asset('/img/master-plan-rooftop.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
                 </div>
             </div>
 
@@ -241,6 +247,21 @@
 
     </section> --}}
 
+    {{-- Ubicación --}}
+    <section class="container row justify-content-evenly mb-6">
+
+        <div class="col-12 col-lg-4 align-self-center">
+            <h4 class="fs-3">{{__('Ubicación')}}</h4>
+            <address>Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
+            <p>{{__('Tridenta Towers ofrece una ubicación excepcional frente al mar. Con vistas impresionantes y acceso directo a las cálidas aguas del Pacífico, es el lugar ideal para aquellos que buscan vivir la experiencia única de la vida frente al mar en uno de los destinos más codiciados de México.')}}</p>
+        </div>
+
+        <div class="col-12 col-lg-7">
+            <img src="{{asset('img/mapa-tridenta.webp')}}" alt="Ubicación de Tridenta Towers Vallarta" class="w-100">
+        </div>
+
+    </section>
+
     {{-- Plan de pago --}}
     <section class="position-relative">
 
@@ -248,7 +269,7 @@
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             
-            <div class="col-12 col-lg-5 align-self-center bg-white p-0 text-center shadow-5">
+            <div class="col-12 col-lg-6 col-xxl-5 align-self-center bg-white p-0 text-center shadow-5">
 
                 <div id="carouselPayplans" class="carousel slide carousel-dark p-4 p-lg-5">
 
@@ -273,14 +294,16 @@
                                 @endisset
 
                                 @isset($plan->months_percent)
-                                    <div class="mb-4">{{$plan->months_percent}}% {{__('en pagos mensuales.')}}</div>
+                                    <div class="mb-4">{{$plan->months_percent}}% {{__('en :months pagos mensuales.', ['months'=>$plan->monthly_payments] )}}</div>
                                 @endisset
 
                                 @isset($plan->closing_payment)
                                     <div class="mb-4">{{$plan->closing_payment}}% {{__('a la entrega física de la propiedad.')}}</div>
                                 @endisset
 
-                                <a href="{{route('dashboard.inventory.bay')}}" class="btn btn-blue">{{__('Ver Inventario')}}</a>
+                                <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue mb-3">{{__('Ver Inventario')}}</a>
+
+                                <p class="mb-0 fs-7 fw-light">{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</p>
                 
                             </div>
 
@@ -304,22 +327,15 @@
         </div>
 
     </section>
-    
-    {{-- Ubicación --}}
-    <section class="container row justify-content-evenly mb-6">
-
-        <div class="col-12 col-lg-4 align-self-center">
-            <h4 class="fs-3">{{__('Ubicación')}}</h4>
-            <address>Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
-            <p>{{__('Tridenta Towers ofrece una ubicación excepcional frente al mar. Con vistas impresionantes y acceso directo a las cálidas aguas del Pacífico, es el lugar ideal para aquellos que buscan vivir la experiencia única de la vida frente al mar en uno de los destinos más codiciados de México.')}}</p>
-        </div>
-
-        <div class="col-12 col-lg-7">
-            <img src="{{asset('img/mapa-tridenta.webp')}}" alt="Ubicación de Tridenta Towers Vallarta" class="w-100">
-        </div>
-
-    </section>
 
     @livewire('contact-form')
+
+    @script
+        <script>
+            Fancybox.bind("[data-fancybox]", {
+                // Your custom options
+            });
+        </script>
+    @endscript
 
 </div>

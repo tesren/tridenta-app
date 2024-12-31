@@ -383,6 +383,15 @@
                                     <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
                                 </div>
                             @endisset
+
+                            @isset($plan->monthly_payments)
+                                <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                    <div class="fs-4">
+                                        {{__('Cada mensualidad')}} 
+                                    </div>
+                                    <div class="fs-4">${{ number_format( ($special_price * ($plan->months_percent/100))/$plan->monthly_payments ) }} {{ $unit->currency }}</div>
+                                </div>
+                            @endisset
     
                             @isset($plan->closing_payment)
                                 <div class="d-flex justify-content-between px-2 px-lg-4 fw-light">

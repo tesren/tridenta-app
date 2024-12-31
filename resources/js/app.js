@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
-Fancybox.bind("[data-fancybox]", {
-    // Your custom options
-});
 
 /* const form_inputs = document.getElementById('search_input_group');
     
