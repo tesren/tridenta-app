@@ -12,13 +12,13 @@
 
         <div class="row position-absolute bottom-0 start-0">
 
-            <div class="col-12 col-lg-6 ms-0 ms-lg-5 mb-5 text-white">
+            <div class="col-12 col-lg-7 col-xxl-6 ms-0 ms-lg-5 mb-5 text-white">
                 <h1 class="fw-bold fs-0">
                     {{__('Nueva')}} <br>
                     {{__('Preventa a pie')}} <br>
                     {{__('de playa')}}
                 </h1>
-                <div class="fw-light fs-5">{{__('Bienvenido a la preventa privada')}}</div>
+                {{-- <div class="fw-light fs-5">{{__('Bienvenido a la preventa privada')}}</div> --}}
             </div>
 
         </div>
