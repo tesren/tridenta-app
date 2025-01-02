@@ -269,6 +269,17 @@ a:hover .section-class{
     background-color: var(--darkblue);
 }
 
+#whatsapp{
+    background-color: var(--lightblue);
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
 @media (max-width: 992px) {
 
     .unit-imgs{

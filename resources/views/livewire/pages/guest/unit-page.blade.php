@@ -10,25 +10,19 @@
         $unit_type_gallery = $unit->unitType->getMedia('gallery');
     @endphp
 
-    {{-- Imagenes 
-    <div class="row mb-5">
+    {{-- Imagenes --}}
 
-        <div class="col-12 col-lg-8 p-1">
-            <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 unit-imgs" data-fancybox="gallery">
-        </div>
-
-        
-        <div class="col-12 col-lg-4 p-1">
-
-            @if( isset($unit_type_gallery[1]) )
-                <img src="{{$unit_type_gallery[1]->getUrl('large')}}" alt="Galería unidad {{$unit->name}} - Tridenta Towers" class="w-100 mb-2" style="height: 32vh; object-fit: cover;"  data-fancybox="gallery">
-            @endif 
-
+    @if( count($unit_type_gallery) > 0 and isset($unit->view_path ) )
+        <div class="row">
+            <div class="col-12 col-lg-8 p-1">
+                <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100 object-fit-cover" style="height: 40vh;" data-fancybox="unit-gallery">
+            </div>
             
-            @if ( isset($unit->view_path ) )
+            <div class="col-12 col-lg-4 p-1 d-none d-lg-block">
+                
                 <div class="position-relative">
-                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 unit-imgs" data-fancybox="gallery">
-
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100" data-fancybox="unit-gallery" style="height: 40vh;" data-caption="{{__('Vista de la Unidad')}} {{$unit->name}}">
+    
                     @isset($unit->youtube_link)
                         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
                             <div class="col-12 text-center align-self-center">
@@ -39,17 +33,15 @@
                             </div>
                         </div>
                     @endisset
+                    
                 </div>
-            @endif
-
+    
+            </div>
         </div>
-        
-    </div>--}}
-
-    @if ( count($unit_type_gallery) > 0)
-
+    @elseif ( count($unit_type_gallery) > 0)
+ 
         <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100 object-fit-cover" style="height: 40vh;" data-fancybox="unit-gallery">
-            
+    
     @else
 
         <div class="row justify-content-center py-5 mb-5" style="background-image: url('{{asset('img/auth-bg.jpg')}}');">
@@ -81,7 +73,7 @@
     @endisset
 
     {{-- Información --}}
-    <div class="row justify-content-evenly mb-6 mt-5">
+    <div class="row justify-content-evenly mb-6 mt-4 mt-lg-5">
 
         <div class="col-12 col-lg-7">
             <h1 class="mb-1">
@@ -387,5 +379,13 @@
     @endif
 
     @livewire('contact-form')
+
+    @script
+        <script>
+            Fancybox.bind("[data-fancybox]", {
+                // Your custom options
+            });
+        </script>
+    @endscript
 
 </div>
