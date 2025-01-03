@@ -288,6 +288,13 @@ a:hover .section-class{
     cursor: pointer;
 }
 
+.bg-glass{
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 16px;
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+}
+
 @media (max-width: 992px) {
 
     .unit-imgs{

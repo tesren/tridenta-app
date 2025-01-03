@@ -10,11 +10,13 @@
             </div>
     
             <div class="col-11 col-lg-3 align-self-center mb-4 mb-lg-0">
-                <div class="fs-3">{{__('Contacto')}}</div>
-    
-                <a href="mailto:info@domusvallarta.com" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
-                <a href="tel:+523322005523" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
-                <address class="fs-5 fw-light"><i class="fa-solid fa-location-dot"></i> Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
+                @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                    <div class="fs-3">{{__('Contacto')}}</div>
+        
+                    <a href="mailto:info@domusvallarta.com" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
+                    <a href="tel:+523322005523" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
+                    <address class="fs-5 fw-light"><i class="fa-solid fa-location-dot"></i> Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
+                @endif
             </div>
     
             <div class="col-10 col-lg-2 align-self-center mb-4 mb-lg-0">
@@ -23,15 +25,19 @@
                     <img src="{{asset('img/domus-logo-white.svg')}}" alt="Logo de Domus Vallarta Inmobiliaria" class="w-100">
                 </a>
     
-                <div class="d-flex justify-content-center mt-3">
-                    <a href="https://www.instagram.com/domus_vallarta/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-light fw-light me-3 fs-4">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-    
-                    <a href="https://www.facebook.com/DomusVallartaInmobiliaria" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-light fw-light fs-4">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                </div>
+                @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                    <div class="d-flex justify-content-center mt-3">
+
+                        <a href="https://www.instagram.com/domus_vallarta/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-light fw-light me-3 fs-4">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+        
+                        <a href="https://www.facebook.com/DomusVallartaInmobiliaria" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-light fw-light fs-4">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+                @endif
+
             </div>
     
         </div>

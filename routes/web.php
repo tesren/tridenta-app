@@ -3,6 +3,7 @@
 use Livewire\Livewire;
 use App\Livewire\HomePage;
 use App\Livewire\UnitPage;
+use App\Livewire\EventForm;
 use App\Livewire\SearchPage;
 use App\Livewire\ContactPage;
 use App\Livewire\InventoryBay;
@@ -54,6 +55,7 @@ Route::localized(function () {
     Route::get(Lang::uri('/contacta-un-asesor'), ContactPage::class)->name('contact');
     Route::get(Lang::uri('/aviso-de-privacidad'), PrivacyPolicyPage::class)->name('privacy.policy');
     Route::get(Lang::uri('/avances-de-obra'), ConstructionPage::class)->name('construction');
+    Route::get(Lang::uri('/evento-de-presentacion-tridenta-towers'), EventForm::class)->name('event.form');
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);
@@ -61,6 +63,7 @@ Route::localized(function () {
 });
 
 Route::post('/send-email', [PublicPagesController::class, 'sendMail'])->name('send.email');
+
 
 Route::get('/tridenta-optimize', function() {
     Artisan::call('optimize');

@@ -60,7 +60,9 @@
 
         @include('components.footer')
 
-        <livewire:whatsapp-btn />
+        @if (strpos(Route::currentRouteName(), 'event.form') === false)
+            <livewire:whatsapp-btn />
+        @endif
 
         @vite(['resources/js/app.js'])
 
