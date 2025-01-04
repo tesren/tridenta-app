@@ -2,16 +2,40 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use App\Models\Message;
 use Livewire\Component;
+use Livewire\Attributes\Validate; 
 use Illuminate\Support\Facades\Http;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class EventForm extends Component
 {
+    use UsesSpamProtection;
+
+    #[Validate('required')] 
+    public $full_name = '';
+ 
+    #[Validate('required')] 
+    public $email = '';
+
+    public $phone = '';
+    public $message = '';
+    public $url = '';
+    public $lang = '';
+    public $agent = '';
+
+    public HoneypotData $extraFields;
+    public $agents = [];
+    
     public function save()
     {
         $this->validate(); 
         $this->protectAgainstSpam();
+
+        //para el webhook
+        $type = "Confirmación de asistencia al evento de presentación de Tridenta Towers";
 
         $msg = new Message();
 
@@ -23,20 +47,17 @@ class EventForm extends Component
 
         $msg->save();
 
-
-        //para el webhook
-        $type = "Contacto desde el sitio web de Tridenta Towers";
-
-
-        if( app()->getLocale() == 'es' ){
+        if( $this->lang == 'es' ){
             $lang = 'Español';
         }
         else{
             $lang = 'Inglés';
         }
 
+        $lead_agent = User::find($this->agent);
+
         //Envíamos webhook
-        $webhookUrl = 'https://hooks.zapier.com/hooks/catch/4710110/3fvqx5c/';
+        $webhookUrl = 'https://hooks.zapier.com/hooks/catch/4710110/2zoo44d/';
 
         // Datos que deseas enviar en el cuerpo de la solicitud
         $data = [
@@ -49,6 +70,8 @@ class EventForm extends Component
             'development' => 'Tridenta Towers',
             'lang' => $lang,
             'type'  => $type,
+            'agent' => $lead_agent->name,
+            'agent_email' => $lead_agent->email,
             'created_at' => $msg->created_at,
         ];
 
@@ -60,6 +83,13 @@ class EventForm extends Component
 
         $this->reset();
 
+    }
+
+    public function mount()
+    {
+        $this->url = url()->current();
+        $this->extraFields = new HoneypotData();
+        $this->agents = User::where('role', 'agent')->orderBy('name', 'asc')->get();
     }
     
     public function render()

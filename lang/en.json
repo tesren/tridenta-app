@@ -67,7 +67,6 @@
     "Conocer más de la zona":"Know more about the area",
     "Echa un vistazo a nuestras":"Take a look at our",
     "Unidades Disponibles":"Available Units",
-    "Fase":"Phase",
     "Haz clic en una torre para ver las unidades disponibles" : "Click on a Tower to see our avaliable Units",
     "Más torres" : "More Towers",
     "Haz clic en una unidad para ver mas información" : "Click on a unit to see more information",
@@ -509,5 +508,18 @@
     "en :months pagos mensuales." : "in :months monthly payments.",
     "Cada mensualidad" : "Each monthly payment",
     "¡Envíanos un mensaje!" : "Send us a message!",
-    "Hola, vengo del sitio web de Tridenta" : "Hello, I am on the Tridenta Towers website"
+    "Hola, vengo del sitio web de Tridenta" : "Hello, I am on the Tridenta Towers website",
+    "Te invitamos a un exclusivo evento de presentación donde conocerás nuestro nuevo desarrollo inmobiliario: Tridenta Towers, una oportunidad única de inversión y estilo de vida frente al mar." : "We invite you to an exclusive presentation event where you will learn about our new real estate development: Tridenta Towers, a unique investment and lifestyle opportunity on the beach.",
+    "Detalles del evento:" : "Event details:",
+    "Lugar: Rooftop de Harbor171 Torre Norte, Febronio Uribe 171, Las Glorias, Puerto Vallarta, Jalisco." : "Location: Rooftop of Harbor171 North Tower, Febronio Uribe 171, Las Glorias, Puerto Vallarta, Jalisco.",
+    "Fecha: 15 de Enero a las 5:00 pm" : "Date: January 15th from 5:00 pm to 9:00 pm",
+    "Incluye: Bebidas y Snacks." : "Drinks and Snacks included.",
+    "Confirma tu asistencia completando este formulario." : "Please confirm your attendance by completing this form.",
+    "Lenguaje" : "Preferred Language",
+    "Tu agente de Domus" : "Domus Real Estate agent",
+    "Notas" : "Notes",
+    "Presentación de Tridenta Towers" : "Tridenta Towers Launch Event",
+    "Enviando, por favor espere" : "Sending, please wait",
+    "Mensaje enviado existosamente" : "Message sent successfully",
+    "Selecciona uno" : "Select one"
 }

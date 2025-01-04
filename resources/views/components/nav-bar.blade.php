@@ -51,26 +51,29 @@
                             </li>
                         @endif
                         
-
-                        <li class="nav-item me-4">
-                            <a class="nav-link" href="{{ route('contact') }}" wire:navigate>
-                                {{__('Contacto')}}
-                            </a>
-                        </li>
+                        @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                            <li class="nav-item me-4">
+                                <a class="nav-link" href="{{ route('contact') }}" wire:navigate>
+                                    {{__('Contacto')}}
+                                </a>
+                            </li>
+                        @endif
     
                     </ul>
     
                     <div class="d-flex">
-                        <div class="align-self-center dropdown me-3">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" wire:navigate href="{{url('/login')}}">{{__('Iniciar Sesión')}}</a></li>
-                                <li><a class="dropdown-item" wire:navigate href="{{url('/register')}}">{{__('Regístrate')}}</a></li>
-                            </ul>
-                        </div>
 
+                        @guest
+                            <div class="align-self-center dropdown me-3">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" wire:navigate href="{{url('/login')}}">{{__('Iniciar Sesión')}}</a></li>
+                                    <li><a class="dropdown-item" wire:navigate href="{{url('/register')}}">{{__('Regístrate')}}</a></li>
+                                </ul>
+                            </div>
+                        @endguest
 
                         @php
                             $route = Route::currentRouteName();
@@ -106,6 +109,7 @@
 
                             @endif
                         @endif
+
                     </div>
     
                 </div>

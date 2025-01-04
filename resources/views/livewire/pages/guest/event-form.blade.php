@@ -8,21 +8,34 @@
 
 
     <div class="row justify-content-center py-5 h-100 text-white" style="background-image: url('{{asset('/img/beach-club-pools-tridenta.jpeg')}}')">
-        <div class="col-12 col-lg-7 col-xxl-6 align-self-center py-4 rounded-3 shadow px-4 my-5 bg-glass" >
-            <h1 class="fs-2 px-2 text-center text-lg-start">{{__('Presentación de Tridenta Towers')}}</h1>
+        <div class="col-11 col-lg-7 col-xxl-6 align-self-center py-4 rounded-3 shadow px-3 px-lg-4 my-0 my-lg-5 bg-glass" >
 
-            <p class="fs-6 px-2 mb-4 text-center text-lg-start">
+            {{-- Boton de cambiar lenguaje --}}
+            <ul class="nav nav-pills mb-3">
+
+                <li class="nav-item me-2">
+                  <a class="nav-link border border-light @if(app()->getLocale()=='es') active @endif" wire:navigate href="{{route('es.event.form')}}">Español</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link border border-light @if(app()->getLocale()=='en') active @endif" wire:navigate href="{{route('en.event.form')}}">English</a>
+                </li>
+            </ul>
+
+            <h1 class="fs-2 px-2">{{__('Presentación de Tridenta Towers')}}</h1>
+
+            <p class="fs-6 px-2 mb-4">
                 {{__('Te invitamos a un exclusivo evento de presentación donde conocerás nuestro nuevo desarrollo inmobiliario: Tridenta Towers, una oportunidad única de inversión y estilo de vida frente al mar.')}}
             </p>
 
             <h2 class="fs-3">{{__('Detalles del evento:')}}</h2>
-            <ul class="list-unstyled fs-6">
-                <li class="mb-2">📍 {{__('Lugar: Rooftop de de Harbor171 Torre Norte, Febronio Uribe 171, Las Glorias, Puerto Vallarta, Jalisco.')}}</li>
+            <ul class="list-unstyled fs-6 mb-4">
+                <li class="mb-2">📍 {{__('Lugar: Rooftop de Harbor171 Torre Norte, Febronio Uribe 171, Las Glorias, Puerto Vallarta, Jalisco.')}}</li>
                 <li class="mb-2">📅 {{__('Fecha: 15 de Enero a las 5:00 pm')}}</li>
                 <li class="mb-2">🍷 {{__('Incluye: Bebidas y Snacks.')}}</li>
                 <li>🚙 {{__('Valet Parking')}}</li>
             </ul>
-            <p class="mb-4 fs-5 fw-bold">{{__('Reserva tu lugar ahora completando este formulario.')}}</p>
+            <p class="mb-3 fs-5 fw-bold">{{__('Confirma tu asistencia completando este formulario.')}}</p>
     
             <form wire:submit="save">
                     
@@ -50,13 +63,17 @@
                         <select id="lang" wire:model="lang" class="form-select" required>
                             <option value="es">Español</option>
                             <option value="en">English</option>
-                            <option value="fr">Français</option>
                         </select>
                     </div>
 
                     <div class="col-12 px-0 mb-3">
                         <label for="agent">{{__('Tu agente de Domus')}}</label>
-                        <input type="text" wire:model="agent" id="agent" class="form-control" required>
+                        <select id="agent" class="form-select" wire:model="agent" required>
+                            <option value="">{{__('Selecciona uno')}}</option>
+                            @foreach ($agents as $agent)
+                                <option value="{{$agent->id}}">{{$agent->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
         
                     <div class="col-12 px-0">
