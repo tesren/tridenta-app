@@ -43,6 +43,7 @@
         })(window,document,'script','dataLayer','GTM-MMV5DJHB');</script>
         <!-- End Google Tag Manager -->
 
+        @livewireStyles
     </head>
 
     <body>
@@ -66,6 +67,7 @@
 
         @vite(['resources/js/app.js'])
 
+        @livewireScripts
     </body>
 
 </html>
