@@ -10,11 +10,17 @@ class NavBar extends Component
 {
 
     public $unit_name = '1';
+    public $contact = '';
 
     #[On('nombre-unidad')] 
     public function updateUnit($name)
     {
         $this->unit_name = $name;
+    }
+
+    public function mount()
+    {
+        $this->contact = request()->query('contact');
     }
 
     public function changeLang(){

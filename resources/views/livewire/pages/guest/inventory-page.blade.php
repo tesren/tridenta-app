@@ -6,6 +6,10 @@
         <meta name="description" content="{{__('Explora nuestro inventario de condominios en Tridenta Towers y encuentra tu residencia ideal frente al mar en Puerto Vallarta. Nuestra interfaz gráfica te permite visualizar cada unidad disponible, con detalles sobre áreas, distribución, vistas y precios. Descubre la diversidad de opciones que ofrecemos y reserva tu lugar en este exclusivo desarrollo de condominios de lujo. ¡Tu oasis costero te espera en Tridenta Towers!')}}">
     @endsection
 
+    @php
+        $contact = request()->query('contact');
+    @endphp
+
     <div class="container my-6">
         <h1>{{__('Condominios en Preventa')}}</h1>
         <p>{{__('Da clic en una sección y selecciona un condominio para ver más información')}}</p>
@@ -24,8 +28,8 @@
         </div>
 
         <div class="container input-group justify-content-end mb-3 text-end">
-            <a href="{{route('inventory')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
-            <a href="{{route('search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle" wire:navigate><i class="fa-solid fa-list"></i></a>
+            <a href="{{route('inventory', request()->query() )}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
+            <a href="{{route('search', request()->query() )}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle" wire:navigate><i class="fa-solid fa-list"></i></a>
         </div>
 
         {{-- Inventario en escritorio --}}

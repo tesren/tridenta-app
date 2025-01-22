@@ -5,6 +5,10 @@
         <meta name="description" content="{{__('Descubre Tridenta Towers, de los creadores de Harbor171, condominios frente al mar en la zona hotelera de Puerto Vallarta. Estos exclusivos condominios en preventa ofrecen un estilo de vida único con vistas panorámicas, amenidades de lujo y acceso directo a la playa. ¡Aprovecha los precios de preventa y asegura tu lugar en esta icónica torre de condominios en el paraíso!')}}">
     @endsection
 
+    @php
+        $contact = request()->query('contact');
+    @endphp
+
     <div class="container mb-6 mt-5 px-2 px-lg-0">
 
 
@@ -36,11 +40,11 @@
 
                 <div class="container input-group justify-content-start justify-content-lg-end mb-3 text-end px-0 px-lg-2">
 
-                    <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-outline-blue rounded-end-0 rounded-start-circle" title="{{__('Modo Gráfico')}}">
+                    <a href="{{route('inventory.bay', request()->query() )}}" wire:navigate class="btn btn-outline-blue rounded-end-0 rounded-start-circle" title="{{__('Modo Gráfico')}}">
                         <i class="fa-solid fa-border-all"></i>
                     </a>
 
-                    <a href="{{route('search')}}" wire:navigate class="btn btn-outline-blue rounded-start-0 rounded-end-circle" title="{{__('Modo Lista')}}">
+                    <a href="{{route('search', request()->query() )}}" wire:navigate class="btn btn-outline-blue rounded-start-0 rounded-end-circle" title="{{__('Modo Lista')}}">
                         <i class="fa-solid fa-list"></i>
                     </a>
 
@@ -57,13 +61,13 @@
         <ul class="nav nav-pills mb-5 mb-lg-4 px-2 px-lg-0" role="tablist" id="inventory-navigation">
 
             <li class="nav-item me-2" role="presentation">
-                <a href="{{route('inventory.bay')}}" wire:navigate class="nav-link @if(strpos($route, 'bay') ) active @endif" id="home-tab" role="tab" >
+                <a href="{{route('inventory.bay' , request()->query() )}}" wire:navigate class="nav-link @if(strpos($route, 'bay') ) active @endif" id="home-tab" role="tab" >
                     {{__('Vista Bahía')}}
                 </a>
             </li>
 
             <li class="nav-item" role="presentation">
-                <a href="{{route('inventory.sierra')}}" wire:navigate class="nav-link @if(strpos($route, 'sierra') ) active @endif" id="profile-tab" role="tab" >
+                <a href="{{route('inventory.sierra', request()->query() )}}" wire:navigate class="nav-link @if(strpos($route, 'sierra') ) active @endif" id="profile-tab" role="tab" >
                     {{__('Vista Sierra')}}
                 </a>
             </li>
@@ -112,7 +116,7 @@
 
                             @foreach ($section->units as $unit)
                 
-                                <a href="{{route('unit', ['name' => $unit->name]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
+                                <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact ]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
                                     <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
                                     
                                     <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
@@ -194,7 +198,7 @@
     
                                     @foreach ($section->units as $unit)
                         
-                                        <a href="{{route('unit', ['name' => $unit->name]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
+                                        <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
                                             <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
                                             
                                             <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"

@@ -4,6 +4,10 @@
         <meta name="description" content="{{__('Descubre Tridenta Towers, de los creadores de Harbor171, condominios frente al mar en la zona hotelera de Puerto Vallarta. Estos exclusivos condominios en preventa ofrecen un estilo de vida único con vistas panorámicas, amenidades de lujo y acceso directo a la playa. ¡Aprovecha los precios de preventa y asegura tu lugar en esta icónica torre de condominios en el paraíso!')}}">
     @endsection
 
+    @php
+        $contact = request()->query('contact');
+    @endphp
+
     <section class="position-relative mb-6">
 
         <img src="{{asset('img/beach-club.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 66vh; object-fit:cover; object-position:bottom;">
@@ -38,7 +42,7 @@
 
         <div class="col-12 col-lg-4 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
+            <a href="{{route('inventory.bay', request()->query() )}}" wire:navigate class="btn btn-blue px-5 my-4 my-lg-0">{{__('Ver Inventario')}}</a>
         </div>
 
         <div class="text-center mt-4 mt-lg-5">
@@ -184,7 +188,7 @@
 
         <div class="col-12 text-center align-self-center">
             <div class="mb-2">{{__('Revisa las unidades que tenemos para ti.')}}</div>
-            <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
+            <a href="{{route('inventory.bay', request()->query() )}}" wire:navigate class="btn btn-blue px-5">{{__('Ver Inventario')}}</a>
         </div>
 
     </section>
@@ -301,7 +305,7 @@
                                     <div class="mb-4">{{$plan->closing_payment}}% {{__('a la entrega física de la propiedad.')}}</div>
                                 @endisset
 
-                                <a href="{{route('inventory.bay')}}" wire:navigate class="btn btn-blue mb-3">{{__('Ver Inventario')}}</a>
+                                <a href="{{route('inventory.bay', request()->query() )}}" wire:navigate class="btn btn-blue mb-3">{{__('Ver Inventario')}}</a>
 
                                 <p class="mb-0 fs-7 fw-light">{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</p>
                 

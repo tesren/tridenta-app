@@ -7,6 +7,9 @@
         <meta name="description" content="{{__('Herramienta de búsqueda de Tridenta Towers, donde encontrar tu residencia ideal frente al mar es fácil y personalizado. Explora nuestra lista de condominios con opciones de filtrado por precio, piso, tipo y más, para encontrar exactamente lo que estás buscando. Con detalles y fotografías cautivadoras, esta búsqueda te acerca a tu hogar perfecto en el paraíso de Puerto Vallarta.')}}">
     @endsection
 
+    @php
+        $contact = request()->query('contact');
+    @endphp
 
     <div class="container mt-5 mb-4">
         <h1>{{__('Búsqueda de Condominios')}}</h1>
@@ -26,8 +29,8 @@
         </div>
 
         <div class="container input-group justify-content-end mb-4 text-end ">
-            <a href="{{route('inventory.bay')}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
-            <a href="{{route('search')}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle" wire:navigate><i class="fa-solid fa-list"></i></a>
+            <a href="{{route('inventory.bay', request()->query() )}}" class="btn btn-outline-blue rounded-end-0 rounded-start-circle" wire:navigate><i class="fa-solid fa-border-all"></i></a>
+            <a href="{{route('search', request()->query() )}}" class="btn btn-outline-blue rounded-start-0 rounded-end-circle" wire:navigate><i class="fa-solid fa-list"></i></a>
         </div>
 
         
@@ -156,7 +159,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('unit', ['name'=>$unit->name]) }}" class="btn btn-blue" target="_blank" wire:navigate rel="noopener noreferrer">
+                                    <a href="{{ route('unit', ['name'=>$unit->name, 'contact' => $contact ]) }}" class="btn btn-blue" target="_blank" wire:navigate rel="noopener noreferrer">
                                         {{__('Ver más')}}
                                     </a>
                                 </td>

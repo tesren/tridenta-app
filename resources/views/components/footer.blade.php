@@ -1,5 +1,8 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    @php
+        $contact = request()->query('contact');
+    @endphp
 
     <footer class="container-fluid bg-blue py-4 py-lg-5">
 
@@ -10,7 +13,7 @@
             </div>
     
             <div class="col-11 col-lg-3 align-self-center mb-4 mb-lg-0">
-                @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                @if ($contact != 'no')
                     <div class="fs-3">{{__('Contacto')}}</div>
         
                     <a href="mailto:info@domusvallarta.com" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
@@ -25,7 +28,7 @@
                     <img src="{{asset('img/domus-logo-white.svg')}}" alt="Logo de Domus Vallarta Inmobiliaria" class="w-100">
                 </a>
     
-                @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                @if ($contact != 'no')
                     <div class="d-flex justify-content-center mt-3">
 
                         <a href="https://www.instagram.com/domus_vallarta/" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none link-light fw-light me-3 fs-4">

@@ -4,7 +4,7 @@
 
         <div class="container-fluid">
     
-            <a class="navbar-brand" href="{{ route('home') }}" wire:navigate>
+            <a class="navbar-brand" href="{{ route('home', ['contact'=>$contact] ) }}" wire:navigate>
                 <img width="200px" src="{{asset('img/tridenta-full-logo.webp')}}" alt="Logo de Tridenta Towers">
             </a>
     
@@ -26,34 +26,34 @@
                     <ul class="navbar-nav justify-content-end justify-content-lg-center flex-grow-1 pe-3">
     
                         <li class="nav-item me-4">
-                            <a class="nav-link" href="{{ route('home') }}" wire:navigate>
+                            <a class="nav-link" href="{{ route('home', ['contact'=>$contact] ) }}" wire:navigate>
                                 {{__('Inicio')}}
                             </a>
                         </li>
     
                         <li class="nav-item me-4">
-                            <a class="nav-link" href="{{ route('inventory.bay') }}" wire:navigate>
+                            <a class="nav-link" href="{{ route('inventory.bay', ['contact'=>$contact] ) }}" wire:navigate>
                                 {{__('Inventario')}}
                             </a>
                         </li>
 
                         <li class="nav-item me-4">
-                            <a class="nav-link" href="{{ route('search') }}" wire:navigate>
+                            <a class="nav-link" href="{{ route('search', ['contact'=>$contact] ) }}" wire:navigate>
                                 {{__('Buscar')}}
                             </a>
                         </li>
 
                         @if ( count( App\Models\ConstructionUpdate::all() ) > 0 )
                             <li class="nav-item me-4">
-                                <a class="nav-link" href="{{ route('construction') }}" wire:navigate>
+                                <a class="nav-link" href="{{ route('construction', ['contact'=>$contact] ) }}" wire:navigate>
                                     {{__('Avances de Obra')}}
                                 </a>
                             </li>
                         @endif
                         
-                        @if (strpos(Route::currentRouteName(), 'event.form') === false)
+                        @if ($contact != 'no')
                             <li class="nav-item me-4">
-                                <a class="nav-link" href="{{ route('contact') }}" wire:navigate>
+                                <a class="nav-link" href="{{ route('contact', ['contact'=>$contact] ) }}" wire:navigate>
                                     {{__('Contacto')}}
                                 </a>
                             </li>

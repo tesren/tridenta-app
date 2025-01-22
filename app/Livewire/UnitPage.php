@@ -11,7 +11,6 @@ class UnitPage extends Component
 
     public function mount($name)
     {
-        $this->reset();
         $this->unit = Unit::where('name', $name)->firstOrFail();
         $this->dispatch('nombre-unidad', name:$name);
     }
