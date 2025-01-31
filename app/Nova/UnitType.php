@@ -98,6 +98,12 @@ class UnitType extends Resource
                     return $value.' m²';
                 }
             ),
+            Number::make('Descubierto', 'extra_exterior_const')->hideFromIndex()->placeholder('Metros cuadrados de la terraza descubierta')->min(0)->max(99999)->nullable()->step(0.01)
+            ->displayUsing(
+                function($value){
+                    return $value.' m²';
+                }
+            ),
             Number::make('Estacionamiento', 'parking_area')->hideFromIndex()->placeholder('Metros cuadrados del estacionamiento')->min(0)->max(99999)->nullable()->step(0.01)
             ->displayUsing(
                 function($value){
@@ -117,7 +123,7 @@ class UnitType extends Resource
                     return $value.' m²';
                 }
             )->dependsOn(
-                ['interior_const', 'exterior_const', 'parking_area', 'storage_area'],
+                ['interior_const', 'exterior_const', 'parking_area', 'storage_area', 'extra_exterior_const'],
                 function (Number $field, NovaRequest $request, FormData $formData) {
                     $total_meters = 0;
 
@@ -127,6 +133,10 @@ class UnitType extends Resource
 
                     if ($formData->exterior_const != null) {
                         $total_meters = $total_meters + $formData->exterior_const;
+                    }
+
+                    if ($formData->extra_exterior_const != null) {
+                        $total_meters = $total_meters + $formData->extra_exterior_const;
                     }
 
                     if ($formData->parking_area != null) {

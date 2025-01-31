@@ -121,16 +121,22 @@
             </div>
 
             <h2 class="fs-3">{{__('Dimensiones')}}</h2>
-            <div class="d-flex fs-5 fw-light">
-                <div>
+            <div class="row fs-5 fw-light">
+                <div class="col-12 col-lg-3 mb-2">
                     <i class="fa-solid fa-expand"></i> {{__('Interior')}}: {{$unit->unitType->interior_const}} {{__('m²')}}
                 </div>
 
-                <div class="mx-3">
-                    <i class="fa-solid fa-maximize"></i> {{__('Exterior')}}: {{$unit->unitType->exterior_const}} {{__('m²')}}
+                <div class="col-12 col-lg-3 mb-2">
+                    <i class="fa-solid fa-maximize"></i> {{__('Terraza')}}: {{$unit->unitType->exterior_const}} {{__('m²')}}
                 </div>
 
-                <div>
+                @if ($unit->unitType->extra_exterior_const)
+                    <div class="col-12 col-lg-3 mb-2">
+                        <i class="fa-solid fa-ruler-combined"></i> {{__('Descubierto')}}: {{$unit->unitType->extra_exterior_const}} {{__('m²')}}
+                    </div>
+                @endif
+
+                <div class="col-12 col-lg-3">
                     <i class="fa-solid fa-house-chimney"></i> {{__('Total')}}: {{$unit->unitType->const_total}} {{__('m²')}}
                 </div>
             </div>
@@ -154,13 +160,13 @@
             </div>
 
 
-            @if ($unit->price != 0)
+            @if ($unit->price != 0 and $unit->status == 'Disponible')
                 <h3 class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</h3> 
             @endif
 
-            {{-- <a href="#contact" class="btn btn-blue d-block">
+            <a href="#contact" class="btn btn-blue d-block">
                 {{ __('Contactar a un asesor') }}
-            </a> --}}
+            </a>
         </div>
 
     </div>
@@ -187,7 +193,7 @@
     </div>
 
     {{-- Planes de pago --}}
-    @if( $unit->status != 'Vendida' and $unit->price != 0)
+    @if( $unit->status == 'Disponible' and $unit->price != 0)
         <div class="row justify-content-evenly mb-6">
             <div class="col-12 col-lg-11 px-2 px-lg-0 order-2 order-lg-1">
                 
