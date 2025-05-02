@@ -6,9 +6,10 @@ use App\Mail\NewLead;
 use App\Models\Message;
 use Livewire\Component;
 use Livewire\Attributes\Validate; 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class ContactForm extends Component
 {
@@ -66,7 +67,7 @@ class ContactForm extends Component
         }
 
         //Envíamos webhook
-        $webhookUrl = 'https://hooks.zapier.com/hooks/catch/4710110/3fvqx5c/';
+        $webhookUrl = 'https://n8n.punto401.com/webhook/c7277fea-e8df-41b6-bbae-a3c66cbf77d5';
 
         // Datos que deseas enviar en el cuerpo de la solicitud
         $data = [
@@ -82,8 +83,11 @@ class ContactForm extends Component
             'created_at' => $msg->created_at,
         ];
 
+        $n8nUser = env('N8N_AUTH_USER');
+        $n8nPass = env('N8N_AUTH_PASS');
+        
         // Enviar la solicitud POST al webhook
-        $response = Http::post($webhookUrl, $data);
+        $response = Http::withBasicAuth($n8nUser, $n8nPass)->post($webhookUrl, $data);
 
 
         $email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');

@@ -131,6 +131,13 @@ class Unit extends Resource
                 }
             ),
 
+            URL::make('Link secundario de Youtube', 'secondary_link')->rules('nullable')->hideFromIndex()->help('Pega el link de Youtube de la vista secundaria de la unidad')
+            ->displayUsing(
+                function($value){
+                    return $this->value;
+                }
+            ),
+
             Tag::make('Planes de pago', 'paymentPlans', PaymentPlan::class)->hideFromIndex(),
 
             Images::make('Galería', 'unitgallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia()->showStatistics()

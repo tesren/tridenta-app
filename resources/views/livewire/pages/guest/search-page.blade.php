@@ -148,6 +148,9 @@
                                         {{__('Estudio')}}
                                     @else
                                         {{ $unit->unitType->bedrooms }}
+                                        @if ($unit->unitType->flexrooms > 0)
+                                            {{' + Flex'}}
+                                        @endif
                                     @endif
                                 </td>
 

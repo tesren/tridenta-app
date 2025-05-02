@@ -201,23 +201,23 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('/img/master-plan-common-areas.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                    <img src="{{asset('/img/master-plan-common-areas.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-lvl-1.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                    <img src="{{asset('/img/master-plan-lvl-1.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-gym.jpg')}}" alt="Fase 1 de Tridenta Towers" class="w-100" data-fancybox="master-plan">
+                    <img src="{{asset('/img/master-plan-nivel-3-tridenta.jpg')}}" alt="Master plan nivel 3 Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-balcony-units.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                    <img src="{{asset('/img/master-plan-balcony-units.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-rooftop.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" >
+                    <img src="{{asset('/img/master-plan-rooftop.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
             </div>
 

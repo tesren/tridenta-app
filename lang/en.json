@@ -522,5 +522,10 @@
     "Enviando, por favor espere" : "Sending, please wait",
     "Mensaje enviado existosamente" : "Message sent successfully",
     "Selecciona uno" : "Select one",
-    "Descubierto" : "Exterior"
+    "Descubierto" : "Exterior",
+    "Vista secundaria de la Unidad" : "Secondary view",
+    "Vista principal" : "Main view",
+    "Vista secundaria" : "Secondary view",
+    "Ver video" : "Watch video"
+
 }

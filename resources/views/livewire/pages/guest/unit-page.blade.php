@@ -14,29 +14,65 @@
 
     @if( count($unit_type_gallery) > 0 and isset($unit->view_path ) )
         <div class="row">
-            <div class="col-12 col-lg-8 p-1">
+            <div class="col p-1">
                 <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100 object-fit-cover" style="height: 40vh;" data-fancybox="unit-gallery">
             </div>
             
             <div class="col-12 col-lg-4 p-1 d-none d-lg-block">
                 
                 <div class="position-relative">
-                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100" data-fancybox="unit-gallery" style="height: 40vh;" data-caption="{{__('Vista de la Unidad')}} {{$unit->name}}">
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-desktop" style="height: 40vh;" data-caption="{{__('Vista de la Unidad')}} {{$unit->name}}">
     
                     @isset($unit->youtube_link)
-                        <div class="row justify-content-center position-absolute top-0 start-0 h-100">
+                        <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
                             <div class="col-12 text-center align-self-center">
-                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view" class="link-light text-decoration-none">
-                                    <i class="fa-solid fa-3x fa-play"></i>
-                                    <div class="mt-2 fw-bold">{{__('Vista de la Unidad')}}</div>
+                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view-desktop" class="link-light text-decoration-none">
+                                    <i class="fa-solid fa-4x fa-play"></i>
+                                    <div class="mt-2 fw-bold fs-4">{{__('Vista de la Unidad')}}</div>
                                 </a>
                             </div>
                         </div>
                     @endisset
+
+                    <div class="fondo-azul"></div>
                     
                 </div>
     
             </div>
+
+            @isset($unit->secondary_link)
+
+                @php
+                    if (preg_match('/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([^&\n?#]+)/', $unit->secondary_link, $matches)) {
+                        $videoId = $matches[1];
+                        $thumbnailUrl = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
+                    } else {
+                        $thumbnailUrl = asset('media/'.$unit->view_path);
+                    }
+                @endphp
+
+                <div class="col-12 col-lg-3 p-1 d-none d-lg-block">
+                    
+                    <div class="position-relative">
+                        <img src="{{ $thumbnailUrl }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
+        
+                        <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
+                            <div class="col-12 text-center align-self-center">
+                                <a href="{{$unit->secondary_link}}" data-fancybox="unit-view-desktop" class="link-light text-decoration-none">
+                                    <i class="fa-solid fa-4x fa-play"></i>
+                                    <div class="mt-2 fw-bold fs-4">{{__('Vista secundaria de la Unidad')}}</div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="fondo-azul"></div>
+                        
+                    </div>
+        
+                </div>
+                
+            @endisset
+
         </div>
     @elseif ( count($unit_type_gallery) > 0)
  
@@ -142,7 +178,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-lg-3 align-self-center text-center position-relative">
+        <div class="col-11 col-lg-3 align-self-center text-center position-relative">
 
             @php
                 if($unit->status == 'Disponible'){
@@ -170,6 +206,61 @@
         </div>
 
     </div>
+
+    {{-- Vista de la unidad solo en móvil --}}
+    @isset($unit->youtube_link)
+        <div class="row justify-content-evenly mb-6 d-flex d-lg-none">
+            <div class="col-12 col-lg-11">
+
+                <h3 class="fs-2 text-center">{{__('Vista principal')}}</h3>
+
+                <div class="position-relative ">
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
+
+                    <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
+                        <div class="col-12 text-center align-self-center">
+                            <a href="{{$unit->youtube_link}}" data-fancybox="unit-view-mobile" class="link-light text-decoration-none">
+                                <i class="fa-solid fa-4x fa-play"></i>
+                                <div class="mt-2 fw-bold fs-4">{{__('Ver video')}}</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="fondo-azul"></div>
+
+                </div>
+
+            </div>
+        </div>
+    @endisset
+
+    {{-- Vista de la unidad solo en móvil --}}
+    @isset($unit->secondary_link)
+        <div class="row justify-content-evenly mb-6 d-flex d-lg-none">
+            <div class="col-12 col-lg-11">
+
+                <h3 class="fs-2 text-center">{{__('Vista secundaria')}}</h3>                
+
+                <div class="position-relative ">
+                    <img src="{{ $thumbnailUrl }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
+
+                    <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
+                        <div class="col-12 text-center align-self-center">
+                            <a href="{{$unit->secondary_link}}" data-fancybox="unit-secondary-view" class="link-light text-decoration-none">
+                                <i class="fa-solid fa-4x fa-play"></i>
+                                <div class="mt-2 fw-bold fs-4">{{__('Ver video')}}</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="fondo-azul"></div>
+
+                </div>
+
+            </div>
+        </div>
+    @endisset
+
 
     {{-- Planos --}}
     <div class="row justify-content-evenly mb-6">
