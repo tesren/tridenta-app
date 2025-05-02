@@ -294,7 +294,11 @@
                                 @endisset
 
                                 @isset($plan->second_payment)
-                                    <div class="mb-4">{{$plan->second_payment}}% {{__('sesenta días después del enganche.')}}</div>
+                                    <div class="mb-4">{{$plan->second_payment}}% {{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->second_payment_months] ) }}</div>
+                                @endisset
+
+                                @isset($plan->third_payment)
+                                    <div class="mb-4">{{$plan->third_payment}}% {{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->third_payment_months] ) }}</div>
                                 @endisset
 
                                 @isset($plan->months_percent)
@@ -316,12 +320,12 @@
                         
                     </div>
 
-                    <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselPayplans" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPayplans" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
 
-                    <button class="carousel-control-next d-none" type="button" data-bs-target="#carouselPayplans" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselPayplans" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>

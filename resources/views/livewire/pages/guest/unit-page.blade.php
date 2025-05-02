@@ -56,21 +56,20 @@
                     <div class="position-relative">
                         <img src="{{ $thumbnailUrl }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
         
-                        <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
-                            <div class="col-12 text-center align-self-center">
-                                <a href="{{$unit->secondary_link}}" data-fancybox="unit-view-desktop" class="link-light text-decoration-none">
-                                    <i class="fa-solid fa-4x fa-play"></i>
-                                    <div class="mt-2 fw-bold fs-4">{{__('Vista secundaria de la Unidad')}}</div>
-                                </a>
+                            <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
+                                <div class="col-12 text-center align-self-center">
+                                    <a href="{{$unit->secondary_link}}" data-fancybox="unit-view-desktop" class="link-light text-decoration-none">
+                                        <i class="fa-solid fa-4x fa-play"></i>
+                                        <div class="mt-2 fw-bold fs-4">{{__('Vista secundaria de la Unidad')}}</div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
                         <div class="fondo-azul"></div>
                         
                     </div>
         
                 </div>
-                
             @endisset
 
         </div>
@@ -143,12 +142,8 @@
 
                 <div>
                     <i class="fa-solid fa-arrow-turn-up"></i> 
-                    @if ($unit->section_id == 1)
-                        @if ($unit->floor == 1)
-                            {{__('Planta Baja')}}
-                        @else
-                            {{__('Planta Alta')}}
-                        @endif
+                    @if ($unit->floor == 0)
+                        {{__('Planta Baja')}}
                     @else
                         <span class="d-none d-lg-inline fw-light">{{__('Nivel')}}</span> {{$unit->floor}}
                     @endif
@@ -241,6 +236,15 @@
 
                 <h3 class="fs-2 text-center">{{__('Vista secundaria')}}</h3>                
 
+                @php
+                    if (preg_match('/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([^&\n?#]+)/', $unit->secondary_link, $matches)) {
+                        $videoId = $matches[1];
+                        $thumbnailUrl = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
+                    } else {
+                        $thumbnailUrl = asset('media/'.$unit->view_path);
+                    }
+                @endphp
+
                 <div class="position-relative ">
                     <img src="{{ $thumbnailUrl }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
 
@@ -324,6 +328,7 @@
                     <div class="tab-content position-relative" id="pills-tabContent">
             
                         @php $i = 0; @endphp
+
                         @foreach ($unit->paymentPlans as $plan)
         
                             @php
@@ -416,9 +421,19 @@
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
                                             {{__('Segundo pago')}} ({{$plan->second_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('Sesenta días después del enganche')}}.</div>
+                                            <div class="fs-7 fw-light d-none d-lg-block">{{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->second_payment_months] ) }}</div>
                                         </div>
                                         <div class="fs-4">${{ number_format( $special_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+
+                                @isset($plan->third_payment)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{__('Tercer pago')}} ({{$plan->third_payment}}%)
+                                            <div class="fs-7 fw-light d-none d-lg-block">{{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->third_payment_months] ) }}</div>
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->third_payment/100) ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
                                 

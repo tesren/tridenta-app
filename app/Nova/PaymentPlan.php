@@ -99,6 +99,21 @@ class PaymentPlan extends Resource
                 }
             ),
 
+            Number::make('Momento del segundo pago', 'second_payment_months')->min(0)->max(100)->help('Cuantos meses después de la firma del contrato se hace el segundo pago')->hideFromIndex(),
+
+            Number::make('Tercer Pago', 'third_payment')->sortable()->min(0)->max(100)->displayUsing(
+                function($value){
+                    if($value == null){
+                        return $value;
+                    }else{
+                        return $value.'%';
+                    }
+                }
+            ),
+
+            Number::make('Momento del tercer pago', 'third_payment_months')->min(0)->max(100)->help('Cuantos meses después de la firma del contrato se hace el tercer pago')->hideFromIndex(),
+
+
             Number::make('% Total de los Pagos Mensuales', 'months_percent')->min(0)->max(100)->help('Porcentaje total de los pagos mensuales')->sortable()->displayUsing(
                 function($value){
                     if($value == null){
