@@ -23,6 +23,10 @@ class ContactForm extends Component
 
     public $phone = '';
     public $message = '';
+
+    #[Validate('required')] 
+    public $contact_method = '';
+    
     public $url = '';
 
     public HoneypotData $extraFields;
@@ -49,6 +53,7 @@ class ContactForm extends Component
         $msg->name = $this->full_name;
         $msg->email = $this->email;
         $msg->phone = $this->phone;
+        $msg->method = $this->contact_method;
         $msg->content = $this->message;
         $msg->url = $this->url;
 
@@ -67,7 +72,7 @@ class ContactForm extends Component
         }
 
         //Envíamos webhook
-        $webhookUrl = 'https://n8n.punto401.com/webhook/c7277fea-e8df-41b6-bbae-a3c66cbf77d5';
+        $webhookUrl = 'https://cloud.punto401.com/webhook/c7277fea-e8df-41b6-bbae-a3c66cbf77d5';
 
         // Datos que deseas enviar en el cuerpo de la solicitud
         $data = [
@@ -75,6 +80,7 @@ class ContactForm extends Component
             'email' => $msg->email,
             'phone' => $msg->phone,
             'url' => $msg->url,
+            'method' => $msg->method,
             'content' => $msg->content,
             'interest' => 'Condominios',
             'development' => 'Tridenta Towers',

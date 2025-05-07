@@ -54,6 +54,16 @@
                         <label for="phone">{{__('Teléfono')}}</label>
                         <input type="tel" wire:model="phone" id="phone" class="form-control mb-3">
                     </div>
+
+                    <div class="col-12">
+                        <label for="contact_method">{{__('¿Cómo le gustaría ser contactado?')}}</label>
+                        <select class="form-select mb-3" wire:model="contact_method" id="contact_method" required>
+                            <option selected value="">{{__('Seleccione uno')}}</option>
+                            <option value="Email">{{__('Email')}}</option>
+                            <option value="Llamada">{{__('Llamada')}}</option>
+                            <option value="WhatsApp">{{__('WhatsApp')}}</option>
+                        </select>                        
+                    </div>
         
                     <div class="col-12">
                         <label for="phone">{{__('Mensaje')}}</label>
