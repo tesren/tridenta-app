@@ -27,14 +27,14 @@
 
     <section class="row justify-content-center position-relative mb-6">
 
-        <img class="position-absolute top-0 start-0 px-0 col-5 col-lg-3" src="{{asset('img/diagonal-stripes.webp')}}" alt="">
-        <img class="position-absolute top-50 end-0 px-0 col-3 col-lg-2" src="{{asset('img/half-circle.webp')}}" alt="">
+        <img class="position-absolute top-0 start-0 px-0 col-5 col-lg-3 z-2" src="{{asset('img/diagonal-stripes.webp')}}" alt="">
+        <img class="position-absolute top-50 end-0 px-0 col-3 col-lg-2 z-2" src="{{asset('img/half-circle.webp')}}" alt="">
 
         <div class="col-12 col-lg-8 col-xxl-5">
             <h6 class="fs-2 text-brown px-2 mb-0 text-center text-lg-start mt-5">{{__('¿Te gustaría saber más?')}}</h6>
             <p class="fs-6 text-lightbrown px-2 mb-4 text-center text-lg-start">{{__('Completa el formulario para enviarnos un mensaje.')}}</p>
     
-            <form wire:submit="save">
+            <form wire:submit="save" class="position-relative z-3">
                     
                 <div class="row">
         
