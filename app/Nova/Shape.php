@@ -95,7 +95,7 @@ class Shape extends Resource
                         $field->hide();
                     }
                 }
-            ),
+            )->step(0.01),
 
             Number::make('Rect Y', 'rect_y')->help('Posición en Y del rectángulo')
             ->dependsOn(
@@ -108,7 +108,7 @@ class Shape extends Resource
                         $field->hide();
                     }
                 }
-            ),
+            )->step(0.01),
 
             Number::make('Ancho', 'width')->help('Ancho del rectángulo')
             ->dependsOn(
@@ -121,7 +121,7 @@ class Shape extends Resource
                         $field->hide();
                     }
                 }
-            ),
+            )->step(0.01),
 
             Number::make('Alto', 'height')->help('Alto del rectángulo')
             ->dependsOn(
@@ -134,10 +134,10 @@ class Shape extends Resource
                         $field->hide();
                     }
                 }
-            ),
+            )->step(0.01),
 
-            Number::make('Texto X', 'text_x')->nullable()->min(0)->step(0.1)->help('Posición en X del texto del polígono'),
-            Number::make('Texto Y', 'text_y')->nullable()->min(0)->step(0.1)->help('Posición en Y del texto del polígono'),
+            Number::make('Texto X', 'text_x')->nullable()->min(0)->step(0.01)->help('Posición en X del texto del polígono'),
+            Number::make('Texto Y', 'text_y')->nullable()->min(0)->step(0.01)->help('Posición en Y del texto del polígono'),
         ];
     }
 

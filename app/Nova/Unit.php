@@ -22,6 +22,7 @@ use Laravel\Nova\Fields\FormData;
 use App\Nova\Actions\ChangeStatus;
 use Laravel\Nova\Fields\BelongsTo;
 use App\Nova\Actions\ChangeSection;
+use App\Nova\Actions\ChangeUnitType;
 use App\Nova\Actions\ChangeUnitView;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Nova\Actions\AssignPaymentPlan;
@@ -78,7 +79,7 @@ class Unit extends Resource
 
             Text::make('Unidad', 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s]+$/')->sortable()->placeholder('Nombre o número de la unidad')->showOnPreview(),
 
-            BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable()->showOnPreview(),
+            BelongsTo::make('Tipo de Unidad', 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable()->showOnPreview()->sortable(),
 
             //BelongsTo::make('Torre', 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable()->showCreateRelationButton(),
 
@@ -214,6 +215,7 @@ class Unit extends Resource
             new AssignPaymentPlan,
             new ChangeStatus,
             new ChangeSection,
+            new ChangeUnitType,
         ];
     }
 }
