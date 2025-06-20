@@ -117,7 +117,13 @@
                             @foreach ($section->units as $unit)
                 
                                 <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact ]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
-                                    <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                    @isset($unit->shape->form_type)
+                                        @if ($unit->shape->form_type == 'rect')
+                                            <rect x="{{$unit->shape->rect_x ?? '0'}}" y="{{$unit->shape->rect_y ?? '0'}}" width="{{$unit->shape->width ?? '0'}}" height="{{$unit->shape->height ?? '0'}}"/>
+                                        @else
+                                            <polygon class="" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                        @endif
+                                    @endisset
                                     
                                     <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
                                         font-size="30" font-weight="bold" fill="#fff" class="fw-light">
@@ -199,7 +205,13 @@
                                     @foreach ($section->units as $unit)
                         
                                         <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
-                                            <polygon points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                            @isset($unit->shape->form_type)
+                                                @if ($unit->shape->form_type == 'rect')
+                                                    <rect x="{{$unit->shape->rect_x ?? '0'}}" y="{{$unit->shape->rect_y ?? '0'}}" width="{{$unit->shape->width ?? '0'}}" height="{{$unit->shape->height ?? '0'}}"/>
+                                                @else
+                                                    <polygon class="" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                                @endif
+                                            @endisset
                                             
                                             <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
                                                 font-size="{{$font_size}}" font-weight="bold" fill="#fff" class="fw-light">

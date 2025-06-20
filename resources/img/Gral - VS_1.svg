@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1081 1921">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 4.76px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 48px;
+      }
+
+      .cls-4 {
+        fill: #00923d;
+        mix-blend-mode: multiply;
+      }
+
+      .cls-5 {
+        isolation: isolate;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g class="cls-5">
+    <g id="Capa_2" data-name="Capa 2">
+      <g id="VS_-_Front" data-name="VS - Front">
+        <g>
+          <g>
+            <polygon class="cls-4" points="260.1 1343.45 898.1 1395.45 884.1 1873.11 255.1 1879.45 260.1 1343.45"/>
+            <polygon class="cls-1" points="260.1 1343.45 898.1 1395.45 884.1 1873.11 255.1 1879.45 260.1 1343.45"/>
+          </g>
+          <g>
+            <polygon class="cls-4" points=""/>
+            <polygon class="cls-1" points="898.1 1395.45 892.76 882.11 268.56 772.17 260.1 1343.45 898.1 1395.45"/>
+          </g>
+          <g>
+            <polygon class="cls-4" points=""/>
+            <polygon class="cls-1" points="892.76 882.11 892.76 437.11 260.1 213.11 268.56 772.17 892.76 882.11"/>
+          </g>
+          <text class="cls-3" transform="translate(481.73 1625.53)"><tspan class="cls-6" x="0" y="0">S</tspan><tspan x="23.95" y="0">e</tspan><tspan class="cls-7" x="48" y="0">c</tspan><tspan x="69.21" y="0">ción 1</tspan></text>
+          <text class="cls-3" transform="translate(484.23 1098.9)"><tspan class="cls-6" x="0" y="0">S</tspan><tspan x="23.95" y="0">e</tspan><tspan class="cls-7" x="48" y="0">c</tspan><tspan x="69.21" y="0">ción 2</tspan></text>
+          <text class="cls-3" transform="translate(506.6 601.42)"><tspan class="cls-6" x="0" y="0">S</tspan><tspan x="23.95" y="0">e</tspan><tspan class="cls-7" x="48" y="0">c</tspan><tspan x="69.21" y="0">ción 3</tspan></text>
+          <rect class="cls-2" x=".5" y=".5" width="1080" height="1920"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

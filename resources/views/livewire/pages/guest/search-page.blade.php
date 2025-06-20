@@ -47,7 +47,7 @@
                             <select class="form-select" id="floor" wire:model="floor" aria-label="{{__('Piso')}}">
                               <option value="0">{{__('Cualquier piso')}}</option>
         
-                              @for ($i=1; $i<26; $i++)
+                              @for ($i=1; $i<29; $i++)
                                 <option value="{{$i}}">{{$i}}</option>
                               @endfor
         
@@ -71,12 +71,13 @@
                             <select class="form-select" id="min_price" wire:model="min_price" aria-label="{{__('Precio min.')}}">
                                 <option value="1">{{__('Sin mínimo')}}</option>
                                 @php
-                                    $minPriceStart = 300000;
+                                    $minPriceStart = 200000;
                                     $maxPrice = 900000;
                                 @endphp
                                 @for($price = $minPriceStart; $price <= $maxPrice; $price += 100000)
                                     <option value="{{ $price }}">${{ number_format($price / 1000) }}k</option>
                                 @endfor
+                                    <option value="1000000">$1m</option>
                             </select>
                             <label for="min_price">{{__('Precio min.')}}</label>
                         </div>
@@ -85,13 +86,14 @@
                             <select class="form-select" id="max_price" wire:model="max_price" aria-label="{{__('Precio max.')}}">
                                 <option value="9999999999">{{__('Sin máximo')}}</option>
                                 @php
-                                    $maxPriceStart = 400000;
+                                    $maxPriceStart = 300000;
                                     $maxPrice = 900000;
                                 @endphp
                                 @for($price = $maxPriceStart; $price <= $maxPrice; $price += 100000)
                                     <option  value="{{ $price }}">${{ number_format($price / 1000) }}k</option>
                                 @endfor
                                     <option value="1000000">$1m</option>
+                                    <option value="1100000">$1.1m</option>
                             </select>
                             <label for="max_price">{{__('Precio max.')}}</label>
                         </div>

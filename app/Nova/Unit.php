@@ -21,6 +21,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\FormData;
 use App\Nova\Actions\ChangeStatus;
 use Laravel\Nova\Fields\BelongsTo;
+use App\Nova\Actions\ChangeSection;
 use App\Nova\Actions\ChangeUnitView;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Nova\Actions\AssignPaymentPlan;
@@ -212,6 +213,7 @@ class Unit extends Resource
         return [
             new AssignPaymentPlan,
             new ChangeStatus,
+            new ChangeSection,
         ];
     }
 }

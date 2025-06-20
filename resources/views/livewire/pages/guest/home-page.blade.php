@@ -10,7 +10,7 @@
 
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/beach-club.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 66vh; object-fit:cover; object-position:bottom;">
+        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 66vh; object-fit:cover;">
 
         <div class="bg-black-gradient"></div>
 
@@ -57,7 +57,7 @@
     <section class="row mb-6" title="{{__('Galería')}}" id="gallery-section">
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('/img/lobby-tridenta.jpeg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('img/home-img-new.jpg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 start-0 text-white ms-5 mb-4 fw-bold" style="text-shadow: 1px 1px 2px black;">
                 {{__('Galería')}}
             </div>
@@ -65,25 +65,25 @@
         </div>
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('/img/beach-club-pools-tridenta.jpeg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('img/contact-img.jpg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('/img/tennis-tridenta.jpeg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('img/payplans-bg.jpg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('/img/pool-tridenta.jpeg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
-            <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
+            <img src="{{asset('img/phase-1-iso.jpg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
+            {{-- <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
                 <a href="#gallery-1" class="btn btn-light rounded-0 shadow-5"><i class="fa-regular fa-images"></i> {{__('Galería Completa')}}</a>
-            </div>
+            </div> --}}
         </div>
 
         
-        <img src="{{asset('/img/inventory-sierra-new.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+{{--         <img src="{{asset('/img/inventory-sierra-new.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
         <img src="{{asset('/img/inventory-bahia.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">
-        <img src="{{asset('img/vista-aerea.jpg ')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        <img src="{{asset('img/vista-aerea.jpg ')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">    --}}
         
 
         <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
@@ -164,21 +164,25 @@
                 $blueprints = $type->getMedia('blueprints');
             @endphp
 
-            <div class="col-12 col-lg-4 mb-3 mb-lg-4 p-2 position-relative text-center">
-                <img src="{{ $blueprints[0]->getUrl('medium') }}" alt="Tipo de Unidad Tridenta" data-fancybox="unit-types" class="w-100 object-fit-cover" style="height: 400px;">
-                <a href="#unit-types-{{$i}}" class="unit-type-hover d-flex justify-content-center text-decoration-none w-100">
-                    <div class="text-center align-self-center fs-1">
-                        {{__('Tipo')}} {{ $type->name }}
-                        @if ($type->bedrooms < 1)
-                            <div class="fs-5 fw-light">{{__('Estudio')}}</div>
-                        @elseif($type->bedrooms == 1)
-                            <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámara')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
-                        @else
-                            <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámaras')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
-                        @endif
-                    </div>
-                </a>
-            </div>
+            @if ( !$blueprints->isEmpty() )
+                
+                <div class="col-12 col-lg-4 mb-3 mb-lg-4 p-2 position-relative text-center">
+                    <img src="{{ $blueprints[0]->getUrl('medium') }}" alt="Tipo de Unidad Tridenta" data-fancybox="unit-types" class="w-100 object-fit-cover" style="height: 400px;">
+                    <a href="#unit-types-{{$i}}" class="unit-type-hover d-flex justify-content-center text-decoration-none w-100">
+                        <div class="text-center align-self-center fs-1">
+                            {{__('Tipo')}} {{ $type->name }}
+                            @if ($type->bedrooms < 1)
+                                <div class="fs-5 fw-light">{{__('Estudio')}}</div>
+                            @elseif($type->bedrooms == 1)
+                                <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámara')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
+                            @else
+                                <div class="fs-5 fw-light">{{ $type->bedrooms }} {{__('Recámaras')}} - {{$type->bathrooms}} {{__('Baños')}}</div> 
+                            @endif
+                        </div>
+                    </a>
+                </div>
+
+            @endif
 
             @php
                 $i++;
@@ -201,24 +205,18 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('/img/master-plan-common-areas.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                    <img src="{{asset('/img/phase-1-master-plan.jpg')}}" alt="Master Plan de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-lvl-1.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                    <img src="{{asset('/img/floor-plans.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-nivel-3-tridenta.jpg')}}" alt="Master plan nivel 3 Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                    <img src="{{asset('/img/floor-isometric.jpg')}}" alt="Isométrico Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
-                <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-balcony-units.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="{{asset('/img/master-plan-rooftop.jpg')}}" alt="Rooftops de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
-                </div>
+                
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMasterPlan" data-bs-slide="prev">
@@ -267,9 +265,9 @@
     </section>
 
     {{-- Plan de pago --}}
-    <section class="position-relative">
+    <section class="position-relative mb-6">
 
-        <img src="{{asset('/img/street.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="max-height: 85vh; object-position:bottom">
+        <img src="{{asset('img/payplans-bg.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="max-height: 85vh; object-position:bottom">
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             
@@ -336,7 +334,7 @@
 
     </section>
 
-    @livewire('contact-form')
+    <div class="mb-6">@livewire('contact-form')</div>
 
     @script
         <script>

@@ -25,7 +25,7 @@ class SearchPage extends Component
     public function render()
     {
         
-        $units = Unit::where('price', '>' ,$this->min_price)->where('price','<', $this->max_price);
+        $units = Unit::where('price', '>' ,$this->min_price)->where('price','<', $this->max_price)->where('status', '!=', 'Vendida');
 
         if( $this->floor != 0 ){
             $units = $units->where('floor', $this->floor);
@@ -38,26 +38,26 @@ class SearchPage extends Component
             switch($bedrooms){
 
                 case 1:
-                    $units = $units->where('unit_type_id', 1,2);
+                    $units = $units->where('unit_type_id', 20);
                 break;
 
                 case 2:
-                    $units = $units->whereIn('unit_type_id', [3,4,5,6,7,8] );
+                    $units = $units->whereIn('unit_type_id', [17,18,19,25] );
                 break;
 
                 case 3:
-                    $units = $units->whereIn('unit_type_id', [9,10] );
+                    $units = $units->whereIn('unit_type_id', [16,24] );
                 break;
 
                 case 10:
-                    $units = $units->where('unit_type_id', 11);
+                    $units = $units->whereIn('unit_type_id', [21,22,23]);
                 break;
 
             }
             
         }
 
-        $units = $units->paginate(10);
+        $units = $units->orderBy('price', 'asc')->paginate(15);
 
         
         return view('livewire.pages.guest.search-page', compact('units'))->layout('layouts.public-base');

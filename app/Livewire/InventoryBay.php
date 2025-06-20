@@ -19,7 +19,7 @@ class InventoryBay extends Component
     public function render()
     {
         $sections = Section::where('name', 'Vista Bahía')->get();
-        $img_view_path = '/img/inventory-bahia.webp';
+        $img_view_path = '/img/vista-bahia-nuevo.webp';
 
         return view('livewire.pages.guest.inventory', compact('sections', 'img_view_path'))->layout('layouts.public-base');
     }
