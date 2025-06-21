@@ -35,7 +35,7 @@
         <div class="col-12 col-lg-5 text-darkblue">
             <h2>{{__('Condominios frente al mar')}}</h2>
             <p>
-                {{__('Descubra nuestros 11 tipos de unidades de hasta')}} 144.54m².<br><br>
+                {{__('Descubra nuestros 5 tipos de unidades que van desde :minsize m² hasta :maxsize', [ 'minsize'=>42.44, 'maxsize'=>149.45 ]) }}.<br><br>
                 {{__('Con una excelente ubicación en Puerto Vallarta, uno de los mejores destinos turísticos de México, con vista al océano e increíbles amenidades.')}}
             </p>
         </div>
@@ -65,12 +65,12 @@
         </div>
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/contact-img.jpg')}}" alt="Motor Lobby Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('img/tridenta-render-oficial.webp')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/payplans-bg.jpg')}}" alt="Vista Trasera Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('img/payplans-bg.jpg')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
         <div class="col-12 col-lg-8 p-1 position-relative">
@@ -116,35 +116,35 @@
                 <div class="fs-6 fw-light">{{__('Lobby')}}</div>
             </div>
             
-            <div class="col me-4 mb-3">
+            {{-- <div class="col me-4 mb-3">
                 <i class="fa-solid fa-3x fa-fire"></i>
                 <div class="fs-6 fw-light">{{__('Asadores')}}</div>
-            </div>
-            {{-- 
+            </div> --}}
+            
             <div class="col me-4 mb-3">
-                <i class="fa-solid fa-3x fa-water"></i>
-                <div class="fs-6 fw-light">{{__('Río lento')}}</div>
-            </div>--}}
+                <i class="fa-solid fa-3x fa-car"></i>
+                <div class="fs-6 fw-light">{{__('Estacionamiento')}}</div>
+            </div>
 
             <div class="col me-4 mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="55px" fill="#081D3F"><path d="M744-80 511-312l-28 28q-23 23-52.5 35T370-237q-31 0-61-12t-53-35L87-454q-23-23-35-52.5T40-567q0-31 12-60.5T87-680l113-113q23-23 52.5-35t60.5-12q31 0 60.5 12t52.5 35l170 169q23 23 35 53t12 61q0 31-12 60.5T596-397l-28 28 232 233-56 56ZM370-317q15 0 29.5-5.5T426-340l114-114q12-11 17.5-26t5.5-30q0-15-5.5-30T540-567L370-736q-11-12-26-18t-30-6q-15 0-30 6t-27 18L144-623q-12 12-17.5 26.5T121-567q0 15 5.5 30t17.5 27l170 170q11 12 26 17.5t30 5.5ZM207-516q13 0 21.5-8.5T237-546q0-13-8.5-21.5T207-576q-13 0-21.5 8.5T177-546q0 13 8.5 21.5T207-516Zm64-63q13 0 21.5-8.5T301-609q0-13-8.5-21.5T271-639q-13 0-21.5 8.5T241-609q0 13 8.5 21.5T271-579Zm7 134q13 0 21.5-8.5T308-475q0-13-8.5-21.5T278-505q-13 0-21.5 8.5T248-475q0 13 8.5 21.5T278-445Zm56-198q13 0 21.5-8.5T364-673q0-13-8.5-21.5T334-703q-13 0-21.5 8.5T304-673q0 13 8.5 21.5T334-643Zm8 135q13 0 21.5-8.5T372-538q0-13-8.5-21.5T342-568q-13 0-21.5 8.5T312-538q0 13 8.5 21.5T342-508Zm6 134q13 0 21.5-8.5T378-404q0-13-8.5-21.5T348-434q-13 0-21.5 8.5T318-404q0 13 8.5 21.5T348-374Zm57-198q13 0 21.5-8.5T435-602q0-13-8.5-21.5T405-632q-13 0-21.5 8.5T375-602q0 13 8.5 21.5T405-572Zm7 134q13 0 21.5-8.5T442-468q0-13-8.5-21.5T412-498q-13 0-21.5 8.5T382-468q0 13 8.5 21.5T412-438Zm64-64q13 0 21.5-8.5T506-532q0-13-8.5-21.5T476-562q-13 0-21.5 8.5T446-532q0 13 8.5 21.5T476-502Zm304-98q-58 0-99-41t-41-99q0-58 41-99t99-41q58 0 99 41t41 99q0 58-41 99t-99 41Zm0-80q25 0 42.5-17.5T840-740q0-25-17.5-42.5T780-800q-25 0-42.5 17.5T720-740q0 25 17.5 42.5T780-680ZM342-538Zm438-202Z"/></svg>
                 <div class="fs-6 fw-light">{{__('Canchas de Padel')}}</div>
             </div> 
 
-            <div class="col me-4 mb-3">
+            {{-- <div class="col me-4 mb-3">
                 <i class="fa-solid fa-3x fa-children"></i>
                 <div class="fs-6 fw-light">{{__('Área para niños')}}</div>
-            </div>
+            </div> --}}
 
             <div class="col me-4 mb-3">
                 <i class="fa-solid fa-3x fa-dumbbell"></i>
                 <div class="fs-6 fw-light">{{__('Gimnasio')}}</div>
             </div>
 
-            {{-- <div class="col me-4 mb-3">
-                <i class="fa-solid fa-3x fa-dog"></i>
-                <div class="fs-6 fw-light">{{__('Parque para Mascotas')}}</div>
-            </div> --}}
+            <div class="col me-4 mb-3">
+                <i class="fa-solid fa-3x fa-building"></i>
+                <div class="fs-6 fw-light">{{__('Rooftop')}}</div>
+            </div>
             
         </div>
 
@@ -209,6 +209,14 @@
                 </div>
 
                 <div class="carousel-item">
+                    <img src="{{asset('img/tridenta-pb.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="{{asset('img/tridenta-n1.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                </div>
+
+                <div class="carousel-item">
                     <img src="{{asset('/img/floor-plans.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
@@ -264,14 +272,14 @@
 
     </section>
 
-    {{-- Plan de pago --}}
+    {{-- Planes de pago --}}
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/payplans-bg.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="max-height: 85vh; object-position:bottom">
+        <img src="{{asset('img/payplans-bg.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="min-height:60vh; max-height: 85vh; object-position:bottom">
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             
-            <div class="col-12 col-lg-6 col-xxl-5 align-self-center bg-white p-0 text-center shadow-5">
+            <div class="col-11 col-lg-6 col-xxl-5 align-self-center bg-white p-0 text-center shadow-5">
 
                 <div id="carouselPayplans" class="carousel slide carousel-dark p-4 p-lg-5">
 

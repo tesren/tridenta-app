@@ -129,10 +129,10 @@
                         {{$unit->unitType->bedrooms}} 
                         <span class="d-none d-lg-inline fw-light">
                             {{__('Recámaras')}}
-                            @if ($unit->unitType->flexrooms > 0)
-                                {{__(' + Flex')}}
-                            @endif
                         </span> 
+                        @if ($unit->unitType->flexrooms > 0)
+                            {{__(' + D')}}
+                        @endif
                     @endif
                 </div>
 
