@@ -216,12 +216,12 @@
                     <img src="{{asset('img/tridenta-n1.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
-                <div class="carousel-item">
+                {{-- <div class="carousel-item">
                     <img src="{{asset('/img/floor-plans.jpg')}}" alt="Planos de Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
-                </div>
+                </div> --}}
 
                 <div class="carousel-item">
-                    <img src="{{asset('/img/floor-isometric.jpg')}}" alt="Isométrico Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
+                    <img src="{{asset('/img/floor-render.jpg')}}" alt="Isométrico Tridenta Towers" class="w-100" data-fancybox="master-plan" loading="lazy">
                 </div>
 
                 
