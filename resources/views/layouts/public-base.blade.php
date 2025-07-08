@@ -46,7 +46,7 @@
         @livewireStyles
     </head>
 
-    <body>
+    <body class="position-relative">
 
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMV5DJHB"

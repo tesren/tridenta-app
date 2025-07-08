@@ -1,4 +1,4 @@
-<div>
+<div class="mb-5 mb-lg-0">
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     @php
         $contact = request()->query('contact');
@@ -48,7 +48,7 @@
     
     </footer>
     
-    <div class="p-2 bg-lightblue text-center">
+    <div class="px-2 pt-2 pb-3 pb-lg-2 bg-lightblue text-center">
         <i class="fa-regular fa-copyright"></i> Copyright {{date('Y')}} {{__('Todos los derechos reservados')}} | <a href="{{route('privacy.policy')}}" wire:navigate class="link-light fw-light">{{__('Aviso de Privacidad')}}</a>
          | 
         <a href="https://punto401.com" class="link-light fw-light text-decoration-none">
