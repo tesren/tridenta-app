@@ -2,11 +2,12 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PaymentPlan extends Resource
 {
@@ -72,7 +73,6 @@ class PaymentPlan extends Resource
                 }
             ),
 
-            //Solo en preventa privada 
             Number::make('Descuento adicional', 'additional_discount')->nullable()->min(0)->max(100)->hideFromIndex()->placeholder('Se descuenta al precio que ya tiene descuento')->displayUsing(
                 function($value){
                     if($value != null){
@@ -84,6 +84,12 @@ class PaymentPlan extends Resource
             ),
 
             Number::make('Enganche', 'down_payment')->min(0)->max(100)->rules('required')->placeholder('Porcentaje de enganche')->sortable()->displayUsing(
+                function($value){
+                    return $value.'%';
+                }
+            ),
+
+            Number::make('Pago al inicio de la construcción', 'starting_const')->min(0)->max(100)->placeholder('Porcentaje del pago')->hideFromIndex()->displayUsing(
                 function($value){
                     return $value.'%';
                 }
@@ -101,6 +107,8 @@ class PaymentPlan extends Resource
 
             Number::make('Momento del segundo pago', 'second_payment_months')->min(0)->max(100)->help('Cuantos meses después de la firma del contrato se hace el segundo pago')->hideFromIndex(),
 
+            Boolean::make('Pagos durante la construcción', 'second_payment_const')->hideFromIndex()->help('Si se hacen los pagos después de que se inicia la construcción o después de la firma del contrato'),
+
             Number::make('Tercer Pago', 'third_payment')->sortable()->min(0)->max(100)->displayUsing(
                 function($value){
                     if($value == null){
@@ -112,6 +120,7 @@ class PaymentPlan extends Resource
             ),
 
             Number::make('Momento del tercer pago', 'third_payment_months')->min(0)->max(100)->help('Cuantos meses después de la firma del contrato se hace el tercer pago')->hideFromIndex(),
+            Boolean::make('Pagos durante la construcción', 'third_payment_const')->hideFromIndex()->help('Si se hacen los pagos después de que se inicia la construcción o después de la firma del contrato'),
 
 
             Number::make('% Total de los Pagos Mensuales', 'months_percent')->min(0)->max(100)->help('Porcentaje total de los pagos mensuales')->sortable()->displayUsing(
@@ -126,7 +135,9 @@ class PaymentPlan extends Resource
 
             Number::make('# Mensualidades', 'monthly_payments')->min(0)->max(200)->sortable()->nullable()->help('Cantidad de pagos mensuales'),
 
-            Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago ginal')->rules('required')->sortable()->displayUsing(
+            Boolean::make('Pagos durante la construcción', 'months_during_const')->hideFromIndex()->help('Marcar si los pagos mensuales se hacen durante la construcción'),
+
+            Number::make('Pago final', 'closing_payment')->min(0)->max(100)->placeholder('Porcentaje del Pago final')->rules('required')->sortable()->displayUsing(
                 function($value){
                     return $value.'%';
                 }

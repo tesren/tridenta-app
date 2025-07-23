@@ -532,6 +532,8 @@
     "Seleccione uno" : "Select one",
     "Llamada" : "Phone Call",
     "Asadores" : "BBQ Grills",
-    "Canchas de Padel" : "Padel Courts"
-
+    "Canchas de Padel" : "Padel Courts",
+    "Precio especial con 5% de descuento adicional" : "Special price with 5% additional discount",
+    "A los :months meses después del incio de la obra.": ":months months after the start of construction.",
+    "Pagos mensuales durante la construcción" : "Monthly payments during construction"
 }

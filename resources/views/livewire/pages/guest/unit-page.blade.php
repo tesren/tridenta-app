@@ -352,7 +352,7 @@
 
                                 @if ($plan->discount > 0 and $plan->additional_discount > 0)
                                     <div class="py-4 bg-blue text-center">
-                                        <div>{{__('Precio especial de Preventa Privada con 5% de descuento adicional')}}</div>
+                                        <div>{{__('Precio especial con 5% de descuento adicional')}}</div>
                                         <div class="fs-2">${{ number_format($special_price) }} {{ $unit->currency }}</div>
                                     </div>
                                 @else
@@ -416,12 +416,29 @@
                                         <div class="fs-4">${{ number_format( $special_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
+
+                                @isset($plan->starting_const)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{__('Al inicio de obra')}} ({{$plan->starting_const}}%)
+                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('Pago al momento que inicia la construcción')}}.</div>
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->starting_const/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                    
+                                @endisset
         
                                 @isset($plan->second_payment)
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
                                             {{__('Segundo pago')}} ({{$plan->second_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->second_payment_months] ) }}</div>
+                                            <div class="fs-7 fw-light d-none d-lg-block">
+                                                @if ($plan->second_payment_const)
+                                                    {{ __('A los :months meses después del incio de la obra.', ['months'=>$plan->second_payment_months] ) }}
+                                                @else
+                                                    {{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->second_payment_months] ) }}
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="fs-4">${{ number_format( $special_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
                                     </div>
@@ -431,7 +448,13 @@
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
                                             {{__('Tercer pago')}} ({{$plan->third_payment}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->third_payment_months] ) }}</div>
+                                            <div class="fs-7 fw-light d-none d-lg-block">
+                                                @if ($plan->third_payment_const)
+                                                    {{ __('A los :months meses después del incio de la obra.', ['months'=>$plan->third_payment_months] ) }}
+                                                @else
+                                                    {{ __('A los :months meses después de la firma de contrato.', ['months'=>$plan->third_payment_months] ) }}
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="fs-4">${{ number_format( $special_price * ($plan->third_payment/100) ) }} {{ $unit->currency }}</div>
                                     </div>
@@ -441,6 +464,9 @@
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
                                             {{$plan->monthly_payments}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
+                                            @if ($plan->months_during_const)
+                                                <div class="fs-7 fw-light d-none d-lg-block">{{__('Pagos mensuales durante la construcción')}}</div>
+                                            @endif
                                         </div>
                                         <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
                                     </div>
