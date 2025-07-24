@@ -344,6 +344,40 @@
 
     <div class="mb-6">@livewire('contact-form')</div>
 
+    {{-- MODAL DE PROMOCIÓN DE JULIO --}}
+    <div class="modal fade" id="julyPromoModal" tabindex="-1" aria-labelledby="julyPromoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="modal-title fs-5 fw-bold" id="julyPromoModalLabel">{{__('Promoción de Julio')}}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <img class="w-100" src="{{asset('img/july-promo-'.app()->getLocale().'.jpg')}}" alt="{{__('Promoción de Julio')}}">
+                </div>
+
+                <div class="modal-footer">
+                    <a href="{{route('inventory.bay', request()->query() )}}" class="btn btn-blue w-100 rounded-0">{{__('Ver Inventario')}}</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        //scritp para mostrar el modal de bootstrap promoción de julio despues de 5 segundos
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var julyPromoModal = new bootstrap.Modal(document.getElementById('julyPromoModal'));
+                julyPromoModal.show();
+            }, 5000);
+        });
+    </script>
+
     @script
         <script>
             Fancybox.bind("[data-fancybox]", {
