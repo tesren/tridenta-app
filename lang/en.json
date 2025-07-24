@@ -13,7 +13,7 @@
     "Precio" : "Price",
     "Recámaras" : "Bedrooms",
     "Baños" : "Bathrooms",
-    "Precios desde" : "Prices from",
+    "Precios desde" : "Starting at",
     "Elige uno" : "Select one",
     "Torre" : "Tower",
     "Buscar" : "Search",
@@ -537,5 +537,13 @@
     "A los :months meses después del incio de la obra.": ":months months after the start of construction.",
     "Pagos mensuales durante la construcción" : "Monthly payments during construction",
     "Promoción de Julio" : "July Promotion",
-    "Pago al momento que inicia la construcción" : "Payment when construction begins"
+    "Pago al momento que inicia la construcción" : "Payment when construction begins",
+    "Promoción" : "Limited-time Offer",
+    "Julio 2025" : "July 2025",
+    "10% y 5% de" : "10%, & 5%",
+    "descuento" : "discount",
+    "3 opciones de" : "3 financing",
+    "financiamiento" : "plan options",
+    "10% de enganche & los siguientes": "10% down payment & the rest",
+    "pagos hasta el inicio de obra" : "until the construction's kickoff"
 }

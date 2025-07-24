@@ -10,9 +10,16 @@
 
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 70vh; object-fit:cover;">
+        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 84vh; object-fit:cover;">
 
         <div class="bg-black-gradient"></div>
+
+        <div class="position-absolute start-0 translate-middle-y w-100" style="top: 45%;">
+            <h1 class="fw-bold fs-0 text-center text-white mb-5 w-100">
+                <div>{{__('Nueva')}} {{__('Preventa a pie')}} {{__('de playa')}}</div>
+                <div class="fs-3 mt-3">{{__('Precios desde')}} ${{number_format($lowest_priced_unit->price, 2)}} {{$lowest_priced_unit->currency}}</div>
+            </h1>
+        </div>
 
         <div class="row position-absolute bottom-0 start-0">
 
@@ -26,33 +33,63 @@
 
             <div class="col-12" style="background-image: url('{{asset('/img/bg-july-promo.jpg')}}'); background-size: cover; background-repeat:no-repeat;">
 
-                <div class="row py-4 px-1 px-lg-4">
-                    <div class="col-12 col-lg-4 align-self-center">
-                        <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
-                        <div class="fw-light fs-3 text-uppercase lh-1 mb-3">{{__('Julio 2025')}}</div>
-                    </div>
+                <div id="carouselJulyPromo" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
 
-                    <div class="col-12 col-lg-4">
-                        <div class="d-flex justify-content-center">
+                        <div class="carousel-item active">
+                            <div class="row py-4 px-1 px-lg-4">
+                                <div class="col-12 col-lg-4 align-self-center align-self-center">
+                                    <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
+                                    <div class="fw-light fs-3 text-uppercase lh-1">{{__('Julio 2025')}}</div>
+                                </div>
 
-                            <div class="fw-bold" style="font-size:65px;">
-                                15%
-                            </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="d-flex justify-content-center">
 
-                            <div class="align-self-center ms-2">
-                                <div class="fs-3 lh-1"> 
-                                    <div class="fw-bold">{{__('10% y 5% de')}}</div>
-                                    <div>{{__('descuento')}}</div>
+                                        <div class="fw-bold" style="font-size:65px;">
+                                            15%
+                                        </div>
+
+                                        <div class="align-self-center ms-2">
+                                            <div class="fs-3 lh-1"> 
+                                                <div class="fw-bold">{{__('10% y 5% de')}}</div>
+                                                <div>{{__('descuento')}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-4 text-end align-self-center fs-4">
+                                    <div>{{__('3 opciones de')}}</div>
+                                    <div class="fw-bold">{{__('financiamiento')}}</div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <div class="carousel-item">
+                            <div class="row py-4 px-1 px-lg-4">
+                                <div class="col-12 col-lg-4 align-self-center align-self-center">
+                                    <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
+                                    <div class="fw-light fs-3 text-uppercase lh-1">{{__('Julio 2025')}}</div>
+                                </div>
+
+                                <div class="col-12 col-lg-4 text-center my-4 my-lg-0">
+
+                                    <div class="fs-4">{{__('10% de enganche & los siguientes')}}</div>
+                                    <div class="fw-bold fs-4">{{__('pagos hasta el inicio de obra')}}</div>
+                                            
+                                </div>
+
+                                <div class="col-12 col-lg-4 text-end align-self-center fs-4">
+                                    <div>{{__('3 opciones de')}}</div>
+                                    <div class="fw-bold">{{__('financiamiento')}}</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="col-12 col-lg-4 text-end align-self-center fs-4">
-                        <div>{{__('3 opciones de')}}</div>
-                        <div class="fw-bold">{{__('financiamiento')}}</div>
-                    </div>
                 </div>
 
             </div>
