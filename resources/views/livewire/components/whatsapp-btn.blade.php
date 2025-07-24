@@ -35,6 +35,13 @@
         <script>
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+            const btn = document.getElementById('whatsapp');
+            
+            if (btn && window.innerWidth > 992) {
+                const tooltip = new bootstrap.Tooltip(btn);
+                tooltip.show();
+            }
+
         </script>
     @endscript
 

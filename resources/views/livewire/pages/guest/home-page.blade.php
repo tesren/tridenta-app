@@ -10,19 +10,51 @@
 
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 66vh; object-fit:cover;">
+        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 70vh; object-fit:cover;">
 
         <div class="bg-black-gradient"></div>
 
         <div class="row position-absolute bottom-0 start-0">
 
-            <div class="col-12 col-lg-7 col-xxl-6 ms-0 ms-lg-5 mb-5 text-white">
+            {{-- <div class="col-12 col-lg-7 col-xxl-6 ms-0 ms-lg-5 mb-5 text-white">
                 <h1 class="fw-bold fs-0">
                     {{__('Nueva')}} <br>
                     {{__('Preventa a pie')}} <br>
                     {{__('de playa')}}
                 </h1>
-                {{-- <div class="fw-light fs-5">{{__('Bienvenido a la preventa privada')}}</div> --}}
+            </div> --}}
+
+            <div class="col-12" style="background-image: url('{{asset('/img/bg-july-promo.jpg')}}'); background-size: cover; background-repeat:no-repeat;">
+
+                <div class="row py-4 px-1 px-lg-4">
+                    <div class="col-12 col-lg-4 align-self-center">
+                        <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
+                        <div class="fw-light fs-3 text-uppercase lh-1 mb-3">{{__('Julio 2025')}}</div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="d-flex justify-content-center">
+
+                            <div class="fw-bold" style="font-size:65px;">
+                                15%
+                            </div>
+
+                            <div class="align-self-center ms-2">
+                                <div class="fs-3 lh-1"> 
+                                    <div class="fw-bold">{{__('10% y 5% de')}}</div>
+                                    <div>{{__('descuento')}}</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4 text-end align-self-center fs-4">
+                        <div>{{__('3 opciones de')}}</div>
+                        <div class="fw-bold">{{__('financiamiento')}}</div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -344,39 +376,6 @@
 
     <div class="mb-6">@livewire('contact-form')</div>
 
-    {{-- MODAL DE PROMOCIÓN DE JULIO --}}
-    <div class="modal fade" id="julyPromoModal" tabindex="-1" aria-labelledby="julyPromoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <div class="modal-title fs-5 fw-bold" id="julyPromoModalLabel">{{__('Promoción de Julio')}}</div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body p-0">
-                    <img class="w-100" src="{{asset('img/july-promo-'.app()->getLocale().'.jpg')}}" alt="{{__('Promoción de Julio')}}">
-                </div>
-
-                <div class="modal-footer">
-                    <a href="{{route('inventory.bay', request()->query() )}}" class="btn btn-blue w-100 rounded-0">{{__('Ver Inventario')}}</a>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        //scritp para mostrar el modal de bootstrap promoción de julio despues de 5 segundos
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var julyPromoModal = new bootstrap.Modal(document.getElementById('julyPromoModal'));
-                julyPromoModal.show();
-            }, 5000);
-        });
-    </script>
 
     @script
         <script>
