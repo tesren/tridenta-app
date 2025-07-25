@@ -192,7 +192,7 @@
 
 
             @if ($unit->price != 0 and $unit->status == 'Disponible')
-                <h3 class="fs-1">${{ number_format($unit->price) }} {{$unit->currency}}</h3> 
+                <h3 class="fs-1">${{ number_format($unit->price, 2) }} {{$unit->currency}}</h3> 
             @endif
 
             <a href="#contact" class="btn btn-blue d-block">
@@ -338,13 +338,16 @@
                                     //descuento especial de preventa
                                     $special_price = $final_price * ( (100 - $plan->additional_discount)/100 );
 
+                                    $total_discount = $unit->price - $special_price;
                                 }elseif($plan->discount > 0){
                                     $final_price = $unit->price * ( (100 - $plan->discount)/100 );
                                     $special_price = $final_price;
+                                    $total_discount = $unit->price - $final_price;
                                 }
                                 else{
                                     $final_price = $unit->price;
                                     $special_price = $unit->price;
+                                    $total_discount = null;
                                 }
                             @endphp 
         
@@ -353,12 +356,12 @@
                                 @if ($plan->discount > 0 and $plan->additional_discount > 0)
                                     <div class="py-4 bg-blue text-center">
                                         <div>{{__('Precio especial con 5% de descuento adicional')}}</div>
-                                        <div class="fs-2">${{ number_format($special_price) }} {{ $unit->currency }}</div>
+                                        <div class="fs-2">${{ number_format($special_price,2) }} {{ $unit->currency }}</div>
                                     </div>
                                 @else
                                     <div class="py-4 bg-blue text-center">
                                         <div>{{__('Precio Final')}}</div>
-                                        <div class="fs-2">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                        <div class="fs-2">${{ number_format($final_price,2) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endif
                                 
@@ -367,12 +370,12 @@
 
                                     <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">{{__('Precio de lista')}}</div>
-                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price,2) }} {{ $unit->currency }}</div>
                                     </div>
                                 
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
-                                        <div class="fs-4 text-decoration-line-through">${{ number_format( $final_price ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4 text-decoration-line-through">${{ number_format( $total_discount,2 ) }} {{ $unit->currency }}</div>
                                     </div>
 
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
@@ -380,28 +383,28 @@
                                             {{__('Precio Final')}}
                                             <div class="fs-7 fw-light d-none d-lg-block">{{__('Precio final con 5% de descuento adicional')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price,1 ) }} {{ $unit->currency }}</div>
                                     </div>
 
                                 @elseif($plan->discount > 0)
 
                                     <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">{{__('Precio de lista')}}</div>
-                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price,1) }} {{ $unit->currency }}</div>
                                     </div>
                                 
                                     <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">
                                             {{__('Descuento')}} ({{$plan->discount}}%)
-                                            <div class="fs-7 fw-light d-none d-lg-block">{{__('Precio final con descuento')}}.</div>
+                                            {{-- <div class="fs-7 fw-light d-none d-lg-block">{{__('Precio final con descuento')}}.</div> --}}
                                         </div>
-                                        <div class="fs-4">${{ number_format( $final_price ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $total_discount,1 ) }} {{ $unit->currency }}</div>
                                     </div>
 
                                 @else
                                     <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
                                         <div class="fs-4">{{__('Precio de lista')}}</div>
-                                        <div class="fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format($unit->price,1) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endif
 
@@ -413,7 +416,7 @@
                                             {{__('Enganche')}} ({{$plan->down_payment}}%)
                                             <div class="fs-7 fw-light d-none d-lg-block">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->down_payment/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
 
@@ -423,7 +426,7 @@
                                             {{__('Al inicio de obra')}} ({{$plan->starting_const}}%)
                                             <div class="fs-7 fw-light d-none d-lg-block">{{__('Pago al momento que inicia la construcción')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->starting_const/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->starting_const/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                     
                                 @endisset
@@ -440,7 +443,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->second_payment/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
 
@@ -456,7 +459,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->third_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->third_payment/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
                                 
@@ -468,7 +471,7 @@
                                                 <div class="fs-7 fw-light d-none d-lg-block">{{__('Pagos mensuales durante la construcción')}}</div>
                                             @endif
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->months_percent/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
 
@@ -477,7 +480,7 @@
                                         <div class="fs-4">
                                             {{__('Cada mensualidad')}} 
                                         </div>
-                                        <div class="fs-4">${{ number_format( ($special_price * ($plan->months_percent/100))/$plan->monthly_payments ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( ($special_price * ($plan->months_percent/100))/$plan->monthly_payments,1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
         
@@ -487,7 +490,7 @@
                                             {{__('Pago Final')}} ({{$plan->closing_payment}}%)
                                             <div class="fs-7 fw-light d-none d-lg-block">{{__('A la entrega física de la propiedad')}}.</div>
                                         </div>
-                                        <div class="fs-4">${{ number_format( $special_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
+                                        <div class="fs-4">${{ number_format( $special_price * ($plan->closing_payment/100),1 ) }} {{ $unit->currency }}</div>
                                     </div>
                                 @endisset
         

@@ -14,7 +14,7 @@
 
         <div class="bg-black-gradient"></div>
 
-        <div class="position-absolute start-0 translate-middle-y w-100" style="top: 45%;">
+        <div class="position-absolute start-0 translate-middle-y w-100" style="top: 40%;">
             <h1 class="fw-bold fs-0 text-center text-white mb-5 w-100">
                 <div>{{__('Nueva')}} {{__('Preventa a pie')}} {{__('de playa')}}</div>
                 <div class="fs-3 mt-3">{{__('Precios desde')}} ${{number_format($lowest_priced_unit->price, 2)}} {{$lowest_priced_unit->currency}}</div>
@@ -31,7 +31,7 @@
                 </h1>
             </div> --}}
 
-            <div class="col-12" style="background-image: url('{{asset('/img/bg-july-promo.jpg')}}'); background-size: cover; background-repeat:no-repeat;">
+            <div class="col-12 px-0 px-lg-2" style="background-image: url('{{asset('/img/bg-july-promo.jpg')}}'); background-size: cover; background-repeat:no-repeat;">
 
                 <div id="carouselJulyPromo" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -40,29 +40,20 @@
                             <div class="row py-4 px-1 px-lg-4">
                                 <div class="col-12 col-lg-4 align-self-center align-self-center">
                                     <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
-                                    <div class="fw-light fs-3 text-uppercase lh-1">{{__('Julio 2025')}}</div>
+                                    <div class="fw-light fs-4 text-uppercase lh-1">{{__('Por tiempo limitado')}}</div>
                                 </div>
 
-                                <div class="col-12 col-lg-4">
-                                    <div class="d-flex justify-content-center">
-
-                                        <div class="fw-bold" style="font-size:65px;">
-                                            15%
-                                        </div>
-
-                                        <div class="align-self-center ms-2">
-                                            <div class="fs-3 lh-1"> 
-                                                <div class="fw-bold">{{__('10% y 5% de')}}</div>
-                                                <div>{{__('descuento')}}</div>
-                                            </div>
-                                        </div>
-
+                                <div class="col-12 col-lg-4 align-self-center my-4 my-lg-0">
+                                    
+                                    <div class="fs-3 lh-sm text-center"> 
+                                        <div class="">{{__('Obtén hasta un')}}</div>
+                                        <div class="fw-bold">15% {{__('de descuento')}}</div>
                                     </div>
+                                        
                                 </div>
 
                                 <div class="col-12 col-lg-4 text-end align-self-center fs-4">
-                                    <div>{{__('3 opciones de')}}</div>
-                                    <div class="fw-bold">{{__('financiamiento')}}</div>
+                                    <img src="{{asset('/img/domus-logo-blue.svg')}}" alt="Logo Domus Vallarta" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -71,19 +62,18 @@
                             <div class="row py-4 px-1 px-lg-4">
                                 <div class="col-12 col-lg-4 align-self-center align-self-center">
                                     <div class="fw-regular fs-1 mb-1 fw-bold lh-1">{{__('Promoción')}}</div>
-                                    <div class="fw-light fs-3 text-uppercase lh-1">{{__('Julio 2025')}}</div>
+                                    <div class="fw-light fs-3 text-uppercase lh-1">{{__('Por tiempo limitado')}}</div>
                                 </div>
 
-                                <div class="col-12 col-lg-4 text-center my-4 my-lg-0">
+                                <div class="col-12 col-lg-5 text-center my-4 my-lg-0">
 
-                                    <div class="fs-4">{{__('10% de enganche & los siguientes')}}</div>
-                                    <div class="fw-bold fs-4">{{__('pagos hasta el inicio de obra')}}</div>
+                                    <div class="fs-4">{{__('Aparta con solo 10% de enganche y')}}</div>
+                                    <div class="fw-bold fs-4">{{__('tu siguiente pago hasta inicio de obra')}}</div>
                                             
                                 </div>
 
-                                <div class="col-12 col-lg-4 text-end align-self-center fs-4">
-                                    <div>{{__('3 opciones de')}}</div>
-                                    <div class="fw-bold">{{__('financiamiento')}}</div>
+                                <div class="col-12 col-lg-3 text-end align-self-center fs-4">
+                                    <img src="{{asset('/img/domus-logo-blue.svg')}}" alt="Logo Domus Vallarta" class="img-fluid">
                                 </div>
                             </div>
                         </div>
