@@ -76,7 +76,7 @@
     @elseif ( count($unit_type_gallery) > 0)
  
         <img src="{{$unit_type_gallery[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Tridenta Towers" class="w-100 object-fit-cover" style="height: 40vh;" data-fancybox="unit-gallery">
-    
+
     @else
 
         <div class="row justify-content-center py-5 mb-5" style="background-image: url('{{asset('img/auth-bg.jpg')}}');">
@@ -203,25 +203,28 @@
     </div>
 
     {{-- Vista de la unidad solo en móvil --}}
-    @isset($unit->youtube_link)
-        <div class="row justify-content-evenly mb-6 d-flex d-lg-none">
-            <div class="col-12 col-lg-11">
+    @isset($unit->view_path)
+        <div class="row justify-content-evenly mb-6 d-flex">
+            <div class="col-12 col-lg-8 col-xxl-6">
 
                 <h3 class="fs-2 text-center">{{__('Vista principal')}}</h3>
 
                 <div class="position-relative ">
-                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista secundaria de la Unidad')}} {{$unit->name}}">
+                    <img src="{{ asset('media/'.$unit->view_path) }}" class="w-100 object-fit-cover" data-fancybox="unit-gallery-mobile" style="height: 40vh;" data-caption="{{__('Vista principal')}} {{__('Unidad')}} {{$unit->name}}">
 
-                    <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
-                        <div class="col-12 text-center align-self-center">
-                            <a href="{{$unit->youtube_link}}" data-fancybox="unit-view-mobile" class="link-light text-decoration-none">
-                                <i class="fa-solid fa-4x fa-play"></i>
-                                <div class="mt-2 fw-bold fs-4">{{__('Ver video')}}</div>
-                            </a>
+                    @if ($unit->youtube_link)
+                        <div class="row justify-content-center position-absolute z-2 top-0 start-0 h-100">
+                            <div class="col-12 text-center align-self-center">
+                                <a href="{{$unit->youtube_link}}" data-fancybox="unit-view-mobile" class="link-light text-decoration-none">
+                                    <i class="fa-solid fa-4x fa-play"></i>
+                                    <div class="mt-2 fw-bold fs-4">{{__('Ver video')}}</div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="fondo-azul"></div>
+                        <div class="fondo-azul"></div>
+                    @endif
+
 
                 </div>
 
@@ -525,6 +528,7 @@
         <script>
             Fancybox.bind("[data-fancybox]", {
                 // Your custom options
+                Hash: false,
             });
         </script>
     @endscript
