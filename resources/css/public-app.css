@@ -295,6 +295,10 @@ a:hover .section-class{
     -webkit-backdrop-filter: blur(2.6px);
 }
 
+.fs-plans{
+    font-size: 1.5rem !important
+}
+
 @media (max-width: 992px) {
 
     .unit-imgs{
@@ -317,6 +321,14 @@ a:hover .section-class{
 
     .fs-0{
         font-size: 2.7rem;
+    }
+
+    .fs-7{
+        font-size: 13px;
+    }
+
+    .fs-plans{
+        font-size: 1.1rem !important
     }
 
 }
