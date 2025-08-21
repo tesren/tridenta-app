@@ -116,7 +116,7 @@
     <section class="row mb-6" title="{{__('Galería')}}" id="gallery-section">
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/home-img-new.jpg')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/albercas-newer.webp')}}" alt="Vista Aerea Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
             <div class="fs-1 position-absolute bottom-0 start-0 text-white ms-5 mb-4 fw-bold" style="text-shadow: 1px 1px 2px black;">
                 {{__('Galería')}}
             </div>
@@ -124,26 +124,24 @@
         </div>
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/tridenta-render-oficial.webp')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/fachada-ingreso-new.webp')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
 
         <div class="col-6 col-lg-4 p-1">
-            <img src="{{asset('img/payplans-bg.jpg')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
+            <img src="{{asset('/img/terraza-newer.webp')}}" alt="Render Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover;" data-fancybox="gallery">
         </div>
 
         <div class="col-12 col-lg-8 p-1 position-relative">
-            <img src="{{asset('img/phase-1-iso.jpg')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
-            {{-- <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
+            <img src="{{asset('/img/rooftop-newer.webp')}}" alt="Amenidades de Tridenta Towers" class="w-100" style="height: 400px; object-fit:cover; object-position:top;" data-fancybox="gallery">
+            <div class="fs-1 position-absolute bottom-0 end-0 text-white me-3 me-lg-5 mb-4 fw-bold">
                 <a href="#gallery-1" class="btn btn-light rounded-0 shadow-5"><i class="fa-regular fa-images"></i> {{__('Galería Completa')}}</a>
-            </div> --}}
+            </div>
         </div>
 
         
-{{--         <img src="{{asset('/img/inventory-sierra-new.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
-        <img src="{{asset('/img/inventory-bahia.webp')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">
-        <img src="{{asset('img/vista-aerea.jpg ')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">    --}}
-        
+        <img src="{{asset('img/phase-1-iso.jpg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">   
+        <img src="{{asset('img/payplans-bg.jpg')}}" alt="Galería Tridenta Towers" class="d-none" data-fancybox="gallery">
 
         <div class="fs-7 text-secondary text-center">{{__('Las imagenes son con fines ilustrativos. Precios y dimensiones pueden cambiar sin previo aviso.')}}</div>
         
@@ -334,7 +332,7 @@
     {{-- Planes de pago --}}
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/payplans-bg.jpg')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="min-height:60vh; max-height: 85vh; object-position:bottom">
+        <img src="{{asset('/img/rooftop-newer.webp')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="min-height:60vh; max-height: 85vh;">
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             

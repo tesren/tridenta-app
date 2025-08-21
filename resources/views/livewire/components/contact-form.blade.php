@@ -8,7 +8,7 @@
     @if ($contact != 'no')
         <div class="row" title="Formulario de contacto" id="contact">
             <div class="col-12 col-lg-5 ps-0 d-none d-lg-block">
-                <img class="w-100 h-100" src="{{asset('img/tridenta-render-oficial.webp')}}" alt="Tridenta Towers formulario de contacto" style="object-fit: cover; max-height:75vh;">
+                <img class="w-100 h-100" src="{{asset('/img/tridenta-portrait-main.webp')}}" alt="Tridenta Towers formulario de contacto" style="object-fit: cover; max-height:75vh;">
             </div>
         
             <div class="col-12 col-lg-7 align-self-center mt-4 mt-lg-0 px-3 px-lg-5 mb-5">
