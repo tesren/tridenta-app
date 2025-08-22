@@ -10,12 +10,12 @@
 
     <section class="position-relative mb-6">
 
-        <img src="{{asset('img/home-img-new.jpg')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 84vh; object-fit:cover;">
+        <img src="{{asset('/img/tridenta-pool-clean.webp')}}" alt="Áreas comunes de Tridenta Towers" class="w-100" style="height: 91vh; object-fit:cover;">
 
         <div class="bg-black-gradient"></div>
 
         <div class="position-absolute start-0 translate-middle-y w-100" style="top: 40%;">
-            <h1 class="fw-bold fs-0 text-center text-white mb-5 w-100">
+            <h1 class="fw-bold fs-0 text-center text-white mb-5 mb-lg-0 w-100">
                 <div>{{__('Nueva')}} {{__('Preventa a pie')}} {{__('de playa')}}</div>
                 <div class="fs-3 mt-3">{{__('Precios desde')}} ${{number_format($lowest_priced_unit->price, 2)}} {{$lowest_priced_unit->currency}}</div>
             </h1>
@@ -332,7 +332,7 @@
     {{-- Planes de pago --}}
     <section class="position-relative mb-6">
 
-        <img src="{{asset('/img/rooftop-newer.webp')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="min-height:60vh; max-height: 85vh;">
+        <img src="{{asset('/img/rooftop-newer.webp')}}" alt="Tridenta Towers" class="w-100 object-fit-cover" style="height:85vh; object-position:top;">
 
         <div class="row justify-content-center position-absolute top-0 start-0 h-100">
             
