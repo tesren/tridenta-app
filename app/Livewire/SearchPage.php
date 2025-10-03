@@ -14,6 +14,7 @@ class SearchPage extends Component
     public $search_status = 0;
     public $floor = 0;
     public $bedrooms = 0;
+    public $view = 0;
     public $min_price = 1;
     public $max_price = 9999999999;
 
@@ -26,6 +27,20 @@ class SearchPage extends Component
     {
         
         $units = Unit::where('price', '>' ,$this->min_price)->where('price','<', $this->max_price)->where('status', '!=', 'Vendida');
+
+        if( $this->view != 0 ){
+            
+            if( $this->view == 2 ){
+                $units = $units->whereIn('section_id', [1,2,3] );
+            }
+            elseif( $this->view == 1 ){
+                $units = $units->whereIn('section_id', [4,5,6] );
+            }
+            else{
+                $this->view = 0;
+            }
+
+        }
 
         if( $this->floor != 0 ){
             $units = $units->where('floor', $this->floor);
@@ -42,7 +57,7 @@ class SearchPage extends Component
                 break;
 
                 case 2:
-                    $units = $units->whereIn('unit_type_id', [17,18,19,25] );
+                    $units = $units->whereIn('unit_type_id', [17,18,19,25,26,27] );
                 break;
 
                 case 3:

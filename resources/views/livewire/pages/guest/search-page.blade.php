@@ -37,19 +37,34 @@
         {{-- Formulario de búsqueda --}}
         <div class="row justify-content-center mb-5">
 
-            <div class="col-12 col-lg-10">
+            <div class="col-12 px-0">
                 <form wire:submit="search">
 
                     <div class="rounded-2 input-group shadow-4" id="search_input_group">
-                                
+                        
+                        <div class="form-floating mb-3 mb-lg-0">
+        
+                            <select class="form-select" id="view" wire:model="view" aria-label="{{__('Vista')}}">
+                                <option value="0">{{__('Cualquier vista')}}</option>
+        
+                                <option value="1">{{__('Vista sierra')}}</option>
+                                <option value="2">{{__('Vista bahía')}}</option>
+        
+                            </select>
+        
+                            <label for="view">{{__('Vista')}}</label>
+                        </div>
+
                         <div class="form-floating mb-3 mb-lg-0">
         
                             <select class="form-select" id="floor" wire:model="floor" aria-label="{{__('Piso')}}">
-                              <option value="0">{{__('Cualquier piso')}}</option>
-        
-                              @for ($i=1; $i<29; $i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                              @endfor
+                                <option value="0">{{__('Cualquier piso')}}</option>
+            
+                                <option value="PB">{{ __('Planta baja') }}</option>
+
+                                @for ($i=1; $i<29; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
         
                             </select>
         
@@ -116,6 +131,7 @@
 
                 <thead>
                     <th>{{__('Unidad')}}</th>
+                    <th>{{__('Vista')}}</th>
                     <th>{{__('Piso')}}</th>
                     <th class="d-none d-lg-table-cell">{{__('Tipo')}}</th>
                     <th>{{__('Recámaras')}}</th>
@@ -142,7 +158,10 @@
 
                             <tr wire:key={{$unit->id}}>
                                 <td class="{{$badgeBg}} text-light text-center fw-bold">{{ $unit->name }}</td>
-                                <td>{{ $unit->floor }}</td>
+                                <td>{{ __($unit->section->name) }}</td>
+
+                                <td>{{ $unit->floor == 0 ? __('Planta baja') : $unit->floor }}</td>
+
                                 <td class="d-none d-lg-table-cell">{{__('Tipo')}} {{ $unit->unitType->name }}</td>
 
                                 <td>
