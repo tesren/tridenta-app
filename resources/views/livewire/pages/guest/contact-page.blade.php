@@ -34,7 +34,7 @@
             <h6 class="fs-2 text-brown px-2 mb-0 text-center text-lg-start mt-5">{{__('¿Te gustaría saber más?')}}</h6>
             <p class="fs-6 text-lightbrown px-2 mb-4 text-center text-lg-start">{{__('Completa el formulario para enviarnos un mensaje.')}}</p>
     
-            <form wire:submit="save" class="position-relative z-3">
+            <form wire:submit="save" class="position-relative z-3" wire:recaptcha>
                     
                 <div class="row">
         
@@ -89,11 +89,29 @@
                 </div>
             @endif
 
+            {{-- Errores --}}
+            @if (session('errors'))
+                @php
+                    $errors = session('errors');
+                @endphp
+                <div class="p-3 text-danger">
+                    @foreach ($errors as $error)
+                        <div class="mb-2"><i class="fa-regular fa-circle-xmark"></i> {{$error}}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            @if($errors->has('gRecaptchaResponse'))
+                <div class="alert alert-danger">{{ $errors->first('gRecaptchaResponse') }}</div>
+            @endif
+
             <div wire:loading class="text-center fs-5 my-3 text-warning"> 
                 <i class="fa-solid fa-spin fa-spinner"></i> {{__('Enviando, por favor espere')}}
             </div>
 
         </div>
+
+        @livewireRecaptcha
 
     </section>
 

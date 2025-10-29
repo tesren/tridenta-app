@@ -299,6 +299,10 @@ a:hover .section-class{
     font-size: 1.5rem !important
 }
 
+.grecaptcha-badge{
+    visibility: hidden !important;
+}
+
 @media (max-width: 992px) {
 
     .unit-imgs{

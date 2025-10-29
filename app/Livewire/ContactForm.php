@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
 use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
+use DutchCodingCompany\LivewireRecaptcha\ValidatesRecaptcha;
+
 
 class ContactForm extends Component
 {
@@ -26,6 +28,8 @@ class ContactForm extends Component
 
     #[Validate('required')] 
     public $contact_method = '';
+
+    public string $gRecaptchaResponse;
     
     public $url = '';
 
@@ -43,6 +47,7 @@ class ContactForm extends Component
         return view('livewire.components.contact-form');
     }
 
+    #[ValidatesRecaptcha]
     public function save()
     {
         $this->validate(); 

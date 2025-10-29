@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
 use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
+use DutchCodingCompany\LivewireRecaptcha\ValidatesRecaptcha;
 
 class ContactPage extends Component
 {
@@ -29,6 +30,9 @@ class ContactPage extends Component
     public $message = '';
     public $url = '';
 
+    public string $gRecaptchaResponse;
+
+
     public HoneypotData $extraFields;
     
     public function mount()
@@ -42,6 +46,7 @@ class ContactPage extends Component
         return view('livewire.pages.guest.contact-page')->layout('layouts.public-base');
     }
 
+    #[ValidatesRecaptcha]
     public function save()
     {
         $this->validate(); 
