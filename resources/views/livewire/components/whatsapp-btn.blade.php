@@ -6,7 +6,7 @@
 
     @if ($contact != 'no')
 
-        <a id="whatsapp" href="https://wa.me/523322005523?text={{ urlencode(__("Hola, vengo del sitio web de Tridenta")) }}" class="position-fixed bottom-0 end-0 z-3 m-3 text-center shadow d-none d-lg-flex" data-bs-toggle="tooltip" data-bs-title="{{ __('¡Envíanos un mensaje!') }}" target="_blank" rel="noopener noreferrer">
+        <a id="whatsapp" href="https://wa.me/52{{env('CONTACT_NUMBER')}}?text={{ urlencode(__("Hola, vengo del sitio web de Tridenta")) }}" class="position-fixed bottom-0 end-0 z-3 m-3 text-center shadow d-none d-lg-flex" data-bs-toggle="tooltip" data-bs-title="{{ __('¡Envíanos un mensaje!') }}" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-3x fa-whatsapp align-self-center"></i>
         </a>
 
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="col-5 align-self-center">
-                    <a class="btn btn-light w-100 fs-6" href="https://wa.me/5213322005523?text={{__("Hola, vengo del sitio web de Tridenta")}}" target="_blank" rel="noopener noreferrer">
+                    <a class="btn btn-light w-100 fs-6" href="https://wa.me/52{{env('CONTACT_NUMBER')}}?text={{__("Hola, vengo del sitio web de Tridenta")}}" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>

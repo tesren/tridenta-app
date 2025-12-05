@@ -18,7 +18,7 @@
                     <div class="fs-3">{{__('Contacto')}}</div>
         
                     <a href="mailto:info@domusvallarta.com" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-envelope"></i> info@domusvallarta.com</a>
-                    <a href="tel:+523322005523" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> 332 200 5523</a>
+                    <a href="tel:+52{{env('CONTACT_NUMBER')}}" class="link-light fw-light text-decoration-none d-block mb-3 fs-5"><i class="fa-solid fa-phone"></i> {{env('DISPLAY_NUMBER')}}</a>
                     <address class="fs-5 fw-light"><i class="fa-solid fa-location-dot"></i> Febronio Uribe 170, Zona Hotelera, Las Glorias, 48333 Puerto Vallarta, Jal.</address>
                 </div>
     
