@@ -57,7 +57,7 @@ class SearchPage extends Component
                 break;
 
                 case 2:
-                    $units = $units->whereIn('unit_type_id', [17,18,19,25,26,27] );
+                    $units = $units->whereIn('unit_type_id', [17,18,19,25,26,27,29] );
                 break;
 
                 case 3:
@@ -65,7 +65,7 @@ class SearchPage extends Component
                 break;
 
                 case 10:
-                    $units = $units->whereIn('unit_type_id', [21,22,23]);
+                    $units = $units->whereIn('unit_type_id', [21,22,23,28]);
                 break;
 
             }

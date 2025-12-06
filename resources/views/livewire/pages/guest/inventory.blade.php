@@ -103,38 +103,40 @@
 
             </div>
 
-            <div class="col-12 col-lg-6 px-0 position-relative align-self-center tab-content">
+            <div class="col-12 col-lg-7 px-0 px-lg-4 align-self-center tab-content">
                 @php $i=0; @endphp 
 
                 @foreach ($sections as $section)
 
                     <div class="tab-pane fade @if($i==0) @endif" id="tab-pane-{{$section->id}}" role="tabpanel" tabindex="0">
 
-                        <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100 shadow rounded-3">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
-
-                            @foreach ($section->units as $unit)
-                
-                                <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact ]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
-                                    @isset($unit->shape->form_type)
-                                        @if ($unit->shape->form_type == 'rect')
-                                            <rect x="{{$unit->shape->rect_x ?? '0'}}" y="{{$unit->shape->rect_y ?? '0'}}" width="{{$unit->shape->width ?? '0'}}" height="{{$unit->shape->height ?? '0'}}"/>
-                                        @else
-                                            <polygon class="" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
-                                        @endif
-                                    @endisset
-                                    
-                                    <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
-                                        font-size="30" font-weight="bold" fill="#fff" class="fw-light">
-                
-                                        <tspan class="fw-bold">{{$unit->name}}</tspan>
+                        <div class="position-relative">
+                            <img src="{{ asset('media/'.$section->img_path) }}" alt="{{__('Torre')}} {{$section->name}} - {{__('Niveles')}} {{$section->subtitle}}" class="w-100 shadow rounded-3">
+    
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
+    
+                                @foreach ($section->units as $unit)
+                    
+                                    <a href="{{route('unit', ['name' => $unit->name, 'contact' => $contact ]) }}" wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class">
+                                        @isset($unit->shape->form_type)
+                                            @if ($unit->shape->form_type == 'rect')
+                                                <rect x="{{$unit->shape->rect_x ?? '0'}}" y="{{$unit->shape->rect_y ?? '0'}}" width="{{$unit->shape->width ?? '0'}}" height="{{$unit->shape->height ?? '0'}}"/>
+                                            @else
+                                                <polygon class="" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                                            @endif
+                                        @endisset
                                         
-                                    </text>
-                                </a>    
-                                
-                            @endforeach
-                        </svg>
+                                        <text x="{{$unit->shape->text_x ?? 0;}}" y="{{$unit->shape->text_y ?? 0; }}"
+                                            font-size="{{ $unit->unit_type_id == 28 ? '19' : '30' }}" font-weight="bold" fill="#fff" class="fw-light">
+                    
+                                            <tspan class="fw-bold">{{$unit->name}}</tspan>
+                                            
+                                        </text>
+                                    </a>    
+                                    
+                                @endforeach
+                            </svg>
+                        </div>
                     </div>
 
                     @php $i++; @endphp 
