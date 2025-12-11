@@ -67,6 +67,8 @@ Route::post('/send-email', [PublicPagesController::class, 'sendMail'])->name('se
 
 Route::get('/tridenta-optimize', function() {
     Artisan::call('optimize');
+    Artisan::call('view:cache');
+    
     return ('Optimizado');
 });
 
